@@ -1,10 +1,4 @@
 ﻿
-
-
-
-
-
-
 [ANYAG SORSZÁMA ÉS CÍME]
 
 
