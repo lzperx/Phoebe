@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿[![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
-=======
 [![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
->>>>>>> origin/master
 ##Szoftver labor 4 feladatkiírás
 `Phoebe`
 
