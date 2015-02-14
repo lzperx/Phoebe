@@ -1,3 +1,4 @@
+﻿[![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
 ##Szoftver labor 4 feladatkiírás
 `Phoebe`
 
@@ -8,5 +9,3 @@ A sebességük egységnyi méretű, tetszőleges irányú sebességvektorral opc
 A pályán vannak olajfoltok, amikre érkezve sebességmódosításra nincs mód, illetve ragacsfoltok, amik a sebesség nagyságát megfelezik.
 A robotok fel vannak szerelve olaj és ragacskészlettel, amiket a játékos parancsára elugráskor maguk mögött tudnak hagyni.
 Az nyer, aki megadott idő alatt a legnagyobb távolságot tudja megtenni.
- 
- https://waffle.io/lzperx/phoebe
