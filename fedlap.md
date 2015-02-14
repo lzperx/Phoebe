@@ -19,6 +19,11 @@ Konzulens:
 
 
 
+
+
+
+
+
 Csapattagok
 [TAG1 NEVE]	[NEPTUN]	[EMAIL CÍM]
 [TAG2 NEVE]	[NEPTUN]	[EMAIL CÍM]
