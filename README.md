@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
 #Szoftver labor 4 feladatkiírás
 `Phoebe`
 
