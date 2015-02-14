@@ -1,0 +1,34 @@
+﻿
+##[ANYAG SORSZÁMA ÉS CÍME]
+
+
+`[CSAPAT SORSZÁMA] – [CSAPAT NEVE]`
+
+
+Konzulens:
+[KONZULENS NEVE]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Csapattagok
+[TAG1 NEVE]	[NEPTUN]	[EMAIL CÍM]
+[TAG2 NEVE]	[NEPTUN]	[EMAIL CÍM]
+[TAG3 NEVE]	[NEPTUN]	[EMAIL CÍM]
+[TAG4 NEVE]	[NEPTUN]	[EMAIL CÍM]
+
+[DÁTUM]
+
