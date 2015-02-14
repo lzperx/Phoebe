@@ -2,6 +2,9 @@
 
 
 
+
+
+
 [ANYAG SORSZÁMA ÉS CÍME]
 
 
@@ -29,3 +32,4 @@ Csapattagok
 [TAG4 NEVE]	[NEPTUN]	[EMAIL CÍM]
 
 [DÁTUM]
+
