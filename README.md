@@ -1,4 +1,5 @@
 Ugrás a feladatokra: [![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
+[![Build Status](https://travis-ci.org/lzperx/Phoebe.svg)](https://travis-ci.org/lzperx/Phoebe)
 ##Szoftver labor 4 feladatkiírás
 `Phoebe`
 
