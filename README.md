@@ -1,4 +1,7 @@
-Ugrás a feladatokra: [![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
+Waffle: [![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
+
+
+[Network stat](https://github.com/lzperx/Phoebe/network)
 ##Szoftver labor 4 feladatkiírás
 `Phoebe`
 
