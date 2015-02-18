@@ -1,7 +1,7 @@
 ﻿Waffle.io: [![Stories in Ready](https://badge.waffle.io/lzperx/Phoebe.png?label=ready&title=Ready)](https://waffle.io/lzperx/Phoebe)
 
 
-[Network stat](https://github.com/lzperx/Phoebe/network)
+[doc](https://drive.google.com/drive/u/0/#folders/0ByP-nopy4fi1SS1JYi1na2l2MGM/0ByP-nopy4fi1SEJVTWFfRzRXVXc/0Bx5AD4OJgcmCfmRWS1d3REl6ODdjanlpVExLUEdHTkhMV1c0ancwTHBfSlNWbHRYbmZ6TjQ)
 ##Szoftver labor 4 feladatkiírás
 `Phoebe`
 
