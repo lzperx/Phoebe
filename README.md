@@ -11,4 +11,4 @@ A robotok álló helyzetből indulnak, minden robot a saját kezdőpozíciójáb
 A sebességük egységnyi méretű, tetszőleges irányú sebességvektorral opcionálisan módosítható. Egy ugrással a sebességgel egyenesen arányos távolságra tudnak eljutni.
 A pályán vannak olajfoltok, amikre érkezve sebességmódosításra nincs mód, illetve ragacsfoltok, amik a sebesség nagyságát megfelezik.
 A robotok fel vannak szerelve olaj és ragacskészlettel, amiket a játékos parancsára elugráskor maguk mögött tudnak hagyni.
-Az nyer, aki megadott idő alatt a legnagyobb távolságot tudja megtenni. ASD
+Az nyer, aki megadott idő alatt a legnagyobb távolságot tudja megtenni.
