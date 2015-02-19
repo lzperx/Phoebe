@@ -1,18 +1,19 @@
 package phoebe;
 
+import java.security.KeyStore;
+
 /**
  * Created by Geri on 2015.02.19..
  */
 public class Oil {
     private int x,y;
     private int round;
-    private boolean life;
+    private boolean state=true;
 
-    public Oil(int y, int x, int round, boolean life) {
+    public Oil(int y, int x, int round) {
         this.y = y;
         this.x = x;
         this.round = round;
-        this.life = life;
     }
 
     public int getX() {
@@ -40,10 +41,10 @@ public class Oil {
     }
 
     public boolean isLife() {
-        return life;
+        return state;
     }
 
     public void setLife(boolean life) {
-        this.life = life;
+        this.state = life;
     }
 }
