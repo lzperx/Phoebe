@@ -13,9 +13,9 @@ public class GameElements {
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
-    public GameElements() {
+    public GameElements(int width,int high) {
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
-        map = new Map(600, 600);
+        map = new Map(width, high);
     }
 }
