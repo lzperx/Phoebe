@@ -6,7 +6,7 @@ package phoebe;
 public class Oil {
     private int x,y;
     private int round;
-    private boolean state=true;
+    private boolean life =true;
 
     public Oil(int y, int x, int round) {
         this.y = y;
@@ -39,10 +39,10 @@ public class Oil {
     }
 
     public boolean isLife() {
-        return state;
+        return life;
     }
 
     public void setLife(boolean life) {
-        this.state = life;
+        this.life = life;
     }
 }
