@@ -9,7 +9,7 @@ public class Robot {
     private int y;
     private int speed = 0;
     //megtett távolság
-    private int distance = 0;pár
+    private int distance = 0;
     State state = State.JUMP;
 
     public Robot( int x, int y) {

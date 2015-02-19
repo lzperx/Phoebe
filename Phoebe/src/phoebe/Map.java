@@ -8,7 +8,7 @@ public class Map {
     private int width;
     // Pálya magassága
     private int height;
-    // Útak
+    // Utak
     // private List<Path> paths;
 
     public Map(int width, int height) {
