@@ -17,5 +17,5 @@ public class GameElements {
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
         map = new Map(width, high);
-    }//pina
+    }
 }
