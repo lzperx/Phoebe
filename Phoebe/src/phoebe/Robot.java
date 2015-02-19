@@ -4,11 +4,12 @@ package phoebe;
  * Created by Muresan73 on 15. 02. 19..
  */
 public class Robot {
-
+    //helyzet
     private int x;
     private int y;
     private int speed = 0;
-    private int distance = 0;
+    //megtett távolság
+    private int distance = 0;pár
     State state = State.JUMP;
 
     public Robot( int x, int y) {
