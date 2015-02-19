@@ -5,14 +5,13 @@ package phoebe;
  */
 public class Robot {
 
-    private int speed;
     private int x;
     private int y;
+    private int speed = 0;
     private int distance = 0;
     State state = State.JUMP;
 
-    public Robot(int speed, int x, int y) {
-        this.speed = speed;
+    public Robot( int x, int y) {
         this.x = x;
         this.y = y;
     }
