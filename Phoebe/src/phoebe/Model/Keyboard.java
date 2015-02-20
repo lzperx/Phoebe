@@ -7,15 +7,10 @@ package phoebe.Model;
     // minden robotnak kell legyen egy saját vezérlése
 public  class Keyboard
 {
-    private int leftKey=39;
+    private int leftKey;
     private int upKey;
     private int rightKey;
     private int downKey;
-
-    public boolean left;
-    public boolean up;
-    public boolean right;
-    public boolean down;
 
     public Keyboard(int leftKey, int upKey, int rightKey, int downKey) {
         this.leftKey = leftKey;
