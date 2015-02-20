@@ -4,15 +4,21 @@ package phoebe.Model;
  * Created by Muresan73 on 15. 02. 19..
  */
 public class Robot {
+
+    public enum robotState {
+        JUMP,ONGROUND      // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
+    }
+
+
     //helyzet
     private int x;
     private int y;
     private int speed = 0;
     //megtett távolság
     private int distance = 0;
-    State state = State.JUMP;
+    robotState state = robotState.JUMP;
 
-    public Robot( int x, int y) {
+    public Robot(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -33,20 +39,33 @@ public class Robot {
         return distance;
     }
 
-    public void getGlued(){
-        speed /=2;
+    public void getGlued() {
+        if (state == robotState.ONGROUND) {
+            speed /= 2;
+        }
     }
 
-    public void getOiled(){
-        state = State.SLIPPED;
+    public void turnLeft(){
+        if (state == robotState.ONGROUND) {
+
+        }
     }
 
-    public void turnLeft();
+    public void turnRight(){
+        if (state == robotState.ONGROUND) {
 
-    public void turnRight();
+        }
+    }
 
-    public void speedUp();
+    public void speedUp(){
+        if (state == robotState.ONGROUND) {
 
-    public void slowDown();
+        }
+    }
 
+    public void slowDown(){
+       if (state == robotState.ONGROUND) {
+
+        }
+    }
 }
