@@ -1,11 +1,15 @@
 package phoebe.Model;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import static phoebe.Model.Robot.robotState.ONGROUND;
+
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
 public class Robot {
 
-    public enum robotState {
+    public static enum robotState {
         JUMP,ONGROUND      // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     }
 
@@ -16,7 +20,7 @@ public class Robot {
     private int speed = 0;
     //megtett távolság
     private int distance = 0;
-    robotState state = robotState.JUMP;
+    robotState state = ONGROUND;
 
     public Robot(int x, int y) {
         this.x = x;
@@ -40,32 +44,33 @@ public class Robot {
     }
 
     public void getGlued() {
-        if (state == robotState.ONGROUND) {
+        if (state == ONGROUND) {
             speed /= 2;
         }
     }
 
     public void turnLeft(){
-        if (state == robotState.ONGROUND) {
-
+        if (state == ONGROUND) {
+                            // TO DO
         }
     }
 
     public void turnRight(){
-        if (state == robotState.ONGROUND) {
-
+        if (state == ONGROUND) {
+                            // TO DO
         }
     }
 
     public void speedUp(){
-        if (state == robotState.ONGROUND) {
 
+        if (state == ONGROUND) {
+                            // TO DO
         }
     }
 
     public void slowDown(){
-       if (state == robotState.ONGROUND) {
-
+       if (state == ONGROUND) {
+                            // TO DO
         }
     }
 }
