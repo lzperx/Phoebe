@@ -16,11 +16,13 @@ public class Robot {
     private int speed = 0;
     //megtett távolság
     private int distance = 0;
+    public Keyboard Controller;
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y) {
+    public Robot(int x, int y, Keyboard controller) {
         this.x = x;
         this.y = y;
+        Controller = controller;
     }
 
     public int getSpeed() {
