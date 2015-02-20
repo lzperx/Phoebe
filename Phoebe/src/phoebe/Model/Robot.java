@@ -41,4 +41,12 @@ public class Robot {
         state = State.SLIPPED;
     }
 
+    public void turnLeft();
+
+    public void turnRight();
+
+    public void speedUp();
+
+    public void slowDown();
+
 }

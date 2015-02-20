@@ -1,7 +1,11 @@
 package phoebe.Control;
 
+import phoebe.Model.GameObjects;
+import phoebe.Model.Robot;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.Struct;
 
 /**
  * Created by Muresan73 on 15. 02. 20..
@@ -16,6 +20,7 @@ public class GameControl implements KeyListener {
     private boolean up;
     private boolean right;
     private boolean down;
+    GameObjects GameO;
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -54,6 +59,12 @@ public class GameControl implements KeyListener {
     public void keyTyped(KeyEvent e) {}
 
     private void controlMinions(){
+        for (Robot R2D2: GameO.getRobots()){
+            if(left) R2D2.turnLeft();
+            if(up) R2D2.speedUp();
+            if(right) R2D2.turnRight();
+            if(down) R2D2.slowDown();
+        }
 
     }
 

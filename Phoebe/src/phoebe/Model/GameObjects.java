@@ -16,10 +16,28 @@ public class GameObjects {
 
 
 
+
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
     public GameObjects(int width, int high) {
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
         gameMap = new GameMap(width, high);
+
+    }
+
+    public List<Robot> getRobots() {
+        return robots;
+    }
+
+    public List<Trap> getTraps() {
+        return traps;
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
+    }
+
+    public Map<String, BufferedImage> getImages() {
+        return Images;
     }
 }
