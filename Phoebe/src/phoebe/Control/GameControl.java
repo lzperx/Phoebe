@@ -5,7 +5,6 @@ import phoebe.Model.Robot;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.Struct;
 
 /**
  * Created by Muresan73 on 15. 02. 20..
@@ -15,12 +14,16 @@ import java.sql.Struct;
 public class GameControl implements KeyListener {
 
 
-    GameObjects GameO;
+    private GameObjects gameObjects;
+
+    public GameControl(GameObjects  gameObjects) {
+        this.gameObjects =gameObjects;
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
 
-        for (Robot R2D2: GameO.getRobots()) {
+        for (Robot R2D2: gameObjects.getRobots()) {
 
             if(e.getKeyCode() == R2D2.Controller.getLeftKey())
                 R2D2.Controller.left = true;
@@ -36,7 +39,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-        for (Robot R2D2: GameO.getRobots()) {
+        for (Robot R2D2: gameObjects.getRobots()) {
 
             if(e.getKeyCode() == R2D2.Controller.getLeftKey())
                 R2D2.Controller.left = true;
@@ -53,7 +56,7 @@ public class GameControl implements KeyListener {
     public void keyTyped(KeyEvent e) {}
 
     private void controlMinions(){
-        for (Robot R2D2: GameO.getRobots()){
+        for (Robot R2D2: gameObjects.getRobots()){
             if(R2D2.Controller.left) R2D2.turnLeft();
             if(R2D2.Controller.up) R2D2.speedUp();
             if(R2D2.Controller.right) R2D2.turnRight();
