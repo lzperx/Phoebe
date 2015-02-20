@@ -1,5 +1,7 @@
 package phoebe.Model;
 
+import java.awt.event.KeyEvent;
+
 /**
  * Created by Muresan73 on 15. 02. 20..
  */
@@ -7,10 +9,11 @@ package phoebe.Model;
     // minden robotnak kell legyen egy saját vezérlése
 public  class Keyboard
 {
-    private int leftKey;
+    private KeyEvent leftKey;
     private int upKey;
     private int rightKey;
     private int downKey;
+
 
     public boolean left;
     public boolean up;

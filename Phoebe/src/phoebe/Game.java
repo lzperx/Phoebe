@@ -12,7 +12,7 @@ public class Game {
          * A konstruktorban létrehozzuk a tagváltozókat
          */
         public Game() {
-            gameObjects = new GameObjects(500,500);
+            gameObjects = new GameObjects();
             gameControl= new GameControl(gameObjects);
             gameFrame = new GameFrame(gameControl, gameObjects);
         }
@@ -23,6 +23,7 @@ public class Game {
             // Példányosítás
             Game game = new Game();
             // Új játék indítása
+            game.gameObjects.addRobot(new Robot(10,10,));
             game.gameControl.startNewGame();
         }
 }

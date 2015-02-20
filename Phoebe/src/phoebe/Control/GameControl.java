@@ -25,7 +25,7 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameObjects.getRobots()) {
 
-            if(e.getKeyCode() == R2D2.Controller.getLeftKey())
+            if(e.getKeyCode()== R2D2.Controller.getLeftKey())
                 R2D2.Controller.left = true;
             if(e.getKeyCode() == R2D2.Controller.getUpKey())
                 R2D2.Controller.up = true;

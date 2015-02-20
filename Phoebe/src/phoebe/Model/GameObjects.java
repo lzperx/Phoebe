@@ -21,10 +21,10 @@ public class GameObjects {
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
-    public GameObjects(int width, int high) {
+    public GameObjects() {
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
-        gameMap = new GameMap(width, high);
+        gameMap = new GameMap(500, 500);
 
     }
 
@@ -42,5 +42,19 @@ public class GameObjects {
 
     public Map<String, BufferedImage> getImages() {
         return Images;
+    }
+
+
+    public void addRobot(Robot robot) {
+        robots.add(robot);
+    }
+
+    public void addTrap(Trap trap) {
+        traps.add(trap);
+    }
+
+
+    public void setControlKeys(List<Keyboard> controlKeys) {
+        this.controlKeys = controlKeys;
     }
 }
