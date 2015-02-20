@@ -12,6 +12,11 @@ public  class Keyboard
     private int rightKey;
     private int downKey;
 
+    public boolean left;
+    public boolean up;
+    public boolean right;
+    public boolean down;
+
     public Keyboard(int leftKey, int upKey, int rightKey, int downKey) {
         this.leftKey = leftKey;
         this.upKey = upKey;
