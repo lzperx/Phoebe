@@ -2,19 +2,18 @@ package phoebe;
 
 import phoebe.Control.GameControl;
 import phoebe.Model.GameObjects;
+import phoebe.Model.Keyboard;
 
 public class Game {
         private GameControl gameControl;
         private GameObjects gameObjects;
-        private GameFrame gameFrame;
+        //private GameFrame gameFrame;
 
-        /**
-         * A konstruktorban létrehozzuk a tagváltozókat
-         */
+
         public Game() {
-            gameObjects = new GameObjects();
+            gameObjects = new GameObjects(500,500);
             gameControl= new GameControl(gameObjects);
-            gameFrame = new GameFrame(gameControl, gameObjects);
+           // gameFrame = new GameFrame(gameControl, gameObjects);
         }
 
         //A program belépési pontja
@@ -22,8 +21,8 @@ public class Game {
         public static void main(String[] args) {
             // Példányosítás
             Game game = new Game();
+
             // Új játék indítása
-            game.gameObjects.addRobot(new Robot(10,10,));
-            game.gameControl.startNewGame();
+            //game.gameControl.startNewGame();
         }
 }
