@@ -62,13 +62,13 @@ public class Robot {
     public void speedUp(){
 
         if (state == robotState.ONGROUND) {
-                            // TO DO
+            speed++;
         }
     }
 
     public void slowDown(){
        if (state == robotState.ONGROUND) {
-                            // TO DO
+           speed--;
         }
     }
 }
