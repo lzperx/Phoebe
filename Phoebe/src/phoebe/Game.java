@@ -25,4 +25,6 @@ public class Game {
             // Új játék indítása
             //game.gameControl.startNewGame();
         }
+
+    //baj van a branchel
 }
