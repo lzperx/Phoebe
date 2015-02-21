@@ -33,6 +33,10 @@ public class GameControl implements KeyListener {
                 R2D2.right=true;
             if(e.getKeyCode() == R2D2.getDownKey())
                 R2D2.down=true;
+            if(e.getKeyCode() == R2D2.getOilKey())
+                R2D2.oil= true;
+            if(e.getKeyCode() == R2D2.getGlueKey())
+                R2D2.glue= true;
         }
     }
 
@@ -49,6 +53,10 @@ public class GameControl implements KeyListener {
                 R2D2.right=false;
             if(e.getKeyCode() == R2D2.getDownKey())
                 R2D2.down=false;
+            if(e.getKeyCode() == R2D2.getOilKey())
+                R2D2.oil= false;
+            if(e.getKeyCode() == R2D2.getGlueKey())
+                R2D2.glue= false;
         }
     }
 
@@ -61,6 +69,8 @@ public class GameControl implements KeyListener {
             if(R2D2.up) R2D2.speedUp();
             if(R2D2.right) R2D2.turnRight();
             if(R2D2.down) R2D2.slowDown();
+            if(R2D2.oil) R2D2.putOil();
+            if(R2D2.glue)R2D2.putGlue();
         }
 
     }

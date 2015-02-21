@@ -33,10 +33,16 @@ public class Robot {
         VK.RIGHT = 39
         VK.DOWN = 40
 
+        ? = 44
+        : = 46
+
         VK.A = 65
         VK.W = 87
         VK.D = 68
         VK.S = 83
+
+        SHIFT = 16
+        CTRL = 17
 
     */
 
@@ -46,26 +52,31 @@ public class Robot {
     private int upKey;
     private int rightKey;
     private int downKey;
+    private int oilKey;
+    private int glueKey;
 
     //igaz, ha éppen az adott gomb van lenyomva
     public boolean left;
     public boolean up;
     public boolean right;
     public boolean down;
+    public boolean oil;
+    public boolean glue;
 
 
     //robot talajhoz viszonyított állapota
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y, int leftKey, int upKey, int rightKey, int downKey) {
+    public Robot(int x, int y, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey) {
         this.x = x;
         this.y = y;
-        this.leftKey = leftKey;
-        this.upKey = upKey;
-        this.rightKey = rightKey;
+        this.glueKey = glueKey;
+        this.oilKey = oilKey;
         this.downKey = downKey;
+        this.rightKey = rightKey;
+        this.upKey = upKey;
+        this.leftKey = leftKey;
     }
-
 
     //getter fv-ek
 
@@ -103,6 +114,14 @@ public class Robot {
 
     public int getDownKey() {
         return downKey;
+    }
+
+    public int getGlueKey() {
+        return glueKey;
+    }
+
+    public int getOilKey() {
+        return oilKey;
     }
 
     //azért kell, hogy a fix időnként váltáshoz (máshol állítjuk be) meg tudjuk adni egy külső fv-nek
@@ -148,5 +167,13 @@ public class Robot {
         if (state == robotState.ONGROUND) {
             speed--;
         }
+    }
+
+    public void putOil(){
+        //TO DO
+    }
+
+    public void putGlue(){
+        //TO DO
     }
 }
