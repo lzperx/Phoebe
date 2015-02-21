@@ -26,5 +26,4 @@ public class Game {
             //game.gameControl.startNewGame();
         }
 
-    //baj van a branchel
 }
