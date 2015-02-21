@@ -23,10 +23,22 @@ public  class Keyboard
 
 
     public Keyboard(int leftKey, int upKey, int rightKey, int downKey) {
+        /*
+        ahol majd létrehozom a Keyboard pédányt, ott így kell megadnom majd
+        pl a nyilakra : new Keyborad(37,38,39,40)
+        pl AWSD-re    : new Keyborad(65,87,68,83)
 
-        //ahol majd létrehozom a Keyboard pédányt, ott így kell megadnom majd
-        //pl a nyilakra : new Keyborad(e.VK_LEFT,e.VK_UP,e.VK_RIGHT,e.VK_DOWN)
-        //pl AWSD-re    : new Keyborad(e.VK_A,e.VK_W,e.VK_D,e.VK_S)
+        VK.LEFT = 37
+        VK.UP = 38
+        VK.RIGHT = 39
+        VK.DOWN = 40
+
+        VK.A = 65
+        VK.W = 87
+        VK.D = 68
+        VK.S = 83
+
+        */
 
         this.leftKey= leftKey;
         this.upKey = upKey;

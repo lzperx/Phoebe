@@ -2,8 +2,6 @@ package phoebe;
 
 import phoebe.Control.GameControl;
 import phoebe.Model.GameObjects;
-import phoebe.Model.Keyboard;
-import phoebe.Model.Robot;
 
 public class Game {
         private GameControl gameControl;
@@ -23,8 +21,6 @@ public class Game {
             // Példányosítás
             Game game = new Game();
 
-            //Példányrobot kipróbálása (nyilakkal)
-            game.gameObjects.addRobot(new Robot(10,10,new Keyboard(37,38,39,40)));
 
             // Új játék indítása
             //game.gameControl.startNewGame();
