@@ -3,7 +3,7 @@ package phoebe.Model;
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Robot {
+public class Robot extends GameElements {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     private static enum robotState {
@@ -11,9 +11,6 @@ public class Robot {
     }
 
 
-    //helyzet
-    private int x;
-    private int y;
 
     // minden körben ennyit adunk az X-hez
     private int speed = 0;

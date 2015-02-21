@@ -3,15 +3,14 @@ package phoebe.Model;
 /**
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Trap {
-    private int x,y;
-    private int round;
+public class Trap extends GameElements {
+
     private boolean life =true;
 
-    public Trap(int y, int x, int round) {
+    public Trap(int y, int x, int hitbox) {
         this.y = y;
         this.x = x;
-        this.round = round;
+        this.hitbox = hitbox;
     }
 
     public int getX() {
@@ -31,11 +30,11 @@ public class Trap {
     }
 
     public int getRound() {
-        return round;
+        return hitbox;
     }
 
     public void setRound(int round) {
-        this.round = round;
+        this.hitbox = round;
     }
 
     public boolean isLife() {

@@ -1,18 +1,18 @@
 package phoebe;
 
 import phoebe.Control.GameControl;
-import phoebe.Model.GameObjects;
+import phoebe.Model.GameObjectsModel;
 
 public class Game {
         private GameControl gameControl;
-        private GameObjects gameObjects;
+        private GameObjectsModel gameObjectsModel;
         //private GameFrame gameFrame;
 
 
         public Game() {
-            gameObjects = new GameObjects(500,500);
-            gameControl= new GameControl(gameObjects);
-           // gameFrame = new GameFrame(gameControl, gameObjects);
+            gameObjectsModel = new GameObjectsModel(500,500);
+            gameControl= new GameControl(gameObjectsModel);
+           // gameFrame = new GameFrame(gameControl, gameObjectsModel);
         }
 
         //A program belépési pontja

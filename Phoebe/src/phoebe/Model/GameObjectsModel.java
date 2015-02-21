@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by Geri on 2015.02.19..
  */
-public class GameObjects {
+public class GameObjectsModel {
     private List<Robot> robots;
     private List<Trap> traps;
     private GameMap gameMap;
@@ -17,7 +17,7 @@ public class GameObjects {
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
-    public GameObjects(int width, int  height) {
+    public GameObjectsModel(int width, int height) {
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
         gameMap = new GameMap(width, height);

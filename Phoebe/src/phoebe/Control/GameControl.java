@@ -1,6 +1,6 @@
 package phoebe.Control;
 
-import phoebe.Model.GameObjects;
+import phoebe.Model.GameObjectsModel;
 import phoebe.Model.Robot;
 
 import java.awt.event.KeyEvent;
@@ -14,16 +14,16 @@ import java.awt.event.KeyListener;
 public class GameControl implements KeyListener {
 
 
-    private GameObjects gameObjects;
+    private GameObjectsModel gameObjectsModel;
 
-    public GameControl(GameObjects  gameObjects) {
-        this.gameObjects =gameObjects;
+    public GameControl(GameObjectsModel gameObjectsModel) {
+        this.gameObjectsModel = gameObjectsModel;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
 
-        for (Robot R2D2: gameObjects.getRobots()) {
+        for (Robot R2D2: gameObjectsModel.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
                 R2D2.left=true;
@@ -43,7 +43,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-        for (Robot R2D2: gameObjects.getRobots()) {
+        for (Robot R2D2: gameObjectsModel.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
                 R2D2.left=false;
@@ -64,7 +64,7 @@ public class GameControl implements KeyListener {
     public void keyTyped(KeyEvent e) {}
 
     private void controlMinions(){
-        for (Robot R2D2: gameObjects.getRobots()){
+        for (Robot R2D2: gameObjectsModel.getRobots()){
             if(R2D2.left) R2D2.turnLeft();
             if(R2D2.up) R2D2.speedUp();
             if(R2D2.right) R2D2.turnRight();
