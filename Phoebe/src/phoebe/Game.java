@@ -2,6 +2,7 @@ package phoebe;
 
 import phoebe.Control.GameControl;
 import phoebe.Model.GameObjectsModel;
+        
 
 public class Game {
         private GameControl gameControl;
@@ -11,18 +12,18 @@ public class Game {
 
         public Game() {
             gameObjectsModel = new GameObjectsModel(500,500);
-            gameControl= new GameControl(gameObjectsModel);
+            gameControl = new GameControl(gameObjectsModel);
            // gameFrame = new GameFrame(gameControl, gameObjectsModel);
         }
 
-        //A program belépési pontja
+        //A program belĂ©pĂ©si pontja
 
         public static void main(String[] args) {
-            // Példányosítás
+            // PĂ©ldĂˇnyosĂ­tĂˇs
             Game game = new Game();
 
 
-            // Új játék indítása
+            // Ăšj jĂˇtĂ©k indĂ­tĂˇsa
             //game.gameControl.startNewGame();
         }
 
