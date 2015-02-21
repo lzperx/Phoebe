@@ -14,10 +14,6 @@ public class GameObjects {
     private List<Trap> traps;
     private GameMap gameMap;
     private Map<String,BufferedImage> Images;
-    private List<Keyboard> controlKeys;    // minden robothoz jár egy irányítás
-
-
-
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
