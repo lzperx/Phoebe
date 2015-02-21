@@ -48,10 +48,10 @@ public class Robot {
     private int downKey;
 
     //igaz, ha éppen az adott gomb van lenyomva
-    private boolean left;
-    private boolean up;
-    private boolean right;
-    private boolean down;
+    public boolean left;
+    public boolean up;
+    public boolean right;
+    public boolean down;
 
 
     //robot talajhoz viszonyított állapota
@@ -110,41 +110,10 @@ public class Robot {
         return state;
     }
 
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
 
     //setter fv-ek
 
 
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
 
 
     //sebességet és elhajlást módosító fv-ek

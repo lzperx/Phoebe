@@ -26,13 +26,13 @@ public class GameControl implements KeyListener {
         for (Robot R2D2: gameObjects.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
-                R2D2.setLeft(true);
+                R2D2.left=true;
             if(e.getKeyCode() == R2D2.getUpKey())
-                R2D2.setUp(true);
+                R2D2.up=true;
             if(e.getKeyCode() == R2D2.getRightKey())
-                R2D2.setRight(true);
+                R2D2.right=true;
             if(e.getKeyCode() == R2D2.getDownKey())
-                R2D2.setDown(true);
+                R2D2.down=true;
         }
     }
 
@@ -42,13 +42,13 @@ public class GameControl implements KeyListener {
         for (Robot R2D2: gameObjects.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
-                R2D2.setLeft(false);
+                R2D2.left=false;
             if(e.getKeyCode() == R2D2.getUpKey())
-                R2D2.setUp(false);
+                R2D2.up=false;
             if(e.getKeyCode() == R2D2.getRightKey())
-                R2D2.setRight(false);
+                R2D2.right=false;
             if(e.getKeyCode() == R2D2.getDownKey())
-                R2D2.setDown(false);
+                R2D2.down=false;
         }
     }
 
@@ -57,10 +57,10 @@ public class GameControl implements KeyListener {
 
     private void controlMinions(){
         for (Robot R2D2: gameObjects.getRobots()){
-            if(R2D2.isLeft()) R2D2.turnLeft();
-            if(R2D2.isUp()) R2D2.speedUp();
-            if(R2D2.isRight()) R2D2.turnRight();
-            if(R2D2.isDown()) R2D2.slowDown();
+            if(R2D2.left) R2D2.turnLeft();
+            if(R2D2.up) R2D2.speedUp();
+            if(R2D2.right) R2D2.turnRight();
+            if(R2D2.down) R2D2.slowDown();
         }
 
     }
