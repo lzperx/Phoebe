@@ -25,14 +25,14 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameObjects.getRobots()) {
 
-            if(e.getKeyCode()== R2D2.Controller.getLeftKey())
-                R2D2.Controller.left = true;
-            if(e.getKeyCode() == R2D2.Controller.getUpKey())
-                R2D2.Controller.up = true;
-            if(e.getKeyCode() == R2D2.Controller.getRightKey())
-                R2D2.Controller.right = true;
-            if(e.getKeyCode() == R2D2.Controller.getDownKey())
-                R2D2.Controller.down = true;
+            if(e.getKeyCode()== R2D2.getLeftKey())
+                R2D2.setLeft(true);
+            if(e.getKeyCode() == R2D2.getUpKey())
+                R2D2.setUp(true);
+            if(e.getKeyCode() == R2D2.getRightKey())
+                R2D2.setRight(true);
+            if(e.getKeyCode() == R2D2.getDownKey())
+                R2D2.setDown(true);
         }
     }
 
@@ -41,14 +41,14 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameObjects.getRobots()) {
 
-            if(e.getKeyCode() == R2D2.Controller.getLeftKey())
-                R2D2.Controller.left = true;
-            if(e.getKeyCode() == R2D2.Controller.getUpKey())
-                R2D2.Controller.up = true;
-            if(e.getKeyCode() == R2D2.Controller.getRightKey())
-                R2D2.Controller.right = true;
-            if(e.getKeyCode() == R2D2.Controller.getDownKey())
-                R2D2.Controller.down = true;
+            if(e.getKeyCode()== R2D2.getLeftKey())
+                R2D2.setLeft(false);
+            if(e.getKeyCode() == R2D2.getUpKey())
+                R2D2.setUp(false);
+            if(e.getKeyCode() == R2D2.getRightKey())
+                R2D2.setRight(false);
+            if(e.getKeyCode() == R2D2.getDownKey())
+                R2D2.setDown(false);
         }
     }
 
@@ -57,10 +57,10 @@ public class GameControl implements KeyListener {
 
     private void controlMinions(){
         for (Robot R2D2: gameObjects.getRobots()){
-            if(R2D2.Controller.left) R2D2.turnLeft();
-            if(R2D2.Controller.up) R2D2.speedUp();
-            if(R2D2.Controller.right) R2D2.turnRight();
-            if(R2D2.Controller.down) R2D2.slowDown();
+            if(R2D2.isLeft()) R2D2.turnLeft();
+            if(R2D2.isUp()) R2D2.speedUp();
+            if(R2D2.isRight()) R2D2.turnRight();
+            if(R2D2.isDown()) R2D2.slowDown();
         }
 
     }

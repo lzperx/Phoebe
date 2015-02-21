@@ -11,19 +11,18 @@ import java.util.Map;
  */
 public class GameObjects {
     private List<Robot> robots;
-    private List<Trap> traps;
+    private List<Glue> glues;
+    private List<Oil> oils;
     private GameMap gameMap;
     private Map<String,BufferedImage> Images;
-    private List<Keyboard> controlKeys;    // minden robothoz jár egy irányítás
-
-
 
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
     public GameObjects(int width, int  height) {
         robots = new ArrayList<Robot>();
-        traps = new ArrayList<Trap>();
+        glues = new ArrayList<Glue>();
+        oils= new ArrayList<Oil>();
         gameMap = new GameMap(width, height);
 
     }
@@ -32,8 +31,12 @@ public class GameObjects {
         return robots;
     }
 
-    public List<Trap> getTraps() {
-        return traps;
+    public List<Glue> getGlues() {
+        return glues;
+    }
+
+    public List<Oil> getOils() {
+        return oils;
     }
 
     public GameMap getGameMap() {
@@ -49,9 +52,15 @@ public class GameObjects {
         robots.add(robot);
     }
 
-    //trap hozzáadása
-    public void addTrap(Trap trap) {
-        traps.add(trap);
+    //ragacs hozzáadása
+    public void addGlue(Glue glue) {
+        glues.add(glue);
     }
+
+    //olajfolt hozzáadása
+    public void addOil(Oil oil) {
+        oils.add(oil);
+    }
+
 
 }
