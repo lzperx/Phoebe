@@ -128,8 +128,9 @@ public class Robot extends GameElements {
 
 
     //setter fv-ek
-
-
+    public void setSpeed(int i){
+        speed = i;
+    }
 
 
     //sebességet és elhajlást módosító fv-ek
