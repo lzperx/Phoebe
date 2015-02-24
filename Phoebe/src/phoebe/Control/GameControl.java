@@ -63,6 +63,8 @@ public class GameControl implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {}
 
+    //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
+
     private void controlMinions(){
         for (Robot R2D2: gameObjectsModel.getRobots()){
             if(R2D2.left) R2D2.turnLeft();
