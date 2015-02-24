@@ -5,7 +5,6 @@ package phoebe.Model;
  */
 public class Trap extends GameElements {
 
-    private boolean life =true;
     protected String description = "Trap";
 
     public Trap(int y, int x, int hitbox) {
@@ -14,37 +13,20 @@ public class Trap extends GameElements {
         this.hitbox = hitbox;
     }
 
-    public String getDescription(){ return description;}
+    public String getDescription(){
+        return description;
+    }
 
     public int getX() {
         return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
     }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getRound() {
+    public int getHitbox() {
         return hitbox;
     }
 
-    public void setRound(int round) {
-        this.hitbox = round;
-    }
-
-    public boolean isLife() {
-        return life;
-    }
-
-    public void cleanTrap() {
-        life = false;
-    }
 }
