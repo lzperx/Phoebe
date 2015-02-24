@@ -6,12 +6,15 @@ package phoebe.Model;
 public class Trap extends GameElements {
 
     private boolean life =true;
+    protected String description = "Trap";
 
     public Trap(int y, int x, int hitbox) {
         this.y = y;
         this.x = x;
         this.hitbox = hitbox;
     }
+
+    public String getDescription(){ return description;}
 
     public int getX() {
         return x;
