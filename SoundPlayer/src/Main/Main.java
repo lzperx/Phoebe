@@ -19,6 +19,8 @@ public class Main {
         player1.playSounds("hogyne");
         player1.playSounds("highscore");
         player1.playSounds("hogyne");
+
+//        most én ide betrollkodok hogy tudok e commitelni
         
     }
 }
