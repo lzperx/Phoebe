@@ -5,28 +5,10 @@ package phoebe.Model;
  */
 public class Trap extends GameElements {
 
-    protected String description = "Trap";
-
-    public Trap(int y, int x, int hitbox) {
-        this.y = y;
-        this.x = x;
-        this.hitbox = hitbox;
+    public Trap(int x, int y, int hitbox) {
+        super(x,y,hitbox);
+        this.description = "Trap";
     }
 
-    public String getDescription(){
-        return description;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getHitbox() {
-        return hitbox;
-    }
 
 }

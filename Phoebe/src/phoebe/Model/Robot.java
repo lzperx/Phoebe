@@ -73,6 +73,7 @@ public class Robot extends GameElements {
         this.rightKey = rightKey;
         this.upKey = upKey;
         this.leftKey = leftKey;
+        this.description = "Robot";
     }
 
     public void evaluate (){
@@ -92,14 +93,6 @@ public class Robot extends GameElements {
 
     public int getDeflection() {
         return deflection;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     public int getDistance() {
