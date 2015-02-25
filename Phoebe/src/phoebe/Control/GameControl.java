@@ -67,12 +67,10 @@ public class GameControl implements KeyListener {
 
     private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
-            if(R2D2.left) R2D2.turnLeft();
-            if(R2D2.up) R2D2.speedUp();
-            if(R2D2.right) R2D2.turnRight();
-            if(R2D2.down) R2D2.slowDown();
-            if(R2D2.oil) R2D2.putOil();
-            if(R2D2.glue)R2D2.putGlue();
+            R2D2.evaluate();
+
+//TODO vezérlés
+
         }
 
     }

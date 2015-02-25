@@ -75,6 +75,15 @@ public class Robot extends GameElements {
         this.leftKey = leftKey;
     }
 
+    public void evaluate (){
+        if(left) turnLeft();
+        if(up) speedUp();
+        if(right) turnRight();
+        if(down) slowDown();
+        if(oil) putOil();
+        if(glue) putGlue();
+    }
+
     //getter fv-ek
 
     public int getSpeed() {
