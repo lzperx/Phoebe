@@ -9,7 +9,7 @@ public class Robot extends GameElements {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     private static enum robotState {
-        JUMP,ONGROUND
+        JUMP,ONGROUND,OILED
     }
 
 
@@ -19,7 +19,7 @@ public class Robot extends GameElements {
 
     //minden lépésnél ennyit adunk az Y-hoz
     //ez az elhajlás
-    private int deflection = 0;
+    private int angle = 0;
 
     //összesen megtett távolság
     private int distance = 0;
@@ -87,14 +87,20 @@ public class Robot extends GameElements {
         if(glue) putGlue();
     }
 
+    public void itsATrap(Trap i) {
+        if(i.getDescription() == "Glue")  speed /= 2;;
+        if(i.getDescription() == "Oil") state = robotState.OILED;
+        if(i.getDescription() == "Trap") /*TODO játsza le hogy : " It's a Trap !!!" :D*/;
+    }
+
     //getter fv-ek
 
     public int getSpeed() {
         return speed;
     }
 
-    public int getDeflection() {
-        return deflection;
+    public int getAngle() {
+        return angle;
     }
 
     public int getDistance() {
@@ -135,42 +141,40 @@ public class Robot extends GameElements {
     //sebességet és elhajlást módosító fv-ek  (setterek)
 
 
-    public void getGlued() {
-        if (state == robotState.ONGROUND) {
-            speed /= 2;
-        }
-    }
-
     public void turnLeft(){
-        if (state == robotState.ONGROUND) {
-            deflection--;
+//        if (state == robotState.ONGROUND)
+        {
+          // TODO szögelfordulás
         }
     }
 
     public void turnRight(){
-        if (state == robotState.ONGROUND) {
-            deflection++;
+//        if (state == robotState.ONGROUND)
+        {
+            // TODO szögelfordulás
         }
     }
 
     public void speedUp(){
 
-        if (state == robotState.ONGROUND) {
+//        if (state == robotState.ONGROUND)
+        {
             speed++;
         }
     }
 
     public void slowDown(){
-        if (state == robotState.ONGROUND) {
+//        if (state == robotState.ONGROUND)
+        {
             speed--;
         }
     }
 
     public void putOil(){
-        //TO DO
+        //TODO
     }
 
     public void putGlue(){
-        //TO DO
+        //TODO
     }
 }

@@ -2,6 +2,7 @@ package phoebe.Control;
 
 import phoebe.Model.GameMapContainer;
 import phoebe.Model.Robot;
+import phoebe.Model.Trap;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -63,12 +64,18 @@ public class GameControl implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {}
 
+    public void collision(Robot C3PO){
+        for (Trap i: gameMapContainer.getTraps()){
+            if (C3PO.getLocation().distance(i.getLocation()) < (C3PO.getHitbox() + i.getHitbox())) C3PO.itsATrap(i);
+        }
+    }
+
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
 
     private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
+            collision(R2D2);  //fontos a sorrend
             R2D2.evaluate();
-
 //TODO vezérlés
 
         }
