@@ -1,6 +1,6 @@
 package phoebe.Control;
 
-import phoebe.Model.GameObjectsModel;
+import phoebe.Model.GameMapContainer;
 import phoebe.Model.Robot;
 
 import java.awt.event.KeyEvent;
@@ -14,16 +14,16 @@ import java.awt.event.KeyListener;
 public class GameControl implements KeyListener {
 
 
-    private GameObjectsModel gameObjectsModel;
+    private GameMapContainer gameMapContainer;
 
-    public GameControl(GameObjectsModel gameObjectsModel) {
-        this.gameObjectsModel = gameObjectsModel;
+    public GameControl(GameMapContainer gameMapContainer) {
+        this.gameMapContainer = gameMapContainer;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
 
-        for (Robot R2D2: gameObjectsModel.getRobots()) {
+        for (Robot R2D2: gameMapContainer.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
                 R2D2.left=true;
@@ -43,7 +43,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-        for (Robot R2D2: gameObjectsModel.getRobots()) {
+        for (Robot R2D2: gameMapContainer.getRobots()) {
 
             if(e.getKeyCode()== R2D2.getLeftKey())
                 R2D2.left=false;
@@ -66,7 +66,7 @@ public class GameControl implements KeyListener {
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
 
     private void controlMinions(){
-        for (Robot R2D2: gameObjectsModel.getRobots()){
+        for (Robot R2D2: gameMapContainer.getRobots()){
             if(R2D2.left) R2D2.turnLeft();
             if(R2D2.up) R2D2.speedUp();
             if(R2D2.right) R2D2.turnRight();
