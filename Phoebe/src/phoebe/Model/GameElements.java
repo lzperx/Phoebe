@@ -1,16 +1,17 @@
 package phoebe.Model;
 
+import java.awt.*;
+
 /**
  * Created by Muresan73 on 15. 02. 21..
  */
 public class GameElements {
-    protected int x,y;
+    protected Point location;
     protected int hitbox;
     protected String description ;
 
     public GameElements(int x, int y, int hitbox) {
-        this.x = x;
-        this.y = y;
+        location = new Point(x,y);
         this.hitbox = hitbox;
         this.description = "GameElement";
     }
@@ -19,12 +20,8 @@ public class GameElements {
         return description;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Point getLocation() {
+        return location;
     }
 
     public int getHitbox() {

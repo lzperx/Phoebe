@@ -1,5 +1,7 @@
 package phoebe.Model;
 
+import java.awt.*;
+
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
@@ -64,9 +66,9 @@ public class Robot extends GameElements {
     //robot talajhoz viszonyított állapota
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey) {
-        this.x = x;
-        this.y = y;
+    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey) {
+        super(x,y,hitbox);
+
         this.glueKey = glueKey;
         this.oilKey = oilKey;
         this.downKey = downKey;
