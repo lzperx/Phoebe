@@ -1,25 +1,32 @@
 package phoebe.Model;
 
-
+/* by Brumi */
 
 /* egyszerű csomagolóosztály a felbontás tárolására, így az egyetlen paraméterként a konstruktornak átadható */
 
+import java.awt.*;
+
 public class Resolution {
 
-    private final int width;
-    private final int height;
 
-    Resolution(int wdth, int hght){
-        width = wdth;
-        height = hght;
+    private final Dimension dimension;
+
+
+
+    Resolution(Dimension dim){
+        dimension = new Dimension((int)dim.getWidth(),(int)dim.getHeight());
+    }
+
+    Resolution(int width, int height){
+        dimension = new Dimension(width, height);
     }
 
     public int getWidth(){
-        return width;
+        return (int)dimension.getWidth();
     }
 
     public int getHeight(){
-        return height;
+        return (int)dimension.getHeight();
     }
 
 }
