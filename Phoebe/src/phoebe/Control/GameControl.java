@@ -75,8 +75,8 @@ public class GameControl implements KeyListener {
     private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
             collision(R2D2);  //fontos a sorrend
-            R2D2.evaluate();
-//TODO vezérlés
+            /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
+            R2D2.Jump();
 
         }
 

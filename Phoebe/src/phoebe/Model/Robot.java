@@ -11,15 +11,15 @@ public class Robot extends GameElements {
     private static enum robotState {
         JUMP,ONGROUND,OILED
     }
-
-
+    //A robot ahova ugrani fog legközelebb
+    private Point nextPosition;
 
     // minden körben ennyit adunk az X-hez
     private int speed = 0;
 
     //minden lépésnél ennyit adunk az Y-hoz
     //ez az elhajlás
-    private int angle = 0;
+    private double angle = 0;
 
     //összesen megtett távolság
     private int distance = 0;
@@ -78,13 +78,20 @@ public class Robot extends GameElements {
         this.description = "Robot";
     }
 
-    public void evaluate (){
+    public Point evaluate (){
         if(left) turnLeft();
         if(up) speedUp();
         if(right) turnRight();
         if(down) slowDown();
         if(oil) putOil();
         if(glue) putGlue();
+
+        // Ez nagyon undorító de hatékony
+        nextPosition = new Point(
+                (int)(speed*Math.cos(angle)),
+                (int)(speed*Math.sin(angle))
+        );
+        return nextPosition;
     }
 
     public void itsATrap(Trap i) {
@@ -99,7 +106,7 @@ public class Robot extends GameElements {
         return speed;
     }
 
-    public int getAngle() {
+    public double getAngle() {
         return angle;
     }
 
@@ -139,6 +146,10 @@ public class Robot extends GameElements {
 
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
+
+    public void Jump(){
+        location = nextPosition;
+    }
 
 
     public void turnLeft(){
