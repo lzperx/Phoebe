@@ -12,8 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class WindowHandler extends JFrame {
 
-    int width = 800;
-    int height = 600;
+    Dimension dim = new Dimension(800,600);
 
     ImageIcon top;
     ImageIcon secondFromTop;
@@ -36,12 +35,11 @@ public class WindowHandler extends JFrame {
         menuLoader();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
-
     }
 
     private void setFrame(){
         mainFrame = new JFrame("Phoebe Project");
-        mainFrame.setSize(width,height);
+        mainFrame.setSize((int)dim.getWidth(),(int)dim.getHeight());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (mainPanel != null){
             mainFrame.add(mainPanel);
@@ -65,9 +63,7 @@ public class WindowHandler extends JFrame {
         settings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Settings settingsMenu = new Settings();
-                settingsMenu.settingsDraw();
-                mainFrame.setVisible(false);
+                makeSettings();
 
             }
         });
@@ -92,6 +88,12 @@ public class WindowHandler extends JFrame {
         });
     }
 
+    private void reconstructor(){
+        mainFrame.setSize(dim);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+    }
+
     private void menuLoader(){
         mainPanel.add(newGame);
         mainPanel.add(settings);
@@ -99,11 +101,18 @@ public class WindowHandler extends JFrame {
         mainPanel.add(exit);
     }
 
-    public void changeResolution(int[] newRes){
-        width = newRes[0];
-        height = newRes[1];
-        mainFrame.setSize(width,height);
+    public void changeResolution(Dimension newRes){
+        dim = newRes;
+        reconstructor();
     }
 
+    public void makeSettings(){
+        Settings settingsMenu = new Settings(this);
+        settingsMenu.settingsDraw();
+        mainFrame.setVisible(false);
+    }
 
+    public Dimension getDimension(){
+        return dim;
+    }
 }
