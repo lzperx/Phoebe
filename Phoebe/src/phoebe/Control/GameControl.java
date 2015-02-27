@@ -6,6 +6,8 @@ import phoebe.Model.Trap;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Muresan73 on 15. 02. 20..
@@ -20,6 +22,9 @@ public class GameControl implements KeyListener {
     public GameControl(GameMapContainer gameMapContainer) {
         this.gameMapContainer = gameMapContainer;
     }
+
+    private final Timer timer =new Timer();
+
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -72,14 +77,24 @@ public class GameControl implements KeyListener {
 
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
 
-    private void controlMinions(){
+     void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
             collision(R2D2);  //fontos a sorrend
             /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
             R2D2.Jump();
 
         }
-
     }
 
+    // fél másodpercenként meghívja a controlMinions -t
+
+    void scheduleControlMinions () {
+        timer.scheduleAtFixedRate(new TimerTask() {
+
+            public void run() {
+                controlMinions();
+            }
+
+        }, 0, 500);
+    }
 }
