@@ -11,6 +11,10 @@ public class Robot extends GameElements {
     private static enum robotState {
         JUMP,ONGROUND,OILED
     }
+
+    // hátizsák a foltoknak
+    private Backpack backpack;
+
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
@@ -76,6 +80,7 @@ public class Robot extends GameElements {
         this.upKey = upKey;
         this.leftKey = leftKey;
         this.description = "Robot";
+        backpack= new Backpack();
     }
 
     public Point evaluate (){
