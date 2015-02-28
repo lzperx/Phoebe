@@ -29,16 +29,17 @@ public class Game {
 
 
             //Robot kirajzolás tesztelése -- András
-            Point test = new Point(300,200);
+            Point test = new Point(200,300);
             JFrame gameFrame = new JFrame("Phoebe");
 
             GameFrame frame = new GameFrame(test, "testrobot");
+                gameFrame.setSize(1024, 768);
+                frame.setRotation(Math.toRadians(45));
 
-                frame.setRotation(Math.toRadians(90));
                 gameFrame.add(frame);
                 frame.repaint();
-                gameFrame.setSize(800, 600);
                 gameFrame.setVisible(true);
+            System.out.println(frame.getRobotLocation());
                 gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             //Idáig
 

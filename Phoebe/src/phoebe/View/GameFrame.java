@@ -55,12 +55,11 @@ public class GameFrame extends JComponent {
     }
 
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        imageTransform.translate(robot.getX(), robot.getY());
-        imageTransform.rotate(rotation);
-        imageTransform.translate(-robot.getX(), -robot.getY());
+
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(testRobot,imageTransform,null);
+        g2d.rotate(rotation,robot.getX() + (testRobot.getWidth()/  2), robot.getY() + (testRobot.getHeight() / 2));
+        g2d.drawImage(testRobot,(int)robot.getX(),(int)robot.getY(),null);
+
 
     }
 
