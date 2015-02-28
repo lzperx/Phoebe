@@ -83,13 +83,17 @@ public class Robot extends GameElements {
         backpack= new Backpack();
     }
 
-    public Point evaluate (){
+    public void pollKey(){
         if(left) turnLeft();
         if(up) speedUp();
         if(right) turnRight();
         if(down) slowDown();
         if(oil) putOil();
         if(glue) putGlue();
+    }
+
+    public Point evaluate (){
+
 
         // Ez nagyon undorító de hatékony
         nextPosition = new Point(
