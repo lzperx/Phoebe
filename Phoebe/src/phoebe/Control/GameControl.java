@@ -67,7 +67,23 @@ public class GameControl implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+
+        for (Robot R2D2: gameMapContainer.getRobots()) {
+
+            if(e.getKeyCode()== R2D2.getLeftKey())
+                R2D2.turnLeft();
+            if(e.getKeyCode() == R2D2.getUpKey())
+                R2D2.speedUp();
+            if(e.getKeyCode() == R2D2.getRightKey())
+                R2D2.turnRight();
+            if(e.getKeyCode() == R2D2.getDownKey())
+                R2D2.slowDown();
+            if(e.getKeyCode() == R2D2.getOilKey())
+                R2D2.putOil();
+            if(e.getKeyCode() == R2D2.getGlueKey())
+                R2D2.putGlue();
+    }}
 
     public void collision(Robot C3PO){
         for (Trap i: gameMapContainer.getTraps()){
