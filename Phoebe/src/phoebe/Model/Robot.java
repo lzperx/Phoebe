@@ -188,9 +188,11 @@ public class Robot extends GameElements {
 
     public void putOil(){
         //TODO
+        backpack.useOil();  // csökkenti az oil készletet
     }
 
     public void putGlue(){
         //TODO
+        backpack.useGlue(); // csökkenti a glue készletet
     }
 }
