@@ -3,6 +3,8 @@ package phoebe.View;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -13,13 +15,14 @@ public class GameFrame extends JComponent {
 
 
     Dimension robotSize = null;
-    Point robot1 = null;
-    Point robot2 = null;
+    Point robot = null;
+    AffineTransform imageTransform = new AffineTransform();
+    double rotation = 0;
 
     BufferedImage testRobot = null;
 
     public GameFrame(Point robot1Location, String name){
-        robot1 = robot1Location;
+        robot = robot1Location;
         testRobot = loadRobot(name);
         robotSize = new Dimension(testRobot.getWidth(),testRobot.getHeight());
     }
@@ -35,15 +38,33 @@ public class GameFrame extends JComponent {
         return testRobot;
     }
 
+    public Point getRobotLocation(){
+        return robot;
+    }
+
+    public void  setRobotLocation(Point newLocation){
+        robot = newLocation;
+    }
+
     public Dimension getRobotSize(){
         return robotSize;
     }
 
-    public void paintComponent(Graphics g){
+    public void setRotation(double angle){
+        rotation = angle;
+    }
 
-        g.drawImage(testRobot,100,300,null);
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        imageTransform.translate(testRobot.getWidth() / 2,testRobot.getHeight() / 2);
+        imageTransform.rotate(rotation);
+        imageTransform.translate(-testRobot.getWidth() / 2, -testRobot.getHeight() / 2);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(testRobot,imageTransform,null);
 
     }
+
+
 
 }
 

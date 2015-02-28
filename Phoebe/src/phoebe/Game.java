@@ -33,11 +33,13 @@ public class Game {
             JFrame gameFrame = new JFrame("Phoebe");
 
             GameFrame frame = new GameFrame(test, "testrobot");
+            frame.setRotation(Math.toRadians(90));
             gameFrame.add(frame);
             frame.repaint();
             gameFrame.setSize(800,600);
             gameFrame.setVisible(true);
             gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
             //Idáig
 
             // Új játék indítása
