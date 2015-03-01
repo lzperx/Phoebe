@@ -15,6 +15,9 @@ public class Robot extends GameElements {
     // hátizsák a foltoknak
     private Backpack backpack;
 
+    //átadjuk az adott pályát is, hogy tudjon lerakni trappeket.
+    private GameMapContainer gameMapContainer;
+
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
@@ -70,7 +73,7 @@ public class Robot extends GameElements {
     //robot talajhoz viszonyított állapota
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey) {
+    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
 
         this.glueKey = glueKey;
@@ -81,6 +84,7 @@ public class Robot extends GameElements {
         this.leftKey = leftKey;
         this.description = "Robot";
         backpack= new Backpack();
+        this.gameMapContainer=gameMapContainer;
     }
 
     public void pollKey(){
@@ -190,13 +194,30 @@ public class Robot extends GameElements {
         }
     }
 
+
     public void putOil(){
-        //TODO
-        backpack.useOil();  // csökkenti az oil készletet
+        if (backpack.getAmmountofOil()==0){
+            System.out.println("Kifogytál az olajból!");
+        }
+        else{
+            backpack.useOil();  // csökkenti az oil készletet
+
+            //létrehozunk a pályán egy új foltot
+            gameMapContainer.addTrap(new Oil(this.getLocation().x, this.getLocation().y, 10));
+        }
+
     }
 
     public void putGlue(){
-        //TODO
-        backpack.useGlue(); // csökkenti a glue készletet
+        if (backpack.getAmmountofOil()==0){
+            System.out.println("Kifogytál az zsírból!");
+        }
+        else{
+            backpack.useGlue(); // csökkenti a glue készletet
+
+            //létrehozunk a pályán egy új foltot
+            gameMapContainer.addTrap(new Glue(this.getLocation().x,this.getLocation().y, 10));
+        }
+
     }
 }
