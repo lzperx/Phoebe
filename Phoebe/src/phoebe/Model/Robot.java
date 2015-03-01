@@ -21,11 +21,10 @@ public class Robot extends GameElements {
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
-    // minden körben ennyit adunk az X-hez
+    // a robot sebessége
     private int speed = 0;
 
-    //minden lépésnél ennyit adunk az Y-hoz
-    //ez az elhajlás
+    //szögelfordulás
     private double angle = 0;
 
     //összesen megtett távolság
@@ -104,6 +103,10 @@ public class Robot extends GameElements {
                 (int)(speed*Math.cos(angle)),
                 (int)(speed*Math.sin(angle))
         );
+
+        //megvan az új hely, így az szöget visszaállíthatjuk 0-ba
+        angle=0;
+
         return nextPosition;
     }
 
@@ -168,14 +171,16 @@ public class Robot extends GameElements {
     public void turnLeft(){
 //        if (state == robotState.ONGROUND)
         {
-          // TODO szögelfordulás
+          // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
+            angle=-10;
         }
     }
 
     public void turnRight(){
 //        if (state == robotState.ONGROUND)
         {
-            // TODO szögelfordulás
+            // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
+            angle=+10;
         }
     }
 
