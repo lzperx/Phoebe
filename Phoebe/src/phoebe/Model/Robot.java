@@ -188,11 +188,21 @@ public class Robot extends GameElements {
 
     public void putOil(){
         //TODO
-        backpack.useOil();  // csökkenti az oil készletet
+        if(backpack.hasMoreOil()) {
+            backpack.useOil();  // csökkenti az oil készletet
+
+            //robot irányvektora és pozíciója alapján a robot mögötti koordinátát kiszámolni
+            // és oda egy Oil objektumot elhelyezni...
+        }
     }
 
     public void putGlue(){
         //TODO
-        backpack.useGlue(); // csökkenti a glue készletet
+        if(backpack.hasMoreGlue()) {
+            backpack.useGlue(); // csökkenti a glue készletet
+
+            //robot irányvektora és pozíciója alapján a robot mögötti koordinátát kiszámolni
+            // és oda egy Oil objektumot elhelyezni...
+        }
     }
 }

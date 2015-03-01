@@ -33,4 +33,12 @@ public class Backpack {
         ammountofGlue--;
     }
 
+    public boolean hasMoreOil(){
+        return ammountofOil>0;
+    }
+
+    public boolean hasMoreGlue(){
+        return ammountofGlue>0;
+    }
+
 }
