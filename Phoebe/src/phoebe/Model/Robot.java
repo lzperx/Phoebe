@@ -106,6 +106,7 @@ public class Robot extends GameElements {
 
     public void Jump(){
         location = nextPosition;
+        state = robotState.NORMAL;
     }
 
 
