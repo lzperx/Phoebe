@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Created by Muresan73 on 15. 02. 21..
  */
-public class GameElements {
+public abstract class GameElements {
     protected Point location;
     protected int hitbox;
     protected String description ;

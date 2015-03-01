@@ -10,7 +10,7 @@ import java.util.List;
 
 // hátizsák osztály a ragacs és olajmennyiség tárolására
 
-public class Backpack extends Throwable {
+public class Backpack {
 
     private int ammountofOil;
     private int ammountofGlue;
@@ -29,23 +29,13 @@ public class Backpack extends Throwable {
     }
 
     public void useOil(){
-       try{
-           if(ammountofOil==0) throw new Exception();
-           else
-               ammountofOil--;
-       }catch (Exception e){
-            System.out.println("Kifogytál az olajból!");
-       }
+        if(ammountofOil>0)
+        ammountofOil--;
     }
 
     public void useGlue(){
-        try{
-            if(ammountofGlue==0) throw new Exception();
-            else
-                ammountofGlue--;
-        }catch (Exception e){
-            System.out.println("Kifogytál a ragacsból!");
-        }
+        if(ammountofGlue>0)
+        ammountofGlue--;
     }
 
     public boolean hasMoreOil(){
