@@ -9,7 +9,7 @@ public class Robot extends GameElements {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     private static enum robotState {
-        JUMP,ONGROUND,OILED
+        NORMAL,OILED
     }
 
     // hátizsák a foltoknak
@@ -38,7 +38,7 @@ public class Robot extends GameElements {
 
 
     //robot talajhoz viszonyított állapota
-    robotState state = robotState.ONGROUND;
+    robotState state = robotState.NORMAL;
 
     public Robot(int x, int y,int hitbox,KeyMap keys, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
@@ -110,33 +110,33 @@ public class Robot extends GameElements {
 
 
     public void turnLeft(){
-//        if (state == robotState.ONGROUND)
+        if (state == robotState.NORMAL)
         {
           // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
-            angle=-10;
+            angle =- 0.1;//TODO normális érték
         }
     }
 
     public void turnRight(){
-//        if (state == robotState.ONGROUND)
+        if (state == robotState.NORMAL)
         {
             // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
-            angle=+10;
+            angle =+ 0.1;//TODO normális érték
         }
     }
 
     public void speedUp(){
 
-//        if (state == robotState.ONGROUND)
+        if (state == robotState.NORMAL)
         {
-            speed++;
+            speed += 15;
         }
     }
 
     public void slowDown(){
-//        if (state == robotState.ONGROUND)
+        if (state == robotState.NORMAL)
         {
-            speed--;
+            speed += 15;
         }
     }
 
