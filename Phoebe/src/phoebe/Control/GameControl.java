@@ -31,17 +31,17 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameMapContainer.getRobots()) {
 
-            if(e.getKeyCode()== R2D2.getLeftKey())
+            if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.left=true;
-            if(e.getKeyCode() == R2D2.getUpKey())
+            if(e.getKeyCode() == R2D2.keys.getUpKey())
                 R2D2.up=true;
-            if(e.getKeyCode() == R2D2.getRightKey())
+            if(e.getKeyCode() == R2D2.keys.getRightKey())
                 R2D2.right=true;
-            if(e.getKeyCode() == R2D2.getDownKey())
+            if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.down=true;
-            if(e.getKeyCode() == R2D2.getOilKey())
+            if(e.getKeyCode() == R2D2.keys.getOilKey())
                 R2D2.oil= true;
-            if(e.getKeyCode() == R2D2.getGlueKey())
+            if(e.getKeyCode() == R2D2.keys.getGlueKey())
                 R2D2.glue= true;
         }
     }
@@ -51,17 +51,17 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameMapContainer.getRobots()) {
 
-            if(e.getKeyCode()== R2D2.getLeftKey())
+            if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.left=false;
-            if(e.getKeyCode() == R2D2.getUpKey())
+            if(e.getKeyCode() == R2D2.keys.getUpKey())
                 R2D2.up=false;
-            if(e.getKeyCode() == R2D2.getRightKey())
+            if(e.getKeyCode() == R2D2.keys.getRightKey())
                 R2D2.right=false;
-            if(e.getKeyCode() == R2D2.getDownKey())
+            if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.down=false;
-            if(e.getKeyCode() == R2D2.getOilKey())
+            if(e.getKeyCode() == R2D2.keys.getOilKey())
                 R2D2.oil= false;
-            if(e.getKeyCode() == R2D2.getGlueKey())
+            if(e.getKeyCode() == R2D2.keys.getGlueKey())
                 R2D2.glue= false;
         }
     }
@@ -71,17 +71,17 @@ public class GameControl implements KeyListener {
 
         for (Robot R2D2: gameMapContainer.getRobots()) {
 
-            if(e.getKeyCode()== R2D2.getLeftKey())
+            if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.turnLeft();
-            if(e.getKeyCode() == R2D2.getUpKey())
+            if(e.getKeyCode() == R2D2.keys.getUpKey())
                 R2D2.speedUp();
-            if(e.getKeyCode() == R2D2.getRightKey())
+            if(e.getKeyCode() == R2D2.keys.getRightKey())
                 R2D2.turnRight();
-            if(e.getKeyCode() == R2D2.getDownKey())
+            if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.slowDown();
-            if(e.getKeyCode() == R2D2.getOilKey())
+            if(e.getKeyCode() == R2D2.keys.getOilKey())
                 R2D2.putOil();
-            if(e.getKeyCode() == R2D2.getGlueKey())
+            if(e.getKeyCode() == R2D2.keys.getGlueKey())
                 R2D2.putGlue();
     }}
 

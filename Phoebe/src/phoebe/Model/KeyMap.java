@@ -45,27 +45,4 @@ public class KeyMap {
         return glueKey;
     }
 
-    public void setLeftKey(int leftKey) {
-        this.leftKey = leftKey;
-    }
-
-    public void setUpKey(int upKey) {
-        this.upKey = upKey;
-    }
-
-    public void setRightKey(int rightKey) {
-        this.rightKey = rightKey;
-    }
-
-    public void setDownKey(int downKey) {
-        this.downKey = downKey;
-    }
-
-    public void setOilKey(int oilKey) {
-        this.oilKey = oilKey;
-    }
-
-    public void setGlueKey(int glueKey) {
-        this.glueKey = glueKey;
-    }
 }

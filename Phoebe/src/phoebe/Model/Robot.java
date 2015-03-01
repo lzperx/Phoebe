@@ -53,7 +53,7 @@ public class Robot extends GameElements {
 
     //irányító gombok értékei (KeyEvent.getCode() alapján
     // minden robotnak külön irányítása van
-   private KeyMap keys;
+   public KeyMap keys;
 
     //igaz, ha éppen az adott gomb van lenyomva
     public boolean left;
