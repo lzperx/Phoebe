@@ -53,12 +53,7 @@ public class Robot extends GameElements {
 
     //irányító gombok értékei (KeyEvent.getCode() alapján
     // minden robotnak külön irányítása van
-    private int leftKey;
-    private int upKey;
-    private int rightKey;
-    private int downKey;
-    private int oilKey;
-    private int glueKey;
+   private KeyMap keys;
 
     //igaz, ha éppen az adott gomb van lenyomva
     public boolean left;
@@ -72,15 +67,16 @@ public class Robot extends GameElements {
     //robot talajhoz viszonyított állapota
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey, GameMapContainer gameMapContainer) {
+    public Robot(int x, int y,int hitbox,KeyMap keys, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
 
-        this.glueKey = glueKey;
-        this.oilKey = oilKey;
-        this.downKey = downKey;
-        this.rightKey = rightKey;
-        this.upKey = upKey;
-        this.leftKey = leftKey;
+        this.keys = new KeyMap(
+                keys.getLeftKey(),
+                keys.getUpKey(),
+                keys.getRightKey(),
+                keys.getDownKey(),
+                keys.getOilKey(),
+                keys.getGlueKey());
         this.description = "Robot";
         backpack= new Backpack();
         this.gameMapContainer=gameMapContainer;
@@ -96,14 +92,10 @@ public class Robot extends GameElements {
     }
 
     public Point evaluate (){
-
-
-        // Ez nagyon undorító de hatékony
         nextPosition = new Point(
                 (int)(speed*Math.cos(angle)),
                 (int)(speed*Math.sin(angle))
         );
-
         //megvan az új hely, így az szöget visszaállíthatjuk 0-ba
         angle=0;
 
@@ -113,7 +105,10 @@ public class Robot extends GameElements {
     public void itsATrap(Trap i) {
         if(i.getDescription() == "Glue")  speed /= 2;
         if(i.getDescription() == "Oil") state = robotState.OILED;
-        if(i.getDescription() == "Trap") /*TODO játsza le hogy : " It's a Trap !!!" :D*/;
+        if(i.getDescription() == "Trap") {
+         /*TODO játsza le hogy : " It's a Trap !!!" :D*/
+            //soundPlayer.playSound("Itsatrap");
+        }
     }
 
     //getter fv-ek
@@ -128,30 +123,6 @@ public class Robot extends GameElements {
 
     public int getDistance() {
         return distance;
-    }
-
-    public int getLeftKey() {
-        return leftKey;
-    }
-
-    public int getUpKey() {
-        return upKey;
-    }
-
-    public int getRightKey() {
-        return rightKey;
-    }
-
-    public int getDownKey() {
-        return downKey;
-    }
-
-    public int getGlueKey() {
-        return glueKey;
-    }
-
-    public int getOilKey() {
-        return oilKey;
     }
 
     //azért kell, hogy a fix időnként váltáshoz (máshol állítjuk be) meg tudjuk adni egy külső fv-nek
@@ -201,7 +172,7 @@ public class Robot extends GameElements {
 
 
     public void putOil(){
-        if (backpack.getAmmountofOil()==0){
+        if (!backpack.hasMoreOil()){
             System.out.println("Kifogytál az olajból!");
         }
         else{
@@ -214,8 +185,8 @@ public class Robot extends GameElements {
     }
 
     public void putGlue(){
-        if (backpack.getAmmountofOil()==0){
-            System.out.println("Kifogytál az zsírból!");
+        if (!backpack.hasMoreGlue()){
+            System.out.println("Kifogytál a ragacsból!");
         }
         else{
             backpack.useGlue(); // csökkenti a glue készletet
