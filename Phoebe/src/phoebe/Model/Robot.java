@@ -15,14 +15,16 @@ public class Robot extends GameElements {
     // hátizsák a foltoknak
     private Backpack backpack;
 
+    //átadjuk az adott pályát is, hogy tudjon lerakni trappeket.
+    private GameMapContainer gameMapContainer;
+
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
-    // minden körben ennyit adunk az X-hez
+    // a robot sebessége
     private int speed = 0;
 
-    //minden lépésnél ennyit adunk az Y-hoz
-    //ez az elhajlás
+    //szögelfordulás
     private double angle = 0;
 
     //összesen megtett távolság
@@ -70,7 +72,7 @@ public class Robot extends GameElements {
     //robot talajhoz viszonyított állapota
     robotState state = robotState.ONGROUND;
 
-    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey) {
+    public Robot(int x, int y,int hitbox, int glueKey, int oilKey, int downKey, int rightKey, int upKey, int leftKey, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
 
         this.glueKey = glueKey;
@@ -81,26 +83,35 @@ public class Robot extends GameElements {
         this.leftKey = leftKey;
         this.description = "Robot";
         backpack= new Backpack();
+        this.gameMapContainer=gameMapContainer;
     }
 
-    public Point evaluate (){
+    public void pollKey(){
         if(left) turnLeft();
         if(up) speedUp();
         if(right) turnRight();
         if(down) slowDown();
         if(oil) putOil();
         if(glue) putGlue();
+    }
+
+    public Point evaluate (){
+
 
         // Ez nagyon undorító de hatékony
         nextPosition = new Point(
                 (int)(speed*Math.cos(angle)),
                 (int)(speed*Math.sin(angle))
         );
+
+        //megvan az új hely, így az szöget visszaállíthatjuk 0-ba
+        angle=0;
+
         return nextPosition;
     }
 
     public void itsATrap(Trap i) {
-        if(i.getDescription() == "Glue")  speed /= 2;;
+        if(i.getDescription() == "Glue")  speed /= 2;
         if(i.getDescription() == "Oil") state = robotState.OILED;
         if(i.getDescription() == "Trap") /*TODO játsza le hogy : " It's a Trap !!!" :D*/;
     }
@@ -160,14 +171,16 @@ public class Robot extends GameElements {
     public void turnLeft(){
 //        if (state == robotState.ONGROUND)
         {
-          // TODO szögelfordulás
+          // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
+            angle=-10;
         }
     }
 
     public void turnRight(){
 //        if (state == robotState.ONGROUND)
         {
-            // TODO szögelfordulás
+            // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
+            angle=+10;
         }
     }
 
@@ -186,23 +199,30 @@ public class Robot extends GameElements {
         }
     }
 
+
     public void putOil(){
-        //TODO
-        if(backpack.hasMoreOil()) {
+        if (backpack.getAmmountofOil()==0){
+            System.out.println("Kifogytál az olajból!");
+        }
+        else{
             backpack.useOil();  // csökkenti az oil készletet
 
-            //robot irányvektora és pozíciója alapján a robot mögötti koordinátát kiszámolni
-            // és oda egy Oil objektumot elhelyezni...
+            //létrehozunk a pályán egy új foltot
+            gameMapContainer.addTrap(new Oil(this.getLocation().x, this.getLocation().y, 10));
         }
+
     }
 
     public void putGlue(){
-        //TODO
-        if(backpack.hasMoreGlue()) {
+        if (backpack.getAmmountofOil()==0){
+            System.out.println("Kifogytál az zsírból!");
+        }
+        else{
             backpack.useGlue(); // csökkenti a glue készletet
 
-            //robot irányvektora és pozíciója alapján a robot mögötti koordinátát kiszámolni
-            // és oda egy Oil objektumot elhelyezni...
+            //létrehozunk a pályán egy új foltot
+            gameMapContainer.addTrap(new Glue(this.getLocation().x,this.getLocation().y, 10));
         }
+
     }
 }

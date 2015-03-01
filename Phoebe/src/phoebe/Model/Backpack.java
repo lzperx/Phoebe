@@ -1,5 +1,8 @@
 package phoebe.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Brumi on 2015.02.28..
  */
@@ -7,7 +10,7 @@ package phoebe.Model;
 
 // hátizsák osztály a ragacs és olajmennyiség tárolására
 
-public class Backpack {
+public class Backpack extends Throwable {
 
     private int ammountofOil;
     private int ammountofGlue;
@@ -21,16 +24,28 @@ public class Backpack {
     }
 
     public Backpack() {
-        this. ammountofOil = 3;
+        this.ammountofOil = 3;
         this.ammountofGlue = 3;
     }
 
     public void useOil(){
-        ammountofOil--;
+       try{
+           if(ammountofOil==0) throw new Exception();
+           else
+               ammountofOil--;
+       }catch (Exception e){
+            System.out.println("Kifogytál az olajból!");
+       }
     }
 
     public void useGlue(){
-        ammountofGlue--;
+        try{
+            if(ammountofGlue==0) throw new Exception();
+            else
+                ammountofGlue--;
+        }catch (Exception e){
+            System.out.println("Kifogytál a ragacsból!");
+        }
     }
 
     public boolean hasMoreOil(){
