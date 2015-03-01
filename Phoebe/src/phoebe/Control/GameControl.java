@@ -32,17 +32,17 @@ public class GameControl implements KeyListener {
         for (Robot R2D2: gameMapContainer.getRobots()) {
 
             if(e.getKeyCode()== R2D2.keys.getLeftKey())
-                R2D2.left=true;
+                R2D2.keys.left=true;
             if(e.getKeyCode() == R2D2.keys.getUpKey())
-                R2D2.up=true;
+                R2D2.keys.up=true;
             if(e.getKeyCode() == R2D2.keys.getRightKey())
-                R2D2.right=true;
+                R2D2.keys.right=true;
             if(e.getKeyCode() == R2D2.keys.getDownKey())
-                R2D2.down=true;
+                R2D2.keys.down=true;
             if(e.getKeyCode() == R2D2.keys.getOilKey())
-                R2D2.oil= true;
+                R2D2.keys.oil= true;
             if(e.getKeyCode() == R2D2.keys.getGlueKey())
-                R2D2.glue= true;
+                R2D2.keys.glue= true;
         }
     }
 
@@ -52,17 +52,17 @@ public class GameControl implements KeyListener {
         for (Robot R2D2: gameMapContainer.getRobots()) {
 
             if(e.getKeyCode()== R2D2.keys.getLeftKey())
-                R2D2.left=false;
+                R2D2.keys.left=false;
             if(e.getKeyCode() == R2D2.keys.getUpKey())
-                R2D2.up=false;
+                R2D2.keys.up=false;
             if(e.getKeyCode() == R2D2.keys.getRightKey())
-                R2D2.right=false;
+                R2D2.keys.right=false;
             if(e.getKeyCode() == R2D2.keys.getDownKey())
-                R2D2.down=false;
+                R2D2.keys.down=false;
             if(e.getKeyCode() == R2D2.keys.getOilKey())
-                R2D2.oil= false;
+                R2D2.keys.oil= false;
             if(e.getKeyCode() == R2D2.keys.getGlueKey())
-                R2D2.glue= false;
+                R2D2.keys.glue= false;
         }
     }
 
