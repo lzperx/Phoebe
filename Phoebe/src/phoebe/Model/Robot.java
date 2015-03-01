@@ -28,7 +28,7 @@ public class Robot extends GameElements {
     private double angle = 0;
 
     //összesen megtett távolság
-    private int distance = 0;
+    private double distance = 0;
 
 
    public KeyMap keys;
@@ -96,7 +96,7 @@ public class Robot extends GameElements {
         return angle;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -164,5 +164,9 @@ public class Robot extends GameElements {
             gameMapContainer.addTrap(new Glue(this.getLocation().x,this.getLocation().y, 10));
         }
 
+    }
+
+    public void addDistance(double moreDistance){
+        distance += moreDistance;
     }
 }
