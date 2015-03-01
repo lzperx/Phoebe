@@ -30,38 +30,11 @@ public class Robot extends GameElements {
     //összesen megtett távolság
     private int distance = 0;
 
-    /*
-        KeyEvent.getCode() értékei az alábbi gomboknál
 
-        VK.LEFT = 37
-        VK.UP = 38
-        VK.RIGHT = 39
-        VK.DOWN = 40
-
-        ? = 44
-        : = 46
-
-        VK.A = 65
-        VK.W = 87
-        VK.D = 68
-        VK.S = 83
-
-        SHIFT = 16
-        CTRL = 17
-
-    */
-
-    //irányító gombok értékei (KeyEvent.getCode() alapján
-    // minden robotnak külön irányítása van
    public KeyMap keys;
 
     //igaz, ha éppen az adott gomb van lenyomva
-    public boolean left;
-    public boolean up;
-    public boolean right;
-    public boolean down;
-    public boolean oil;
-    public boolean glue;
+
 
 
     //robot talajhoz viszonyított állapota
@@ -83,12 +56,12 @@ public class Robot extends GameElements {
     }
 
     public void pollKey(){
-        if(left) turnLeft();
-        if(up) speedUp();
-        if(right) turnRight();
-        if(down) slowDown();
-        if(oil) putOil();
-        if(glue) putGlue();
+        if(keys.left) turnLeft();
+        if(keys.up) speedUp();
+        if(keys.right) turnRight();
+        if(keys.down) slowDown();
+        if(keys.oil) putOil();
+        if(keys.glue) putGlue();
     }
 
     public Point evaluate (){
