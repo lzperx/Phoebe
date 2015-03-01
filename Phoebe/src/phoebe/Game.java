@@ -1,18 +1,23 @@
 package phoebe;
 
 import phoebe.Control.GameControl;
-import phoebe.Model.GameObjectsModel;
+import phoebe.Model.GameMapContainer;
+import phoebe.View.GameFrame;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyListener;
 
 public class Game {
         private GameControl gameControl;
-        private GameObjectsModel gameObjectsModel;
+        private GameMapContainer gameMapContainer;
         //private GameFrame gameFrame;
 
 
         public Game() {
-            gameObjectsModel = new GameObjectsModel(500,500);
-            gameControl= new GameControl(gameObjectsModel);
-           // gameFrame = new GameFrame(gameControl, gameObjectsModel);
+            gameMapContainer = new GameMapContainer(500,500);
+            gameControl= new GameControl(gameMapContainer);
+           // gameFrame = new GameFrame(gameControl, gameMapContainer);
         }
 
         //A program belépési pontja
@@ -21,6 +26,22 @@ public class Game {
             // Példányosítás
             Game game = new Game();
 
+
+
+            //Robot kirajzolás tesztelése -- András
+            Point test = new Point(200,300);
+            JFrame gameFrame = new JFrame("Phoebe");
+
+            GameFrame frame = new GameFrame(test, "testrobot");
+                gameFrame.setSize(1024, 768);
+                frame.setRotation(Math.toRadians(45));
+
+                gameFrame.add(frame);
+                frame.repaint();
+                gameFrame.setVisible(true);
+            System.out.println(frame.getRobotLocation());
+                gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            //Idáig
 
             // Új játék indítása
             //game.gameControl.startNewGame();

@@ -5,7 +5,8 @@ package phoebe.Model;
  */
 public class Glue extends Trap {
 
-    public Glue(int y, int x, int round) {
-        super(y, x, round);
+    public Glue(int x, int y, int round) {
+        super(x, y, round);
+        description = "Glue";
     }
 }
