@@ -108,7 +108,7 @@ public class Robot extends GameElements {
     }
 
     public void itsATrap(Trap i) {
-        if(i.getDescription() == "Glue")  speed /= 2;;
+        if(i.getDescription() == "Glue")  speed /= 2;
         if(i.getDescription() == "Oil") state = robotState.OILED;
         if(i.getDescription() == "Trap") /*TODO játsza le hogy : " It's a Trap !!!" :D*/;
     }

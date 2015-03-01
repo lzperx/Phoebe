@@ -22,6 +22,8 @@ public class GameMapContainer {
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
     public GameMapContainer(int width, int height) {
+        this.width = width;
+        this.height = height;
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
     }
