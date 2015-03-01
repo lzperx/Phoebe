@@ -96,9 +96,6 @@ public class Robot extends GameElements {
                 (int)(speed*Math.cos(angle)),
                 (int)(speed*Math.sin(angle))
         );
-        //megvan az új hely, így az szöget visszaállíthatjuk 0-ba
-        angle=0;
-
         return nextPosition;
     }
 
