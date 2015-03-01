@@ -8,7 +8,7 @@ import java.awt.*;
 public class Robot extends GameElements {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
-    private static enum robotState {
+    public static enum robotState {
         NORMAL,OILED
     }
 
@@ -38,7 +38,7 @@ public class Robot extends GameElements {
 
 
     //robot talajhoz viszonyított állapota
-    robotState state = robotState.NORMAL;
+    public robotState state = robotState.NORMAL;
 
     public Robot(int x, int y,int hitbox,KeyMap keys, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
@@ -74,7 +74,7 @@ public class Robot extends GameElements {
 
     public void itsATrap(Trap i) {
         if(i.getDescription() == "Glue")  speed /= 2;
-        if(i.getDescription() == "Oil") state = robotState.OILED;
+        if(i.getDescription() == "Oil") state = robotState.OILED; else state = robotState.NORMAL;
         if(i.getDescription() == "Trap") {
          /*TODO játsza le hogy : " It's a Trap !!!" :D*/
             //soundPlayer.playSound("Itsatrap");
@@ -82,6 +82,11 @@ public class Robot extends GameElements {
     }
 
     //getter fv-ek
+
+
+    public Point getNextPosition() {
+        return nextPosition;
+    }
 
     public int getSpeed() {
         return speed;
@@ -95,18 +100,11 @@ public class Robot extends GameElements {
         return distance;
     }
 
-    //azért kell, hogy a fix időnként váltáshoz (máshol állítjuk be) meg tudjuk adni egy külső fv-nek
-    public robotState getState() {
-        return state;
-    }
-
-
-
     //sebességet és elhajlást módosító fv-ek  (setterek)
 
     public void Jump(){
         location = nextPosition;
-        state = robotState.NORMAL;
+
     }
 
 

@@ -87,7 +87,8 @@ public class GameControl implements KeyListener {
 
     public void collision(Robot C3PO){
         for (Trap i: gameMapContainer.getTraps()){
-            if (C3PO.getLocation().distance(i.getLocation()) < (C3PO.getHitbox() + i.getHitbox())) C3PO.itsATrap(i);
+            if (C3PO.getNextPosition().distance(i.getLocation()) < (C3PO.getHitbox() + i.getHitbox())) C3PO.itsATrap(i);
+            else C3PO.state = Robot.robotState.NORMAL;
         }
     }
 
@@ -95,11 +96,11 @@ public class GameControl implements KeyListener {
 
      void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
-            collision(R2D2);  //fontos a sorrend
+              //fontos a sorrend
             R2D2.pollKey();
             /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
             R2D2.Jump();
-
+            collision(R2D2);
         }
     }
 
