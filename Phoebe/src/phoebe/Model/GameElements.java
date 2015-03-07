@@ -16,9 +16,6 @@ public abstract class GameElements {
         this.description = "GameElement";
     }
 
-    public String getDescription(){
-        return description;
-    }
 
     public Point getLocation() {
         return location;
