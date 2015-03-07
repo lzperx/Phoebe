@@ -12,9 +12,6 @@ public class Robot extends GameElements implements VehicleProp {
         NORMAL,OILED
     }
 
-    //átadjuk az adott pályát is, hogy tudjon lerakni trappeket.
-    private GameMapContainer gameMapContainer;
-
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
@@ -38,14 +35,11 @@ public class Robot extends GameElements implements VehicleProp {
 
    public KeyMap keys;
 
-    //igaz, ha éppen az adott gomb van lenyomva
-
-
 
     //robot talajhoz viszonyított állapota
     public robotState state = robotState.NORMAL;
 
-    public Robot(Point location,int hitbox,KeyMap keys,GameMapContainer gameMapContainer) {
+    public Robot(Point location,int hitbox,KeyMap keys) {
         super(location,hitbox);
 
         ammountofGlue = 3;
@@ -57,7 +51,6 @@ public class Robot extends GameElements implements VehicleProp {
                 keys.getDownKey(),
                 keys.getOilKey(),
                 keys.getGlueKey());
-        this.gameMapContainer=gameMapContainer;
     }
 
 
