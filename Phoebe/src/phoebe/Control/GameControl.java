@@ -116,5 +116,7 @@ public class GameControl implements KeyListener {
             }
 
         }, 0, 500);
+
+        //TODO többi időzítését is meg kéne írni
     }
 }
