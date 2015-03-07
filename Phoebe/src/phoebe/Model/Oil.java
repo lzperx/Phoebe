@@ -10,7 +10,7 @@ public class Oil extends Trap {
     }
 
     @Override
-    public void vehicleModifier(vehicleProp currentVehicle) {
+    public void vehicleModifier(VehicleProp currentVehicle) {
         currentVehicle.setState(Robot.robotState.OILED);
     }
 

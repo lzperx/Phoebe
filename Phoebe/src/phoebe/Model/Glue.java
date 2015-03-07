@@ -10,7 +10,7 @@ public class Glue extends Trap {
     }
 
     @Override
-    public void vehicleModifier(vehicleProp currentVehicle) {
+    public void vehicleModifier(VehicleProp currentVehicle) {
         currentVehicle.setSpeed(currentVehicle.getSpeed()/2);
     }
 }

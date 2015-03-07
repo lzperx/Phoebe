@@ -10,7 +10,7 @@ public abstract class Trap extends GameElements {
     }
 
 
-    public abstract void vehicleModifier(vehicleProp currentVehicle);
+    public abstract void vehicleModifier(VehicleProp currentVehicle);
 
 
 }

@@ -5,7 +5,7 @@ import java.awt.*;
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Robot extends GameElements implements vehicleProp {
+public class Robot extends GameElements implements VehicleProp {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     public static enum robotState {
