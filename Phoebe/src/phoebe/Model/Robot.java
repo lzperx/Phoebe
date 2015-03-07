@@ -31,9 +31,9 @@ public class Robot extends GameElements implements VehicleProp {
     public boolean onGround = true;
 
     //Összes oil
-    private int ammountofOil;
+    public int ammountofOil;
     //Összes glue
-    private int ammountofGlue;
+    public int ammountofGlue;
 
 
    public KeyMap keys;
@@ -60,14 +60,6 @@ public class Robot extends GameElements implements VehicleProp {
         this.gameMapContainer=gameMapContainer;
     }
 
-    public void pollKey(){
-        if(keys.left) turnLeft();
-        if(keys.up) speedUp();
-        if(keys.right) turnRight();
-        if(keys.down) slowDown();
-        if(keys.oil) putOil();
-        if(keys.glue) putGlue();
-    }
 
     public Point evaluate (){
         nextPosition = new Point(
@@ -141,32 +133,6 @@ public class Robot extends GameElements implements VehicleProp {
         }
     }
 
-
-    public void putOil(){
-        if (ammountofOil <= 0){
-            System.out.println("Kifogytál az olajból!");
-        }
-        else{
-            ammountofOil--;  // csökkenti az oil készletet
-
-            //létrehozunk a pályán egy új foltot
-            gameMapContainer.addTrap(new Oil(location, 10));
-        }
-
-    }
-
-    public void putGlue(){
-        if (ammountofGlue <= 0){
-            System.out.println("Kifogytál a ragacsból!");
-        }
-        else{
-            ammountofGlue--; // csökkenti a glue készletet
-
-            //létrehozunk a pályán egy új foltot
-            gameMapContainer.addTrap(new Glue(location, 10));
-        }
-
-    }
 
     public void addDistance(double moreDistance){
         distance += moreDistance;

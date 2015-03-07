@@ -1,9 +1,6 @@
 package phoebe.Control;
 
-import phoebe.Model.GameMapContainer;
-import phoebe.Model.Oil;
-import phoebe.Model.Robot;
-import phoebe.Model.Trap;
+import phoebe.Model.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -80,10 +77,6 @@ public class GameControl implements KeyListener {
                 R2D2.turnRight();
             if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.slowDown();
-            if(e.getKeyCode() == R2D2.keys.getOilKey())
-                R2D2.putOil();
-            if(e.getKeyCode() == R2D2.keys.getGlueKey())
-                R2D2.putGlue();
     }}
 
     private void collision(Robot C3PO){
@@ -100,16 +93,28 @@ public class GameControl implements KeyListener {
         if(R2D2.keys.up) R2D2.speedUp();
         if(R2D2.keys.right) R2D2.turnRight();
         if(R2D2.keys.down) R2D2.slowDown();
-        if(R2D2.keys.oil) {if(onGround){        if (R2D2.ammountofOil <= 0){
-            System.out.println("Kifogytál az olajból!");
+        if(R2D2.keys.oil) {
+            if(R2D2.onGround){
+                if (R2D2.ammountofOil <= 0){
+                    System.out.println("Kifogytál az olajból!");
+                }
+                 else{R2D2.ammountofOil--;  // csökkenti az oil készletet
+                     //létrehozunk a pályán egy új foltot
+                    gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
+                }
+            }
         }
-        else{
-            R2D2.ammountofOil--;  // csökkenti az oil készletet
-
-            //létrehozunk a pályán egy új foltot
-            gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
-        }}}
-        if(R2D2.keys.glue) putGlue();
+        if(R2D2.keys.glue) {
+            if(R2D2.onGround){
+                if (R2D2.ammountofGlue <= 0){
+                    System.out.println("Kifogytál az ragacsból!");
+                }
+                else{R2D2.ammountofGlue--;  // csökkenti az oil készletet
+                //létrehozunk a pályán egy új foltot
+                gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
+                }
+            }
+        }
     }
 
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
@@ -117,7 +122,7 @@ public class GameControl implements KeyListener {
      private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
               //fontos a sorrend
-            R2D2.pollKey();
+            pollKey(R2D2);
             /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
             R2D2.Jump();
             collision(R2D2);
