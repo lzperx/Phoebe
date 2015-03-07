@@ -6,7 +6,14 @@ package phoebe.Model;
 public class Oil extends Trap {
 
     public Oil(int x, int y, int hitbox) {
-        super(y, x, hitbox);
+        super(x, y, hitbox);
         description = "Oil";
     }
+
+    @Override
+    public void vehicleModifier(vehicleProp currentVehicle) {
+        currentVehicle.setState(Robot.robotState.OILED);
+    }
+
+
 }

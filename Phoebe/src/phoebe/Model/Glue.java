@@ -9,4 +9,9 @@ public class Glue extends Trap {
         super(x, y, round);
         description = "Glue";
     }
+
+    @Override
+    public void vehicleModifier(vehicleProp currentVehicle) {
+        currentVehicle.setSpeed(currentVehicle.getSpeed()/2);
+    }
 }

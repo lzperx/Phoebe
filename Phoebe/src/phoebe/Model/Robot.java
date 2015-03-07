@@ -5,7 +5,7 @@ import java.awt.*;
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Robot extends GameElements {
+public class Robot extends GameElements implements vehicleProp {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     public static enum robotState {
@@ -72,14 +72,21 @@ public class Robot extends GameElements {
         return nextPosition;
     }
 
-    public void itsATrap(Trap i) {
-        if(i.getDescription() == "Glue")  speed /= 2;
-        if(i.getDescription() == "Oil") state = robotState.OILED; else state = robotState.NORMAL;
-        if(i.getDescription() == "Trap") {
-         /*TODO játsza le hogy : " It's a Trap !!!" :D*/
-            //soundPlayer.playSound("Itsatrap");
-        }
+
+
+    //setterek az Interfacehez a Visitor pattern miatt
+
+
+    @Override
+    public void setSpeed(int newSpeed) {
+        speed = newSpeed;
     }
+
+    @Override
+    public void setState(robotState newState){
+        state = newState;
+    }
+
 
     //getter fv-ek
 
@@ -88,17 +95,17 @@ public class Robot extends GameElements {
         return nextPosition;
     }
 
+
+
     public int getSpeed() {
         return speed;
     }
+
 
     public double getAngle() {
         return angle;
     }
 
-    public double getDistance() {
-        return distance;
-    }
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
 
@@ -169,4 +176,13 @@ public class Robot extends GameElements {
     public void addDistance(double moreDistance){
         distance += moreDistance;
     }
+
+
+    @Override
+    public robotState getState() {
+        return state;
+    }
+
+
+
 }
