@@ -1,6 +1,7 @@
 package phoebe.Control;
 
 import phoebe.Model.GameMapContainer;
+import phoebe.Model.Oil;
 import phoebe.Model.Robot;
 import phoebe.Model.Trap;
 
@@ -85,7 +86,7 @@ public class GameControl implements KeyListener {
                 R2D2.putGlue();
     }}
 
-    public void collision(Robot C3PO){
+    private void collision(Robot C3PO){
         for (Trap itsATrap: gameMapContainer.getTraps()){
             double tempDistance = C3PO.getNextPosition().distance(itsATrap.getLocation());
             if (tempDistance < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.vehicleModifier(C3PO);
@@ -94,9 +95,26 @@ public class GameControl implements KeyListener {
         }
     }
 
+    private void pollKey(Robot R2D2){
+        if(R2D2.keys.left) R2D2.turnLeft();
+        if(R2D2.keys.up) R2D2.speedUp();
+        if(R2D2.keys.right) R2D2.turnRight();
+        if(R2D2.keys.down) R2D2.slowDown();
+        if(R2D2.keys.oil) {if(onGround){        if (R2D2.ammountofOil <= 0){
+            System.out.println("Kifogytál az olajból!");
+        }
+        else{
+            R2D2.ammountofOil--;  // csökkenti az oil készletet
+
+            //létrehozunk a pályán egy új foltot
+            gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
+        }}}
+        if(R2D2.keys.glue) putGlue();
+    }
+
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
 
-     public void controlMinions(){
+     private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
               //fontos a sorrend
             R2D2.pollKey();
@@ -108,7 +126,7 @@ public class GameControl implements KeyListener {
 
     // fél másodpercenként meghívja a controlMinions -t
 
-    public void scheduleControlMinions () {
+    private void scheduleControlMinions () {
         timer.scheduleAtFixedRate(new TimerTask() {
 
             public void run() {
