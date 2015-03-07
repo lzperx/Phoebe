@@ -1,5 +1,6 @@
 package phoebe.Model;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,8 @@ import java.util.Map;
  */
 public class GameMapContainer {
 
-    // Pálya szélessége
-    private int width;
-    // Pálya magassága
-    private int height;
+    // Pálya felbontása
+    Dimension resolution;
 
     private List<Robot> robots;
     private List<Trap> traps;
@@ -21,9 +20,8 @@ public class GameMapContainer {
 
 
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
-    public GameMapContainer(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public GameMapContainer(Dimension resolution) {
+        this.resolution = resolution;
         robots = new ArrayList<Robot>();
         traps = new ArrayList<Trap>();
     }
