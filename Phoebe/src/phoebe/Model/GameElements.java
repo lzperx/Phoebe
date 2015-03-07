@@ -8,12 +8,10 @@ import java.awt.*;
 public abstract class GameElements {
     protected Point location;
     protected int hitbox;
-    protected String description ;
 
     public GameElements(int x, int y, int hitbox) {
         location = new Point(x,y);
         this.hitbox = hitbox;
-        this.description = "GameElement";
     }
 
 

@@ -7,7 +7,6 @@ public class Oil extends Trap {
 
     public Oil(int x, int y, int hitbox) {
         super(x, y, hitbox);
-        description = "Oil";
     }
 
     @Override

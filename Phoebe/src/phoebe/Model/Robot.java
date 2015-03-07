@@ -43,7 +43,7 @@ public class Robot extends GameElements implements vehicleProp {
     //robot talajhoz viszonyított állapota
     public robotState state = robotState.NORMAL;
 
-    public Robot(int x, int y,int hitbox,KeyMap keys, GameMapContainer gameMapContainer) {
+    public Robot(int x, int y,int hitbox,KeyMap keys,GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
 
         ammountofGlue = 3;
@@ -55,7 +55,6 @@ public class Robot extends GameElements implements vehicleProp {
                 keys.getDownKey(),
                 keys.getOilKey(),
                 keys.getGlueKey());
-        this.description = "Robot";
         this.gameMapContainer=gameMapContainer;
     }
 

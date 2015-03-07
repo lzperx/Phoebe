@@ -96,7 +96,7 @@ public class GameControl implements KeyListener {
 
     //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
 
-     void controlMinions(){
+     public void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
               //fontos a sorrend
             R2D2.pollKey();
@@ -108,7 +108,7 @@ public class GameControl implements KeyListener {
 
     // fél másodpercenként meghívja a controlMinions -t
 
-    void scheduleControlMinions () {
+    public void scheduleControlMinions () {
         timer.scheduleAtFixedRate(new TimerTask() {
 
             public void run() {
