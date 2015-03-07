@@ -16,17 +16,19 @@ public class GameFrame extends JComponent {
 
     Dimension robotSize = null;
     Point robot = null;
-    AffineTransform imageTransform = new AffineTransform();
     double rotation = 0;
-
     BufferedImage testRobot = null;
 
+
+    //Beállítja a GameFrame-t, hogy a kívánt nevű robottal lehessen játszani.
     public GameFrame(Point robot1Location, String name){
         robot = robot1Location;
         testRobot = loadRobot(name);
         robotSize = new Dimension(testRobot.getWidth(),testRobot.getHeight());
     }
 
+
+    // Betölti a robot képét a program futási mappájában lévő robot mappából.
     private BufferedImage loadRobot(String name){
 
         try{
