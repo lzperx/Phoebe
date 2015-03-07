@@ -12,9 +12,6 @@ public class Robot extends GameElements implements vehicleProp {
         NORMAL,OILED
     }
 
-    // hátizsák a foltoknak
-    private Backpack backpack;
-
     //átadjuk az adott pályát is, hogy tudjon lerakni trappeket.
     private GameMapContainer gameMapContainer;
 
@@ -31,6 +28,12 @@ public class Robot extends GameElements implements vehicleProp {
     private double distance = 0;
 
 
+    //Összes oil
+    private int ammountofOil;
+    //Összes glue
+    private int ammountofGlue;
+
+
    public KeyMap keys;
 
     //igaz, ha éppen az adott gomb van lenyomva
@@ -43,6 +46,8 @@ public class Robot extends GameElements implements vehicleProp {
     public Robot(int x, int y,int hitbox,KeyMap keys, GameMapContainer gameMapContainer) {
         super(x,y,hitbox);
 
+        ammountofGlue = 3;
+        ammountofOil = 3;
         this.keys = new KeyMap(
                 keys.getLeftKey(),
                 keys.getUpKey(),
@@ -51,7 +56,6 @@ public class Robot extends GameElements implements vehicleProp {
                 keys.getOilKey(),
                 keys.getGlueKey());
         this.description = "Robot";
-        backpack= new Backpack();
         this.gameMapContainer=gameMapContainer;
     }
 
@@ -148,11 +152,11 @@ public class Robot extends GameElements implements vehicleProp {
 
 
     public void putOil(){
-        if (!backpack.hasMoreOil()){
+        if (ammountofOil <= 0){
             System.out.println("Kifogytál az olajból!");
         }
         else{
-            backpack.useOil();  // csökkenti az oil készletet
+            ammountofOil--;  // csökkenti az oil készletet
 
             //létrehozunk a pályán egy új foltot
             gameMapContainer.addTrap(new Oil(this.getLocation().x, this.getLocation().y, 10));
@@ -161,11 +165,11 @@ public class Robot extends GameElements implements vehicleProp {
     }
 
     public void putGlue(){
-        if (!backpack.hasMoreGlue()){
+        if (ammountofGlue <= 0){
             System.out.println("Kifogytál a ragacsból!");
         }
         else{
-            backpack.useGlue(); // csökkenti a glue készletet
+            ammountofGlue--; // csökkenti a glue készletet
 
             //létrehozunk a pályán egy új foltot
             gameMapContainer.addTrap(new Glue(this.getLocation().x,this.getLocation().y, 10));
@@ -182,7 +186,6 @@ public class Robot extends GameElements implements vehicleProp {
     public robotState getState() {
         return state;
     }
-
 
 
 }
