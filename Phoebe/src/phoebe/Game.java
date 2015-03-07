@@ -34,7 +34,7 @@ public class Game {
 
             GameFrame frame = new GameFrame(test, "testrobot");
                 gameFrame.setSize(1024, 768);
-                frame.setRotation(Math.toRadians(45));
+                frame.setRotation(Math.toRadians(80));
 
                 gameFrame.add(frame);
                 frame.repaint();
