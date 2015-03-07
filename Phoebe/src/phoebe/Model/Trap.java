@@ -1,12 +1,14 @@
 package phoebe.Model;
 
+import java.awt.*;
+
 /**
  * Created by Muresan73 on 15. 02. 19..
  */
 public abstract class Trap extends GameElements {
 
-    public Trap(int x, int y, int hitbox) {
-        super(x,y,hitbox);
+    public Trap(Point location, int hitbox) {
+        super(location,hitbox);
     }
 
 

@@ -5,11 +5,9 @@ package phoebe.Model;
  */
 public interface VehicleProp {
 
-    public void setSpeed(int speed);
     public void setState(Robot.robotState newState);
-
-
-    public int getSpeed() ;
+    public void setSpeed (int newSpeed);
+    public int getSpeed();
     public Robot.robotState getState();
 
 }

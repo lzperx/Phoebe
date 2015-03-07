@@ -9,8 +9,8 @@ public abstract class GameElements {
     protected Point location;
     protected int hitbox;
 
-    public GameElements(int x, int y, int hitbox) {
-        location = new Point(x,y);
+    public GameElements(Point location, int hitbox) {
+        this.location = location;
         this.hitbox = hitbox;
     }
 

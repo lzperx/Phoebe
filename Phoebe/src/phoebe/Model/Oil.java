@@ -1,12 +1,14 @@
 package phoebe.Model;
 
+import java.awt.*;
+
 /**
  * Created by Geri on 2015.02.19..
  */
 public class Oil extends Trap {
 
-    public Oil(int x, int y, int hitbox) {
-        super(x, y, hitbox);
+    public Oil(Point location, int hitbox) {
+        super(location, hitbox);
     }
 
     @Override

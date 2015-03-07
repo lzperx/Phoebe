@@ -19,7 +19,7 @@ public class Robot extends GameElements implements VehicleProp {
     private Point nextPosition;
 
     // a robot sebessége
-    private int speed = 0;
+    public int speed = 0;
 
     //szögelfordulás
     private double angle = 0;
@@ -27,6 +27,8 @@ public class Robot extends GameElements implements VehicleProp {
     //összesen megtett távolság
     private double distance = 0;
 
+    //Levegőben van
+    public boolean onGround = true;
 
     //Összes oil
     private int ammountofOil;
@@ -43,8 +45,8 @@ public class Robot extends GameElements implements VehicleProp {
     //robot talajhoz viszonyított állapota
     public robotState state = robotState.NORMAL;
 
-    public Robot(int x, int y,int hitbox,KeyMap keys,GameMapContainer gameMapContainer) {
-        super(x,y,hitbox);
+    public Robot(Point location,int hitbox,KeyMap keys,GameMapContainer gameMapContainer) {
+        super(location,hitbox);
 
         ammountofGlue = 3;
         ammountofOil = 3;
@@ -79,16 +81,13 @@ public class Robot extends GameElements implements VehicleProp {
 
     //setterek az Interfacehez a Visitor pattern miatt
 
-
-    @Override
-    public void setSpeed(int newSpeed) {
-        speed = newSpeed;
-    }
-
     @Override
     public void setState(robotState newState){
         state = newState;
     }
+
+    @Override
+    public void setSpeed (int newSpeed) {speed = newSpeed;}
 
 
     //getter fv-ek
@@ -96,12 +95,6 @@ public class Robot extends GameElements implements VehicleProp {
 
     public Point getNextPosition() {
         return nextPosition;
-    }
-
-
-
-    public int getSpeed() {
-        return speed;
     }
 
 
@@ -114,7 +107,6 @@ public class Robot extends GameElements implements VehicleProp {
 
     public void Jump(){
         location = nextPosition;
-
     }
 
 
@@ -158,7 +150,7 @@ public class Robot extends GameElements implements VehicleProp {
             ammountofOil--;  // csökkenti az oil készletet
 
             //létrehozunk a pályán egy új foltot
-            gameMapContainer.addTrap(new Oil(this.getLocation().x, this.getLocation().y, 10));
+            gameMapContainer.addTrap(new Oil(location, 10));
         }
 
     }
@@ -171,7 +163,7 @@ public class Robot extends GameElements implements VehicleProp {
             ammountofGlue--; // csökkenti a glue készletet
 
             //létrehozunk a pályán egy új foltot
-            gameMapContainer.addTrap(new Glue(this.getLocation().x,this.getLocation().y, 10));
+            gameMapContainer.addTrap(new Glue(location, 10));
         }
 
     }
@@ -185,6 +177,9 @@ public class Robot extends GameElements implements VehicleProp {
     public robotState getState() {
         return state;
     }
+
+    @Override
+    public int getSpeed(){ return speed;}
 
 
 }
