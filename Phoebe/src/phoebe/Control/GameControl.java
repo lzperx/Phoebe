@@ -124,7 +124,7 @@ public class GameControl implements KeyListener {
               //fontos a sorrend
             pollKey(R2D2);
             /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
-            R2D2.Jump();
+            R2D2.jump();
             collision(R2D2);
         }
     }

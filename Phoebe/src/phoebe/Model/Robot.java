@@ -90,7 +90,7 @@ public class Robot extends GameElements implements VehicleProp {
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
 
-    public void Jump(){
+    public void jump(){
         location = nextPosition;
     }
 
@@ -131,6 +131,7 @@ public class Robot extends GameElements implements VehicleProp {
         distance += moreDistance;
     }
 
+    public double getDistance(){return distance;}
 
     @Override
     public robotState getState() {
