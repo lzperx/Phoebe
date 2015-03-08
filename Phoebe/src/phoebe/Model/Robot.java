@@ -56,8 +56,8 @@ public class Robot extends GameElements implements VehicleProp {
 
     public Point evaluate (){
         nextPosition = new Point(
-                (int)(speed*Math.cos(angle)),
-                (int)(speed*Math.sin(angle))
+                (int)(speed*Math.cos(angle))+(int)location.getX(),
+                (int)(speed*Math.sin(angle))+(int)location.getY()
         );
         return nextPosition;
     }
@@ -91,6 +91,7 @@ public class Robot extends GameElements implements VehicleProp {
     //sebességet és elhajlást módosító fv-ek  (setterek)
 
     public void jump(){
+        distance += nextPosition.distance(location);
         location = nextPosition;
     }
 
@@ -126,10 +127,6 @@ public class Robot extends GameElements implements VehicleProp {
         }
     }
 
-
-    public void addDistance(double moreDistance){
-        distance += moreDistance;
-    }
 
     public double getDistance(){return distance;}
 
