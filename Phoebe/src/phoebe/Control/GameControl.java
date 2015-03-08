@@ -115,7 +115,7 @@ public class GameControl implements KeyListener {
         }
     }
 
-    //a robot irányítása: itt állítjuk be, hogy ha jobbra nyomtunk, akkor a turnRight() fusson le
+
 
      private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
