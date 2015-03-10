@@ -5,7 +5,7 @@ import java.awt.*;
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Robot extends GameElements implements VehicleProp {
+public class Robot extends GameElements {
 
     // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
     public static enum robotState {
@@ -66,12 +66,12 @@ public class Robot extends GameElements implements VehicleProp {
 
     //setterek az Interfacehez a Visitor pattern miatt
 
-    @Override
+
     public void setState(robotState newState){
         state = newState;
     }
 
-    @Override
+
     public void setSpeed (int newSpeed) {speed = newSpeed;}
 
 
@@ -130,13 +130,29 @@ public class Robot extends GameElements implements VehicleProp {
 
     public double getDistance(){return distance;}
 
-    @Override
+
     public robotState getState() {
         return state;
     }
 
-    @Override
+
     public int getSpeed(){ return speed;}
+
+
+    /*****************************************************************************************************************/
+    /*****                                         VISITOR PATTERN                                               *****/
+    /*****************************************************************************************************************/
+
+
+    void visit(Oil oil){
+        state = robotState.OILED;
+    }
+
+    void visit(Glue glue){
+       speed /= 2;
+    }
+
+
 
 
 }
