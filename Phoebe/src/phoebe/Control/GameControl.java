@@ -81,7 +81,7 @@ public class GameControl implements KeyListener {
 
     private void collision(Robot C3PO){
         for (Trap itsATrap: gameMapContainer.getTraps()){
-            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.vehicleModifier(C3PO);
+            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.accept(C3PO);
             else C3PO.state = Robot.robotState.NORMAL;
         }
     }
