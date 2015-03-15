@@ -57,10 +57,7 @@ public class GameControl implements KeyListener {
                 R2D2.keys.right=false;
             if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.keys.down=false;
-            if(e.getKeyCode() == R2D2.keys.getOilKey())
-                R2D2.keys.oil= false;
-            if(e.getKeyCode() == R2D2.keys.getGlueKey())
-                R2D2.keys.glue= false;
+
         }
     }
 
@@ -77,6 +74,10 @@ public class GameControl implements KeyListener {
                 R2D2.turnRight();
             if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.slowDown();
+            if(e.getKeyCode() == R2D2.keys.getOilKey())
+                R2D2.keys.oil= true;
+            if(e.getKeyCode() == R2D2.keys.getGlueKey())
+                R2D2.keys.glue= true;
     }}
 
     private void collision(Robot C3PO){
@@ -101,6 +102,7 @@ public class GameControl implements KeyListener {
                     gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
                 }
             }
+                R2D2.keys.oil= false;
         }
         if(R2D2.keys.glue) {
             if(R2D2.onGround){
@@ -112,6 +114,7 @@ public class GameControl implements KeyListener {
                 gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
                 }
             }
+            R2D2.keys.glue= false;
         }
     }
 
