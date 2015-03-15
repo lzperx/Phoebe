@@ -57,10 +57,6 @@ public class GameControl implements KeyListener {
                 R2D2.keys.right=false;
             if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.keys.down=false;
-            if(e.getKeyCode() == R2D2.keys.getOilKey())
-                R2D2.keys.oil= false;
-            if(e.getKeyCode() == R2D2.keys.getGlueKey())
-                R2D2.keys.glue= false;
         }
     }
 
@@ -77,11 +73,15 @@ public class GameControl implements KeyListener {
                 R2D2.turnRight();
             if(e.getKeyCode() == R2D2.keys.getDownKey())
                 R2D2.slowDown();
-    }}
+            if(e.getKeyCode() == R2D2.keys.getOilKey())
+                R2D2.keys.oil= true;
+            if(e.getKeyCode() == R2D2.keys.getGlueKey())
+                R2D2.keys.glue= true;
+        }}
 
     private void collision(Robot C3PO){
         for (Trap itsATrap: gameMapContainer.getTraps()){
-            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.vehicleModifier(C3PO);
+            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.accept(C3PO);
             else C3PO.state = Robot.robotState.NORMAL;
         }
     }
@@ -96,11 +96,12 @@ public class GameControl implements KeyListener {
                 if (R2D2.ammountofOil <= 0){
                     System.out.println("Kifogytál az olajból!");
                 }
-                 else{R2D2.ammountofOil--;  // csökkenti az oil készletet
-                     //létrehozunk a pályán egy új foltot
+                else{R2D2.ammountofOil--;  // csökkenti az oil készletet
+                    //létrehozunk a pályán egy új foltot
                     gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
                 }
             }
+            R2D2.keys.oil= false;
         }
         if(R2D2.keys.glue) {
             if(R2D2.onGround){
@@ -108,18 +109,19 @@ public class GameControl implements KeyListener {
                     System.out.println("Kifogytál az ragacsból!");
                 }
                 else{R2D2.ammountofGlue--;  // csökkenti az oil készletet
-                //létrehozunk a pályán egy új foltot
-                gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
+                    //létrehozunk a pályán egy új foltot
+                    gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
                 }
             }
+            R2D2.keys.glue= false;
         }
     }
 
 
 
-     private void controlMinions(){
+    private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
-              //fontos a sorrend
+            //fontos a sorrend
             pollKey(R2D2);
             /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
             R2D2.jump();
