@@ -11,10 +11,10 @@ public class Oil extends Trap {
         super(location, hitbox);
     }
 
-    @Override
-    public void vehicleModifier(VehicleProp currentVehicle) {
-        currentVehicle.setState(Robot.robotState.OILED);
-    }
 
+    @Override
+    public void accept(Robot R2D2) {
+        R2D2.visit(this);
+    }
 
 }
