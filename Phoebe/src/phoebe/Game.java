@@ -8,14 +8,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 
+/* fő osztály, ez indítja magát a játékot,
+    itt található a main metódus.
+    Tartalmaz egy GameControl objektumot a játék irányításának kezelésére,
+    valamint egy GameMapContainer objektumot a pályaelemek tárolására.
+ */
+
+
 public class Game {
         private GameControl gameControl;
         private GameMapContainer gameMapContainer;
         //private GameFrame gameFrame;
 
-
         public Game() {
-            gameMapContainer = new GameMapContainer(500,500);
+            gameMapContainer = new GameMapContainer(new Dimension(500,500));
             gameControl= new GameControl(gameMapContainer);
            // gameFrame = new GameFrame(gameControl, gameMapContainer);
         }
