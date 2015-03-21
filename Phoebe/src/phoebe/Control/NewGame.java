@@ -13,17 +13,19 @@ import java.awt.*;
    Az inicializálás is itt történik meg.
  */
 public class NewGame {
-    private int width = 800;
-    private int height = 600;
 
-   public void initialize(){
+   private Dimension dimension;
 
+   public void initialize(Dimension dimension){
+        this.dimension=dimension;
    }
 
-    // a játék felépítése
+    //Játék kezdése
     public void startGame(){
-        GameMapContainer gameMap = new GameMapContainer(new Dimension(width,height));
+
+        GameMapContainer gameMap = new GameMapContainer(dimension);
         GameControl controller = new GameControl(gameMap);
+
     }
 
 }
