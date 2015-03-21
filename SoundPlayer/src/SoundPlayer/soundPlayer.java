@@ -12,19 +12,26 @@ import java.util.ArrayList;
 /**
  * Created by andri_000 on 2015.02.24..
  */
+
+
+/* Zenelejátszó osztály a játékban használt hangeffektek lejátszásához.
+   A clipeket .wav kiterjesztésben kell tárolni,
+   mivel csak ehhez a fájlformátumhoz van támogatás */
+
 public class soundPlayer {
 
 
     Clip actualSound;
     ArrayList<clipHandler> gameSounds = new ArrayList<clipHandler>();
-    //ArrayList<Clip> gameSounds = new ArrayList<Clip>();
-    String workingDirectory; //A program indulási mappája
-    String fileNames; //A zenék mappája
+    String workingDirectory;                                         //A program indulási mappája
+    String fileNames;                                                //A zenék mappája
     File soundFolder;
-    soundListener listener = new soundListener(); // Figyel, hogy a lejátszandó file véget ért e.
+    soundListener listener = new soundListener();                    // Figyel, hogy a lejátszandó file véget ért e.
     boolean running = false;
 
-    //Beállítja a hangok mappjának a program indítási mappáját.
+    /*Beállítja a hangok mappjának a program indítási mappáját.
+    * A .vav file okat a megfelelő névvel
+    * ide kell elhelyezni.*/
     public soundPlayer() {
         Path currentRelativePath = Paths.get("");
         workingDirectory = currentRelativePath.toAbsolutePath().toString();
@@ -32,7 +39,12 @@ public class soundPlayer {
         soundFolder = new File(fileNames);
     }
 
-    public void loadSounds() { //Betölt minden hang file-t a mappából
+
+    /* Betölt minden hang file-t a
+     * mappából a gameSounds listába,
+     *  és lejátszásra késszé teszi őket
+     *  */
+    public void loadSounds() {
         for (File sounds : soundFolder.listFiles()) {
             if (sounds.isFile() && sounds.getName().contains(".wav")) {
                 try {
@@ -48,7 +60,10 @@ public class soundPlayer {
         }
     }
 
-    public void playSounds(String soundName) { //Lejátsza a megfelelő számot a listából
+    /*Lejátsza a megfelelő számot a listából.
+    * A szám kiválasztása a clipHandler nameOfClip attribútuma
+    * alapján történik*/
+    public void playSounds(String soundName) {
         for (clipHandler actualHandler : gameSounds) {
             if (actualHandler.getNameOfClip().contains(soundName)) {
                 Clip playingClip = actualHandler.getClip();
@@ -66,27 +81,5 @@ public class soundPlayer {
         }
     }
 }
-/* Először ezt írtam meg, ezt általánosítottam amikor működött
-    //Beállítja a Highscore file-t.
-    public void setHighscore() throws IOException, UnsupportedAudioFileException {
-        try {
-            actualSound = AudioSystem.getClip();
-            actualSound.open(AudioSystem.getAudioInputStream(new File(fileNames + "highscore.wav" )));
-            actualSound.addLineListener(listener);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.print(fileNames);
-    }
-    //Lejátsza a beállított Highscore file-t
-    public void playHighscore (){
-        actualSound.addLineListener(listener);
-        actualSound.start();
-        try {
-            listener.waitUntilDone();
-        } catch (InterruptedException e) {
-            System.out.println("Megszakadt a lejátszás");
-        }
-    }
-*/
+
 

@@ -8,6 +8,10 @@ import java.io.IOException;
 /**
  * Created by andri_000 on 2015.02.23..
  */
+
+/* main osztály, itt hívjuk meg a soundplayert
+   a main() metódusban.
+*/
 public class Main {
     public static void main(String[] args) {
         soundPlayer player1 = new soundPlayer();
@@ -19,8 +23,6 @@ public class Main {
         player1.playSounds("hogyne");
         player1.playSounds("highscore");
         player1.playSounds("hogyne");
-
-//        most én ide betrollkodok hogy tudok e commitelni
         
     }
 }

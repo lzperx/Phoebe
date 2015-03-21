@@ -11,10 +11,13 @@ import java.util.TimerTask;
  * Created by Muresan73 on 15. 02. 20..
  */
 
-//Ez vezérli az egész game-et
+/*A teljes játékirányításért felelős objektum.*/
 public class GameControl implements KeyListener {
 
-
+    /*   Referencia a játékelemeket tároló objektumra,
+     *   így tudjuk hogy milyen robotok vannak, és mi hol van a pályán.
+     *   Ezt a konstruktorban kell átadni.
+    */
     private GameMapContainer gameMapContainer;
 
     public GameControl(GameMapContainer gameMapContainer) {
@@ -24,6 +27,9 @@ public class GameControl implements KeyListener {
     private final Timer timer =new Timer();
 
 
+    /* gomblenyomások érzékelése, és a megfelelő gombhoz tartozó
+     * boolean változó true ra állítása.
+    */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -44,6 +50,10 @@ public class GameControl implements KeyListener {
         }
     }
 
+
+    /*  gomb felengedésének érzékelése, és
+     *  a megfelelő gomb boolean változójának false ra állítása.
+    */
     @Override
     public void keyReleased(KeyEvent e) {
 
@@ -60,6 +70,10 @@ public class GameControl implements KeyListener {
         }
     }
 
+
+    /*  rövid gombnyomások érzékelése a megfelelő
+     *  függvények meghívásával
+    */
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -79,13 +93,22 @@ public class GameControl implements KeyListener {
                 R2D2.keys.glue= true;
         }}
 
+
+    /* A csapdára lépés megvalósításáért felelős függvény,
+     * a controlMinions() metódus hívja meg.
+     */
     private void collision(Robot C3PO){
         for (Trap itsATrap: gameMapContainer.getTraps()){
-            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox())) itsATrap.accept(C3PO);
-            else C3PO.state = Robot.robotState.NORMAL;
+            if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox()))
+                itsATrap.accept(C3PO);
+            else
+                C3PO.state = Robot.robotState.NORMAL;
         }
     }
 
+    /*   az irányítás megoldása az aktuális gombváltozók értéke alapján.
+     *   Polling módszerrel oldjuk meg.
+     */
     private void pollKey(Robot R2D2){
         if(R2D2.keys.left) R2D2.turnLeft();
         if(R2D2.keys.up) R2D2.speedUp();
@@ -94,30 +117,38 @@ public class GameControl implements KeyListener {
         if(R2D2.keys.oil) {
             if(R2D2.onGround){
                 if (R2D2.ammountofOil <= 0){
+                    /* ha nincs olaj nem rakunk le semmit */
                     System.out.println("Kifogytál az olajból!");
                 }
-                else{R2D2.ammountofOil--;  // csökkenti az oil készletet
-                    //létrehozunk a pályán egy új foltot
+                else{
+                    /* csökkentjük az oil készletet és létrehozunk a pályán egy új foltot*/
+                    R2D2.ammountofOil--;
                     gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
                 }
             }
+            /* Miután leraktuk az olajat, ismét false ba állítjuk az olaj gombértéket */
             R2D2.keys.oil= false;
         }
         if(R2D2.keys.glue) {
             if(R2D2.onGround){
                 if (R2D2.ammountofGlue <= 0){
+                    /* Ha nincs ragacs, nem rakunk le semmit */
                     System.out.println("Kifogytál az ragacsból!");
                 }
-                else{R2D2.ammountofGlue--;  // csökkenti az oil készletet
-                    //létrehozunk a pályán egy új foltot
+                else{
+                    /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
+                    R2D2.ammountofGlue--;
                     gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
                 }
             }
+            /* Miután leraktuk a ragacsot, ismét false ba állítjuk a ragacs gombértéket */
             R2D2.keys.glue= false;
         }
     }
 
-
+    /*   A robot irányításának "fő" metódusa, melyben sorra meghívjuk
+     *   az irányításhoz szükséges korábban definiált metódusokat.
+    */
 
     private void controlMinions(){
         for (Robot R2D2: gameMapContainer.getRobots()){
@@ -129,7 +160,7 @@ public class GameControl implements KeyListener {
         }
     }
 
-    // fél másodpercenként meghívja a controlMinions -t
+    /* Egy timer, ami fél másodpercenként meghívja a controlMinions -t */
 
     private void scheduleControlMinions () {
         timer.scheduleAtFixedRate(new TimerTask() {

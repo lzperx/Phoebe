@@ -7,7 +7,11 @@ import java.awt.*;
  */
 public class Robot extends GameElements {
 
-    // pályaelem felett való áthaladáskor vizsgáljuk, ez alapján döntjük el, hogy csinálni kell e valamit. fix időközönként változik
+    /* Enumeráció a robot aktuális állapotara.
+       Ez határozza meg, hogy van-e lehetőség iránymódosításra
+       az aktuális földetéréskor.
+       Az olajt paraméterül váró visit metódus ezt állítja be.
+    */
     public static enum robotState {
         NORMAL,OILED
     }
@@ -32,13 +36,13 @@ public class Robot extends GameElements {
     //Összes glue
     public int ammountofGlue;
 
-
-   public KeyMap keys;
-
+    // a robot billentyűzetkiosztása
+    public KeyMap keys;
 
     //robot talajhoz viszonyított állapota
     public robotState state = robotState.NORMAL;
 
+    // konstruktor
     public Robot(Point location,int hitbox,KeyMap keys) {
         super(location,hitbox);
 
@@ -53,7 +57,7 @@ public class Robot extends GameElements {
                 keys.getGlueKey());
     }
 
-
+    // az ugrás utáni következő pozíció kiszámítása
     public Point evaluate (){
         nextPosition = new Point(
                 (int)(speed*Math.cos(angle))+(int)location.getX(),
@@ -62,39 +66,20 @@ public class Robot extends GameElements {
         return nextPosition;
     }
 
-
-
-    //setterek az Interfacehez a Visitor pattern miatt
-
-
-    public void setState(robotState newState){
-        state = newState;
-    }
-
-
-    public void setSpeed (int newSpeed) {speed = newSpeed;}
-
-
     //getter fv-ek
-
-
     public Point getNextPosition() {
         return nextPosition;
     }
-
 
     public double getAngle() {
         return angle;
     }
 
-
     //sebességet és elhajlást módosító fv-ek  (setterek)
-
     public void jump(){
         distance += nextPosition.distance(location);
         location = nextPosition;
     }
-
 
     public void turnLeft(){
         if (state == robotState.NORMAL)
@@ -113,30 +98,27 @@ public class Robot extends GameElements {
     }
 
     public void speedUp(){
-
         if (state == robotState.NORMAL)
-        {
             speed += 15;
-        }
     }
 
     public void slowDown(){
         if (state == robotState.NORMAL)
-        {
             speed += 15;
-        }
     }
 
-
-    public double getDistance(){return distance;}
+    public double getDistance(){
+        return distance;
+    }
 
 
     public robotState getState() {
         return state;
     }
 
-
-    public int getSpeed(){ return speed;}
+    public int getSpeed(){
+        return speed;
+    }
 
 
     /*****************************************************************************************************************/
@@ -144,6 +126,10 @@ public class Robot extends GameElements {
     /*****************************************************************************************************************/
 
 
+    /* A robotok csapdával való érintkezését oldja meg,
+        minden csapda saját magát adja át a visit metódusnak,
+        így a megfelelő kód fut le.
+     */
     void visit(Oil oil){
         state = robotState.OILED;
     }
@@ -151,8 +137,5 @@ public class Robot extends GameElements {
     void visit(Glue glue){
        speed /= 2;
     }
-
-
-
 
 }

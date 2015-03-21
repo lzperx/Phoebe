@@ -9,6 +9,11 @@ import java.util.Map;
 /**
  * Created by Geri on 2015.02.19..
  */
+
+/* A játékban a pélyán találhtó objektumok összességének tárolóosztálya.
+    Itt tároljuk a robotokat és a csapdákat.
+ */
+
 public class GameMapContainer {
 
     // Pálya felbontása
@@ -26,6 +31,7 @@ public class GameMapContainer {
         traps = new ArrayList<Trap>();
     }
 
+    // getterek
     public List<Robot> getRobots() {
         return robots;
     }
@@ -47,5 +53,4 @@ public class GameMapContainer {
     public void addTrap(Trap trap) {
         traps.add(trap);
     }
-
 }
