@@ -16,6 +16,13 @@ public class NewGame {
 
    private Dimension dimension;
 
+   //=============================================================
+   //-----------Ideiglenes csak szkeletonos változók--------------
+   //=============================================================
+    GameMapContainer gameMap;
+
+   //=============================================================
+
    public void initialize(Dimension dimension){
         this.dimension=dimension;
    }
@@ -23,7 +30,7 @@ public class NewGame {
     //Játék kezdése
     public void startGame(){
 
-        GameMapContainer gameMap = new GameMapContainer(dimension);
+         gameMap = new GameMapContainer(dimension);//TODO fel kell tölteni a game MAp ot elemekkel !!!!
         GameControl controller = new GameControl(gameMap);
 
     }
