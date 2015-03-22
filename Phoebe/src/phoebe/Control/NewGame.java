@@ -3,6 +3,7 @@ package phoebe.Control;
 import phoebe.Model.*;
 import phoebe.Model.Robot;
 
+import javax.swing.text.Keymap;
 import java.awt.*;
 import java.util.Random;
 
@@ -29,13 +30,12 @@ public class NewGame {
        System.out.println("Init started.");
        this.dimension=dimension;
        addRandomTraps(15);
-       //TODO: init robots
-       //gameMap.addRobot();
+       gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, null));
+       gameMap.addRobot(new Robot(new Point(15, 15), 15, null));
        System.out.println("Init finished.");
    }
     /**
      * Adds random traps to a GameMapContainer
-     * @param {GameMapContainer} g - The GameMapContainer, to which the traps will be added
      * @param {int} count - The number of traps to be added
      */
     public void addRandomTraps(int count){
