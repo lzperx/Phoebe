@@ -47,7 +47,6 @@ public class GameMapContainer {
     //robot hozzáadása
     public void addRobot(Robot robot) {
         robots.add(robot);
-        System.out.println("pina");
     }
 
     //trap hozzáadása

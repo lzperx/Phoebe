@@ -23,7 +23,7 @@ public class NewGame {
     //-----------Ideiglenes csak szkeletonos változók--------------
     //=============================================================
     public GameMapContainer gameMap = new GameMapContainer(dimension);
-    public GameControl controller;
+    public GameControl controller = new GameControl(gameMap);
 
     //=============================================================
 
@@ -31,8 +31,10 @@ public class NewGame {
         System.out.println("Init started.");
         this.dimension=dimension;
         addRandomTraps(15);
-        gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, new KeyMap(10,10,10,10,10,10)));
+        gameMap.addRobot(new Robot(new Point(dimension.width - 15, dimension.height - 15), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(15, 15), 15, new KeyMap(10,10,10,10,10,10)));
+        System.out.println(gameMap.getRobots().size()+ " robots created.");
+
         System.out.println("Init finished.");
     }
     /**
@@ -71,11 +73,11 @@ public class NewGame {
     }
 
     //Játék kezdése
-    public void startGame(){
+   /* public void startGame(){
 
-        gameMap = new GameMapContainer(dimension);//TODO fel kell tölteni a game MAp ot elemekkel !!!!
+        //gameMap = new GameMapContainer(dimension);//TODO fel kell tölteni a game MAp ot elemekkel !!!!
         controller = new GameControl(gameMap);
 
-    }
+    }*/
 
 }

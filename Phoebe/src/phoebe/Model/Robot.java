@@ -62,7 +62,7 @@ public class Robot extends GameElements {
     public robotState state = robotState.NORMAL;
 
     // konstruktor
-    public Robot(Point location,int hitbox,KeyMap keys) {
+    public Robot(Point location,int hitbox, KeyMap keys) {
         super(location,hitbox);
 
         ammountofGlue = 3;

@@ -30,14 +30,9 @@ public class Main {
             try {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-
-                String kifli = new String("tampon");
-                while (!kifli.equals("startgame")) {kifli = in.readLine();}
-
+                String startcommand = new String("dummy");
+                while (!startcommand.equals("startgame")) {startcommand = in.readLine();}
                 game.initialize(new Dimension(500, 500));
-                game.startGame();
-
                 System.out.println("Game Started :)");
 
                 while (time > 0) {
