@@ -30,7 +30,7 @@ public class NewGame {
     public void initialize(Dimension dimension){
         System.out.println("Init started.");
         this.dimension=dimension;
-        addRandomTraps(15);
+        addRandomTraps(50);
         gameMap.addRobot(new Robot(new Point(dimension.width - 15, dimension.height - 15), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(15, 15), 15, new KeyMap(10,10,10,10,10,10)));
         System.out.println(gameMap.getRobots().size()+ " robots created.");

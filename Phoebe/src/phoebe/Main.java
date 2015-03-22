@@ -63,7 +63,7 @@ public class Main {
                     for (int i = 0; i <2; i++) {
                         actualRobot = game.gameMap.getRobots().get(i);
                         do {
-                            System.out.print("Robot" + i + ":\\> ");
+                            System.out.print("Robot" + (i+1) + ":\\> ");
                             String[] cmdLine = in.readLine().split(" ");
 
                             switch (cmdLine[0]) {
@@ -78,7 +78,7 @@ public class Main {
                                 case "speedup":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
-                                        if (value > 0 && value < 20){
+                                        if (value > 0 && value <= 20){
                                             actualRobot.setAcceleration(value);
                                             valid = true;
                                         }
@@ -92,7 +92,7 @@ public class Main {
                                 case "slowdown":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
-                                        if (value > 0 && value < 20) {
+                                        if (value > 0 && value <= 20) {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
                                         }else System.out.println("Invalid Value!");
@@ -105,7 +105,7 @@ public class Main {
                                 case "right":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
-                                        if (value > 0 && value < 90) {
+                                        if (value > 0 && value <= 90) {
                                             actualRobot.setRightTurnDegree(value);
                                             valid = true;
                                         }else System.out.println("Invalid Value!");
@@ -119,7 +119,7 @@ public class Main {
                                 case "left":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
-                                        if (value > 0 && value < 90) {
+                                        if (value > 0 && value <= 90) {
                                             actualRobot.setLeftTurnDegree(value);
                                             valid = true;
                                         }else System.out.println("Invalid Value!");
@@ -163,7 +163,6 @@ public class Main {
                                     valid = false;
                             }
                         }while (!valid);
-                        System.out.println("Valid Input");
                     }
 
 
