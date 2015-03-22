@@ -31,8 +31,8 @@ public class NewGame {
         System.out.println("Init started.");
         this.dimension=dimension;
         addRandomTraps(15);
-        gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, null));
-        gameMap.addRobot(new Robot(new Point(15, 15), 15, null));
+        gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, new KeyMap(10,10,10,10,10,10)));
+        gameMap.addRobot(new Robot(new Point(15, 15), 15, new KeyMap(10,10,10,10,10,10)));
         System.out.println("Init finished.");
     }
     /**

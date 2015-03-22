@@ -27,10 +27,18 @@ public class Main {
             int time=200;
 
 
-
             try {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+
+                String kifli = new String("tampon");
+                while (!kifli.equals("startgame")) {kifli = in.readLine();}
+
+                game.initialize(new Dimension(500, 500));
+                game.startGame();
+
+                System.out.println("Game Started :)");
 
                 while (time > 0) {
 
@@ -38,6 +46,7 @@ public class Main {
 
 
                     System.out.println("**********************************************");
+
 
                     System.out.println("Robot1: [x="+game.gameMap.getRobots().get(0).getLocation().getX()+
                             ", y="+game.gameMap.getRobots().get(0).getLocation().getY()+
@@ -67,10 +76,7 @@ public class Main {
                                     in.close();
                                     System.exit(0);
                                     break;
-                                case "startgame":
-                                    game.initialize(new Dimension(500, 500));
-                                    game.startGame();
-                                    break;
+
                                 case "speedup":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
