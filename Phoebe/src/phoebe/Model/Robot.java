@@ -7,6 +7,25 @@ import java.awt.*;
  */
 public class Robot extends GameElements {
 
+
+    //=============================================================
+    //-----------Ideiglenes csak szkeletonos methódusok------------
+    //=============================================================
+
+
+    public void setAcceleration(int acceleration){
+        this.speed += acceleration;
+    }
+
+    public void setRightTurnDegree(double turnDegree){
+        angle -= Math.toRadians(turnDegree);
+    }
+
+    public void setLeftTurnDegree(double turnDegree){
+        angle += Math.toRadians(turnDegree);
+    }
+    //=============================================================
+
     /* Enumeráció a robot aktuális állapotara.
        Ez határozza meg, hogy van-e lehetőség iránymódosításra
        az aktuális földetéréskor.
@@ -22,7 +41,7 @@ public class Robot extends GameElements {
     // a robot sebessége
     public int speed = 0;
 
-    //szögelfordulás
+    //szög
     private double angle = 0;
 
     //összesen megtett távolság
@@ -132,10 +151,12 @@ public class Robot extends GameElements {
      */
     void visit(Oil oil){
         state = robotState.OILED;
+        System.out.print("Run on OIL\n");
     }
 
     void visit(Glue glue){
        speed /= 2;
+        System.out.print("Run on GLUE\n");
     }
 
 }

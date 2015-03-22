@@ -97,12 +97,13 @@ public class GameControl implements KeyListener {
     /* A csapdára lépés megvalósításáért felelős függvény,
      * a controlMinions() metódus hívja meg.
      */
-    private void collision(Robot C3PO){
+    public void collision(Robot C3PO){//TODO majd a szkeleton után visszaállítani privátra !!!!
         for (Trap itsATrap: gameMapContainer.getTraps()){
             if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox()))
                 itsATrap.accept(C3PO);
             else
                 C3PO.state = Robot.robotState.NORMAL;
+            System.out.print("None\n");
         }
     }
 

@@ -17,23 +17,24 @@ import java.util.Random;
  */
 public class NewGame {
 
-   private Dimension dimension;
+    private Dimension dimension;
 
-   //=============================================================
-   //-----------Ideiglenes csak szkeletonos változók--------------
-   //=============================================================
-    GameMapContainer gameMap = new GameMapContainer(dimension);
+    //=============================================================
+    //-----------Ideiglenes csak szkeletonos változók--------------
+    //=============================================================
+    public GameMapContainer gameMap = new GameMapContainer(dimension);
+    public GameControl controller;
 
-   //=============================================================
+    //=============================================================
 
-   public void initialize(Dimension dimension){
-       System.out.println("Init started.");
-       this.dimension=dimension;
-       addRandomTraps(15);
-       gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, null));
-       gameMap.addRobot(new Robot(new Point(15, 15), 15, null));
-       System.out.println("Init finished.");
-   }
+    public void initialize(Dimension dimension){
+        System.out.println("Init started.");
+        this.dimension=dimension;
+        addRandomTraps(15);
+        gameMap.addRobot(new Robot(new Point(dimension.width-15, dimension.height-15), 15, null));
+        gameMap.addRobot(new Robot(new Point(15, 15), 15, null));
+        System.out.println("Init finished.");
+    }
     /**
      * Adds random traps to a GameMapContainer
      * @param {int} count - The number of traps to be added
@@ -72,8 +73,8 @@ public class NewGame {
     //Játék kezdése
     public void startGame(){
 
-         gameMap = new GameMapContainer(dimension);//TODO fel kell tölteni a game MAp ot elemekkel !!!!
-        GameControl controller = new GameControl(gameMap);
+        gameMap = new GameMapContainer(dimension);//TODO fel kell tölteni a game MAp ot elemekkel !!!!
+        controller = new GameControl(gameMap);
 
     }
 
