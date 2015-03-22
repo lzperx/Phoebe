@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class NewGame {
 
-    private Dimension dimension;
+    public Dimension dimension; //todo visszaírni private-ra
 
     //=============================================================
     //-----------Ideiglenes csak szkeletonos változók--------------

@@ -39,7 +39,10 @@ public class Main {
 
                 while (time >= 0) {
 
-                    //TODO ha kifut a robot a pályáról break
+                    // ha kifut a robot a pályáról break
+                    if(game.gameMap.getRobots().get(0).getLocation().getY()>= game.dimension.height ||
+                            game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width)
+                        break;
 
 
                     System.out.println("**********************************************");
@@ -67,7 +70,6 @@ public class Main {
                             String[] cmdLine = in.readLine().split(" ");
 
                             switch (cmdLine[0]) {
-                                //TODO: együtt nem lehetne a start/exit + a többi parancs
 
                                 case "exitgame":
                                     in.close();
