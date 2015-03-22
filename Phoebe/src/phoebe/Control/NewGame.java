@@ -28,7 +28,9 @@ public class NewGame {
    public void initialize(Dimension dimension){
        System.out.println("Init started.");
        this.dimension=dimension;
-        addRandomTraps(gameMap,15);
+       addRandomTraps(15);
+       //TODO: init robots
+       //gameMap.addRobot();
        System.out.println("Init finished.");
    }
     /**
@@ -36,7 +38,7 @@ public class NewGame {
      * @param {GameMapContainer} g - The GameMapContainer, to which the traps will be added
      * @param {int} count - The number of traps to be added
      */
-    public void addRandomTraps(GameMapContainer g, int count){
+    public void addRandomTraps(int count){
         Random rndm = new Random();
         for (int i = 0; i < count; i++) {
             rndm.nextInt(2);
