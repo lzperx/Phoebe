@@ -141,7 +141,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        //game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
@@ -155,7 +155,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        //game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
@@ -183,7 +183,7 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-    if(time < 0) {
+    if(time <= 0) {
         if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
             System.out.println("Robot1 Győzött");
         else System.out.println("Robot2 Győzött");
