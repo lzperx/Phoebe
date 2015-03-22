@@ -24,6 +24,7 @@ public class Main {
             boolean valid = true;
             Robot actualRobot;
             int value;
+            int time=200;
 
 
 
@@ -31,7 +32,12 @@ public class Main {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-                while (true) {
+                while (time > 0) {
+
+                    //TODO ha kifut a robot a pályáról break
+
+
+                    System.out.println("**********************************************");
 
                     System.out.println("Robot1: [x="+game.gameMap.getRobots().get(0).getLocation().getX()+
                             ", y="+game.gameMap.getRobots().get(0).getLocation().getY()+
@@ -45,6 +51,8 @@ public class Main {
                     System.out.println("Robot2 events: ");
                     game.controller.collision(game.gameMap.getRobots().get(1));
 
+                    System.out.println("[Time: "+ time +" s remain]");
+                    System.out.println("=========================");
 
                     for (int i = 0; i <2; i++) {
                         actualRobot = game.gameMap.getRobots().get(i);
@@ -149,9 +157,15 @@ public class Main {
                         }
                     }
 
-                    //TODO ugrás lekezelése hogy haladjon a robot
+
+                    game.gameMap.getRobots().get(0).evaluate();
+                    game.gameMap.getRobots().get(1).evaluate();
+
                     game.gameMap.getRobots().get(0).jump();
                     game.gameMap.getRobots().get(1).jump();
+                    time -= 5;
+                    System.out.println("**********************************************");
+                    System.out.println();
                 }
 
             } catch (IOException e) {
@@ -159,6 +173,13 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    if(time < 0) {
+        if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
+            System.out.println("Robot1 Győzött");
+        else System.out.println("Robot2 Győzött");
+}
+
+
 
 
     /*
