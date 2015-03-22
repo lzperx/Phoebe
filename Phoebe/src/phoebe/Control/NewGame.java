@@ -28,14 +28,13 @@ public class NewGame {
     //=============================================================
 
     public void initialize(Dimension dimension){
-        System.out.println("Init started.");
+        System.out.println("\u001B[31m"+"    ->[NewGame].initialize()"+"\u001B[31m");
+
         this.dimension=dimension;
         addRandomTraps(50);
         gameMap.addRobot(new Robot(new Point(dimension.width - 15, dimension.height - 15), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(15, 15), 15, new KeyMap(10,10,10,10,10,10)));
         System.out.println(gameMap.getRobots().size()+ " robots created.");
-
-        System.out.println("Init finished.");
     }
     /**
      * Adds random traps to a GameMapContainer

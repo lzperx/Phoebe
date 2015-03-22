@@ -40,9 +40,10 @@ public class Main {
                 while (time >= 0) {
 
                     // ha kifut a robot a pályáról break
-                    if(game.gameMap.getRobots().get(0).getLocation().getY()>= game.dimension.height ||
-                            game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width)
+                    if((game.gameMap.getRobots().get(0).getLocation().getY() >= game.dimension.height) ||
+                            (game.gameMap.getRobots().get(0).getLocation().getX() >= game.dimension.width)) {
                         break;
+                    }
 
 
                     System.out.println("**********************************************");
