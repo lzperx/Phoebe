@@ -37,12 +37,19 @@ public class Main {
                 game.gameMap.getRobots().get(0).evaluate();
                 game.gameMap.getRobots().get(1).evaluate();
 
-                while (time >= 0) {
+               leesettarobot: while (time >= 0) {
 
                     // ha kifut a robot a pályáról break
                     if(game.gameMap.getRobots().get(0).getLocation().getY()>= game.dimension.height ||
-                            game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width)
-                        break;
+                            game.gameMap.getRobots().get(0).getLocation().getY()<=0 ||
+                            game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width ||
+                            game.gameMap.getRobots().get(0).getLocation().getX()<=0){
+                        if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
+                            System.out.println("Robot1 Győzött");
+                        else System.out.println("Robot2 Győzött");
+                        break leesettarobot;
+                    }
+
 
 
                     System.out.println("**********************************************");
