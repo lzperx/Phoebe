@@ -37,7 +37,7 @@ public class Main {
                 game.gameMap.getRobots().get(0).evaluate();
                 game.gameMap.getRobots().get(1).evaluate();
 
-                while (time > 0) {
+                while (time >= 0) {
 
                     //TODO ha kifut a robot a pályáról break
 
@@ -48,13 +48,13 @@ public class Main {
                     System.out.println("Robot1: [x="+game.gameMap.getRobots().get(0).getLocation().getX()+
                             ", y="+game.gameMap.getRobots().get(0).getLocation().getY()+
                             ", v="+game.gameMap.getRobots().get(0).getSpeed()+"]");
-                    System.out.println("Robot2: [x="+game.gameMap.getRobots().get(0).getLocation().getX()+
-                            ", y="+game.gameMap.getRobots().get(0).getLocation().getY()+
-                            ", v="+game.gameMap.getRobots().get(0).getSpeed()+"]");
+                    System.out.println("Robot2: [x="+game.gameMap.getRobots().get(1).getLocation().getX()+
+                            ", y="+game.gameMap.getRobots().get(1).getLocation().getY()+
+                            ", v="+game.gameMap.getRobots().get(1).getSpeed()+"]");
 
-                    System.out.println("Robot1 events: ");
+                    System.out.print("Robot1 events: ");
                     game.controller.collision(game.gameMap.getRobots().get(0));
-                    System.out.println("Robot2 events: ");
+                    System.out.print("Robot2 events: ");
                     game.controller.collision(game.gameMap.getRobots().get(1));
 
                     System.out.println("[Time: "+ time +" s remain]");
@@ -62,7 +62,7 @@ public class Main {
 
                     for (int i = 0; i <2; i++) {
                         actualRobot = game.gameMap.getRobots().get(i);
-                        while (!valid) {
+                        do {
                             System.out.print("Robot" + i + ":\\> ");
                             String[] cmdLine = in.readLine().split(" ");
 
@@ -71,15 +71,20 @@ public class Main {
 
                                 case "exitgame":
                                     in.close();
+                                    System.out.println("The system is Shutting Down please type Format C:");
                                     System.exit(0);
                                     break;
 
                                 case "speedup":
                                     try {
                                         value = Integer.parseInt(cmdLine[1]);
-                                        if (value > 0 && value < 20) actualRobot.setAcceleration(value);
+                                        if (value > 0 && value < 20){
+                                            actualRobot.setAcceleration(value);
+                                            valid = true;
+                                        }
+                                        else System.out.println("Invalid Value!");
 
-                                    } catch (NumberFormatException e) {
+                                    } catch (Exception e) {
                                         System.out.println("Invalid Value!");
                                         valid = false;
                                     }
@@ -90,9 +95,9 @@ public class Main {
                                         if (value > 0 && value < 20) {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
-                                        }
+                                        }else System.out.println("Invalid Value!");
 
-                                    } catch (NumberFormatException e) {
+                                    } catch (Exception e) {
                                         System.out.println("Invalid Value!");
                                         valid = false;
                                     }
@@ -103,9 +108,9 @@ public class Main {
                                         if (value > 0 && value < 90) {
                                             actualRobot.setRightTurnDegree(value);
                                             valid = true;
-                                        }
+                                        }else System.out.println("Invalid Value!");
 
-                                    } catch (NumberFormatException e) {
+                                    } catch (Exception e) {
                                         System.out.println("Invalid Value!");
                                         valid = false;
                                     }
@@ -117,9 +122,9 @@ public class Main {
                                         if (value > 0 && value < 90) {
                                             actualRobot.setLeftTurnDegree(value);
                                             valid = true;
-                                        }
+                                        }else System.out.println("Invalid Value!");
 
-                                    } catch (NumberFormatException e) {
+                                    } catch (Exception e) {
                                         System.out.println("Invalid Value!");
                                         valid = false;
                                     }
@@ -157,7 +162,8 @@ public class Main {
                                     System.out.println(cmdLine[0] + ": command not found"); //A rendes terminál is így irja ki :)
                                     valid = false;
                             }
-                        }
+                        }while (!valid);
+                        System.out.println("Valid Input");
                     }
 
 
