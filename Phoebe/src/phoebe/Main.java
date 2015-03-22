@@ -34,6 +34,8 @@ public class Main {
                 while (!startcommand.equals("startgame")) {startcommand = in.readLine();}
                 game.initialize(new Dimension(500, 500));
                 System.out.println("Game Started :)");
+                game.gameMap.getRobots().get(0).evaluate();
+                game.gameMap.getRobots().get(1).evaluate();
 
                 while (time > 0) {
 
@@ -132,7 +134,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        //game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
@@ -146,7 +148,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        //game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
