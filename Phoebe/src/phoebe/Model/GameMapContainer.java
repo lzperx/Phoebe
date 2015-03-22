@@ -50,7 +50,17 @@ public class GameMapContainer {
     }
 
     //trap hozzáadása
-    public void addTrap(Trap trap) {
-        traps.add(trap);
+    public void addTrap(Trap trap) throws Exception {
+    boolean occup = false;
+                for (Trap t:traps){
+                    if( trap.location.x == t.location.x && trap.location.y == t.location.y)
+                    {
+                        occup = true;
+                        throw new Exception("The field is full");
+                    }
+
+                }
+        if (!occup)
+            traps.add(trap);
     }
 }

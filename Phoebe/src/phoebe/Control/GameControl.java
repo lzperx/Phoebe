@@ -123,7 +123,13 @@ public class GameControl implements KeyListener {
                 else{
                     /* csökkentjük az oil készletet és létrehozunk a pályán egy új foltot*/
                     R2D2.ammountofOil--;
-                    gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
+                    try {
+                        gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.toString());
+                    }
                 }
             }
             /* Miután leraktuk az olajat, ismét false ba állítjuk az olaj gombértéket */
@@ -138,7 +144,12 @@ public class GameControl implements KeyListener {
                 else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                     R2D2.ammountofGlue--;
-                    gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
+                    try {
+                        gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
+                    }
+                    catch (Exception e){
+                        System.out.println(e.toString());
+                    }
                 }
             }
             /* Miután leraktuk a ragacsot, ismét false ba állítjuk a ragacs gombértéket */
