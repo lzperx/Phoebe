@@ -44,12 +44,16 @@ public class Main {
                             game.gameMap.getRobots().get(0).getLocation().getY()<=0 ||
                             game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width ||
                             game.gameMap.getRobots().get(0).getLocation().getX()<=0){
-                        if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
-                            System.out.println("Robot1 Győzött");
-                        else System.out.println("Robot2 Győzött");
-                        break leesettarobot;
+                        System.out.println("Robot1 leesett");
+                        break ;
                     }
-
+                    if(game.gameMap.getRobots().get(1).getLocation().getY()>= game.dimension.height ||
+                            game.gameMap.getRobots().get(1).getLocation().getY()<=0 ||
+                            game.gameMap.getRobots().get(1).getLocation().getX()>= game.dimension.width ||
+                            game.gameMap.getRobots().get(1).getLocation().getX()<=0){
+                        System.out.println("Robot2 leesett");
+                        break ;
+                    }
 
                     System.out.println("**********************************************");
 
