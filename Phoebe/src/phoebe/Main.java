@@ -161,7 +161,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
