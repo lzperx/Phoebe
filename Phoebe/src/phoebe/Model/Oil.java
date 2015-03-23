@@ -16,6 +16,7 @@ public class Oil extends Trap {
     // visitor
     @Override
     public void accept(Robot R2D2) {
+        System.out.println("\u001B[33m"+"    ->[Oil].accept(Robot)"+"\u001B[0m");
         R2D2.visit(this);
     }
 

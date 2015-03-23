@@ -78,6 +78,7 @@ public class Robot extends GameElements {
 
     // az ugrás utáni következő pozíció kiszámítása
     public Point evaluate (){
+        System.out.println("\u001B[33m"+"    ->[Robot].evaluate()"+"\u001B[0m");
         nextPosition = new Point(
                 (int)(speed*Math.cos(angle))+(int)location.getX(),
                 (int)(speed*Math.sin(angle))+(int)location.getY()
@@ -96,6 +97,7 @@ public class Robot extends GameElements {
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
     public void jump(){
+        System.out.println("\u001B[33m"+"    ->[Robot].jump()"+"\u001B[0m");
         distance += nextPosition.distance(location);
         location = nextPosition;
     }
@@ -150,11 +152,13 @@ public class Robot extends GameElements {
         így a megfelelő kód fut le.
      */
     void visit(Oil oil){
+        System.out.println("\u001B[33m"+"    ->[Robot].visit(Oil)"+"\u001B[0m");
         state = robotState.OILED;
         System.out.print("Run on OIL\n");
     }
 
     void visit(Glue glue){
+        System.out.println("\u001B[33m"+"    ->[Robot].visit(Glue)"+"\u001B[0m");
        speed /= 2;
         System.out.print("Run on GLUE\n");
     }

@@ -168,6 +168,7 @@ public class GameControl implements KeyListener {
     */
 
     private void controlMinions(){
+        System.out.println("\u001B[33m"+"    ->[GameControl].controlMinions()"+"\u001B[0m");
         for (Robot R2D2: gameMapContainer.getRobots()){
             //fontos a sorrend
             pollKey(R2D2);
