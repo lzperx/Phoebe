@@ -28,7 +28,7 @@ public class NewGame {
     //=============================================================
 
     public void initialize(Dimension dimension){
-        System.out.println("\u001B[31m"+"    ->[NewGame].initialize()"+"\u001B[31m");
+        System.out.println("\u001B[31m"+"    ->[NewGame].initialize()"+"\u001B[30m");
 
         this.dimension=dimension;
         addRandomTraps(50);
