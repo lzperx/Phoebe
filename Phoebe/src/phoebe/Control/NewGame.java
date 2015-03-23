@@ -52,19 +52,20 @@ public class NewGame {
                             loc,
                             15) //hitbox
                     );
-                    System.out.println("Random-generated oil @ " + loc.x + "x" + loc.y);
+                    System.out.println(i+1+": Random-generated oil @ " + loc.x + "x" + loc.y);
                 } else {
                     gameMap.addTrap(new Glue(
                             loc,
                             15) //hitbox
                     );
-                    System.out.println("Random-generated glue @ " + loc.x + "x" + loc.y);
+                    System.out.println(i+1+": Random-generated glue @ " + loc.x + "x" + loc.y);
 
                 }
             }
             catch (Exception e){
 
                 System.out.println(e.toString());
+                i--;
             }
 
         }
