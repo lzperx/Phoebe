@@ -44,12 +44,16 @@ public class Main {
                             game.gameMap.getRobots().get(0).getLocation().getY()<=0 ||
                             game.gameMap.getRobots().get(0).getLocation().getX()>= game.dimension.width ||
                             game.gameMap.getRobots().get(0).getLocation().getX()<=0){
-                        if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
-                            System.out.println("Robot1 Győzött");
-                        else System.out.println("Robot2 Győzött");
-                        break leesettarobot;
+                        System.out.println("Robot1 leesett");
+                        break ;
                     }
-
+                    if(game.gameMap.getRobots().get(1).getLocation().getY()>= game.dimension.height ||
+                            game.gameMap.getRobots().get(1).getLocation().getY()<=0 ||
+                            game.gameMap.getRobots().get(1).getLocation().getX()>= game.dimension.width ||
+                            game.gameMap.getRobots().get(1).getLocation().getX()<=0){
+                        System.out.println("Robot2 leesett");
+                        break ;
+                    }
 
                     System.out.println("**********************************************");
 
@@ -90,7 +94,10 @@ public class Main {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
                                         }
-                                        else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -103,7 +110,10 @@ public class Main {
                                         if (value > 0 && value <= 20) {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -116,7 +126,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setRightTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -130,7 +143,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setLeftTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -147,7 +163,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        //sgame.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
@@ -161,13 +177,13 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
+                                       // game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
                                     break;
                                 default:
-                                    System.out.println(cmdLine[0] + ": command not found"); //A rendes terminál is így irja ki :)
+                                    System.out.println(cmdLine[0] + "\u001B[31m" + " : Command not found" + "\u001B[0m"); //A rendes terminál is így irja ki :)
                                     valid = false;
                             }
                         }while (!valid);
