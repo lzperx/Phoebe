@@ -14,7 +14,11 @@ public class Robot extends GameElements {
 
 
     public void setAcceleration(int acceleration){
-        this.speed += acceleration;
+        if(this.state==robotState.NORMAL){
+            this.speed += acceleration;
+        }
+
+        //különben meg semmi, mert olajon vagyunk és csúszunk
     }
 
     public void setRightTurnDegree(double turnDegree){
