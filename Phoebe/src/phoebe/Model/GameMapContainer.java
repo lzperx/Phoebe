@@ -46,6 +46,7 @@ public class GameMapContainer {
 
     //robot hozzáadása
     public void addRobot(Robot robot) {
+        System.out.println("\u001B[33m"+"    ->[GameMapContainer].addRobot(Robot)"+"\u001B[0m" );
         robots.add(robot);
     }
 
