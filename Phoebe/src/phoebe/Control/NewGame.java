@@ -28,8 +28,8 @@ public class NewGame {
     //=============================================================
 
     public void initialize(Dimension dimension){
-        System.out.println(""+"    ->[NewGame].initialize()"+"");
-        System.out.println(""+"    ->[gameContol].start()"+"");
+        System.out.println(""+"    ->[NewGame].initialize(Dimension)"+"");
+        System.out.println(""+"    ->[NewGame].startGame()"+"");
         this.dimension=dimension;
         addRandomTraps(20);
         gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
