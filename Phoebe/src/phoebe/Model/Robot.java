@@ -78,12 +78,12 @@ public class Robot extends GameElements {
 
     // az ugrás utáni következő pozíció kiszámítása
     public Point evaluate (){
-        System.out.println("\u001B[33m"+"    ->[Robot].evaluate()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].evaluate()"+"" );
         nextPosition = new Point(
                 (int)(speed*Math.cos(angle))+(int)location.getX(),
                 (int)(speed*Math.sin(angle))+(int)location.getY()
         );
-        System.out.println("\u001B[33m"+"    <-[Robot].evaluate().return(nextPosition)"+"\u001B[0m" );
+        System.out.println(""+"    <-[Robot].evaluate().return(nextPosition)"+"" );
         return nextPosition;
     }
 
@@ -98,13 +98,13 @@ public class Robot extends GameElements {
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
     public void jump(){
-        System.out.println("\u001B[33m"+"    ->[Robot].jump()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].jump()"+"" );
         distance += nextPosition.distance(location);
         location = nextPosition;
     }
 
     public void turnLeft(){
-        System.out.println("\u001B[33m"+"    ->[Robot].turnLeft()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].turnLeft()"+"" );
         if (state == robotState.NORMAL)
         {
           // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
@@ -113,7 +113,7 @@ public class Robot extends GameElements {
     }
 
     public void turnRight(){
-        System.out.println("\u001B[33m"+"    ->[Robot].turnRight()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].turnRight()"+"" );
         if (state == robotState.NORMAL)
         {
             // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
@@ -122,13 +122,13 @@ public class Robot extends GameElements {
     }
 
     public void speedUp(){
-        System.out.println("\u001B[33m"+"    ->[Robot].speedUp()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].speedUp()"+"" );
         if (state == robotState.NORMAL)
             speed += 15;
     }
 
     public void slowDown(){
-        System.out.println("\u001B[33m"+"    ->[Robot].slowDown()"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].slowDown()"+"" );
         if (state == robotState.NORMAL)
             speed += 15;
     }
@@ -157,13 +157,13 @@ public class Robot extends GameElements {
         így a megfelelő kód fut le.
      */
     void visit(Oil oil){
-        System.out.println("\u001B[33m"+"    ->[Robot].visit(Oil)"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].visit(Oil)"+"" );
         state = robotState.OILED;
         System.out.print("Run on OIL\n");
     }
 
     void visit(Glue glue){
-        System.out.println("\u001B[33m"+"    ->[Robot].visit(Glue)"+"\u001B[0m" );
+        System.out.println(""+"    ->[Robot].visit(Glue)"+"" );
        speed /= 2;
         System.out.print("Run on GLUE\n");
     }

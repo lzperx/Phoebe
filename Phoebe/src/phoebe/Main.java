@@ -105,12 +105,12 @@ public class Main {
                                                 actualRobot.setAcceleration(value);
                                                 valid = true;
                                             } else {
-                                                System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                                System.out.println(" " + "Invalid Value!" + "");
                                                 valid = false;
                                             }
 
                                         } catch (Exception e) {
-                                            System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                            System.out.println(" " + "Invalid Value!" + "");
                                             valid = false;
                                         }
                                         break;
@@ -121,12 +121,12 @@ public class Main {
                                                 actualRobot.setAcceleration(value);
                                                 valid = true;
                                             } else {
-                                                System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                                System.out.println(" " + "Invalid Value!" + "");
                                                 valid = false;
                                             }
 
                                         } catch (Exception e) {
-                                            System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                            System.out.println(" " + "Invalid Value!" + "");
                                             valid = false;
                                         }
                                         break;
@@ -137,12 +137,12 @@ public class Main {
                                                 actualRobot.setRightTurnDegree(value);
                                                 valid = true;
                                             } else {
-                                                System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                                System.out.println(" " + "Invalid Value!" + "");
                                                 valid = false;
                                             }
 
                                         } catch (Exception e) {
-                                            System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                            System.out.println(" " + "Invalid Value!" + "");
                                             valid = false;
                                         }
 
@@ -154,12 +154,12 @@ public class Main {
                                                 actualRobot.setLeftTurnDegree(value);
                                                 valid = true;
                                             } else {
-                                                System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                                System.out.println(" " + "Invalid Value!" + "");
                                                 valid = false;
                                             }
 
                                         } catch (Exception e) {
-                                            System.out.println("\u001B[31m " + "Invalid Value!" + "\u001B[0m");
+                                            System.out.println(" " + "Invalid Value!" + "");
                                             valid = false;
                                         }
 
@@ -194,7 +194,7 @@ public class Main {
 
                                         break;
                                     default:
-                                        System.out.println(cmdLine[0] + "\u001B[31m" + " : Command not found" + "\u001B[0m"); //A rendes terminál is így irja ki :)
+                                        System.out.println(cmdLine[0] + "" + " : Command not found" + ""); //A rendes terminál is így irja ki :)
                                         valid = false;
                                 }
                             } while (!valid);

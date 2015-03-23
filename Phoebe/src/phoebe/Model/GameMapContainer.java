@@ -46,13 +46,13 @@ public class GameMapContainer {
 
     //robot hozzáadása
     public void addRobot(Robot robot) {
-        System.out.println("\u001B[33m"+"    ->[GameMapContainer].addRobot(Robot)"+"\u001B[0m" );
+        System.out.println(""+"    ->[GameMapContainer].addRobot(Robot)"+"" );
         robots.add(robot);
     }
 
     //trap hozzáadása
     public void addTrap(Trap trap) throws Exception {
-        System.out.println("\u001B[33m"+"    ->[GameMapContainer].addTrap(Trap)"+"\u001B[0m" );
+        System.out.println(""+"    ->[GameMapContainer].addTrap(Trap)"+"" );
 
     boolean occup = false;
                 for (Trap t:traps){

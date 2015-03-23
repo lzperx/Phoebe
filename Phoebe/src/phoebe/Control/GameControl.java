@@ -129,7 +129,7 @@ public class GameControl implements KeyListener {
                 }
                 else{
                     /* csökkentjük az oil készletet és létrehozunk a pályán egy új foltot*/
-                    System.out.println("\u001B[33m"+"    ->[GameControl].amountofOil--"+"\u001B[0m");
+                    System.out.println(""+"    ->[GameControl].amountofOil--"+"");
                     R2D2.ammountofOil--;
                     try {
                         gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
@@ -151,7 +151,7 @@ public class GameControl implements KeyListener {
                 }
                 else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
-                    System.out.println("\u001B[33m"+"    ->[GameControl].amountofGlue--"+"\u001B[0m");
+                    System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
                     R2D2.ammountofGlue--;
                     try {
                         gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
@@ -171,7 +171,7 @@ public class GameControl implements KeyListener {
     */
 
     private void controlMinions(){
-        System.out.println("\u001B[33m"+"    ->[GameControl].controlMinions()"+"\u001B[0m");
+        System.out.println(""+"    ->[GameControl].controlMinions()"+"");
         for (Robot R2D2: gameMapContainer.getRobots()){
             //fontos a sorrend
             pollKey(R2D2);
