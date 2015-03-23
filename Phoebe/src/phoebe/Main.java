@@ -167,7 +167,7 @@ public class Main {
 
                                     break;
                                 default:
-                                    System.out.println(cmdLine[0] + ": command not found"); //A rendes terminál is így irja ki :)
+                                    System.out.println(cmdLine[0] + "\u001B[31m" + " : Command not found" + "\u001B[0m"); //A rendes terminál is így irja ki :)
                                     valid = false;
                             }
                         }while (!valid);
