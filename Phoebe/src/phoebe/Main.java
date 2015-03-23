@@ -33,7 +33,7 @@ public class Main {
 
                     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
                     String startcommand = new String("dummy");
-                    System.out.println("A 'startgame'-mel kezdhetsz új játékot vagy az 'exitgame'-mel léphetsz ki");
+                    System.out.println("A 'startgame'-mel kezdhetsz uj jatekot vagy az 'exitgame'-mel lephetsz ki");
                     while (!startcommand.equals("startgame")) {
                         startcommand = in.readLine();
                         if(startcommand.equals("exitgame")){
@@ -57,20 +57,20 @@ public class Main {
                                 game.gameMap.getRobots().get(0).getLocation().getY() <= 0 ||
                                 game.gameMap.getRobots().get(0).getLocation().getX() >= game.dimension.width ||
                                 game.gameMap.getRobots().get(0).getLocation().getX() <= 0) {
-                            System.out.println("Robot1 leesett ");
+                            System.out.println("Robot1 felt ");
                             System.out.println("Game Over");
-                            System.out.println("Robot2 győzött!");
-                            System.out.println("A 'startgame'-mel kezdhetsz új játékot vagy az 'exitgame'-mel léphetsz ki");
+                            System.out.println("Robot2 won!");
+
                             break;
                         }
                         if (game.gameMap.getRobots().get(1).getLocation().getY() >= game.dimension.height ||
                                 game.gameMap.getRobots().get(1).getLocation().getY() <= 0 ||
                                 game.gameMap.getRobots().get(1).getLocation().getX() >= game.dimension.width ||
                                 game.gameMap.getRobots().get(1).getLocation().getX() <= 0) {
-                            System.out.println("Robot2 leesett ");
+                            System.out.println("Robot2 felt ");
                             System.out.println("Game Over");
-                            System.out.println("Robot1 győzött!");
-                            System.out.println("A 'startgame'-mel kezdhetsz új játékot vagy az 'exitgame'-mel léphetsz ki");
+                            System.out.println("Robot1 won!");
+
                             break;
                         }
 
@@ -121,22 +121,7 @@ public class Main {
                                             valid = false;
                                         }
                                         break;
-                                    case "slowdown":
-                                        try {
-                                            value = Integer.parseInt(cmdLine[1]);
-                                            if (value > 0 && value <= 20) {
-                                                actualRobot.setAcceleration(value);
-                                                valid = true;
-                                            } else {
-                                                System.out.println(" " + "Invalid Value!" + "");
-                                                valid = false;
-                                            }
 
-                                        } catch (Exception e) {
-                                            System.out.println(" " + "Invalid Value!" + "");
-                                            valid = false;
-                                        }
-                                        break;
                                     case "right":
                                         try {
                                             value = Integer.parseInt(cmdLine[1]);
@@ -197,7 +182,7 @@ public class Main {
                                             try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                             valid = true;}
                                             catch (Exception e){
-                                                System.out.println("Nem rakhatsz le ide olajat, mert már van valami ezen a mezőn");
+                                                System.out.println("Nem rakhatsz le ide olajat, mert mar van valami ezen a mezon");
                                             }
                                         }
 
@@ -229,10 +214,10 @@ public class Main {
                     System.out.println("Game Over");
 
                     if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
-                        System.out.println("Robot1 Győzött!");
-                    else System.out.println("Robot2 Győzött!");
+                        System.out.println("Robot1 won!");
+                    else System.out.println("Robot2 won!");
                 }
-                System.out.println("A 'startgame'-mel kezdhetsz új játékot vagy az 'exitgame'-mel léphetsz ki");
+
             }
 
 
