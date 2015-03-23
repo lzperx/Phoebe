@@ -29,7 +29,7 @@ public class NewGame {
 
     public void initialize(Dimension dimension){
         System.out.println(""+"    ->[NewGame].initialize()"+"");
-
+        System.out.println(""+"    ->[gameContol].start()"+"");
         this.dimension=dimension;
         addRandomTraps(20);
         gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
@@ -41,6 +41,7 @@ public class NewGame {
      * @param {int} count - The number of traps to be added
      */
     public void addRandomTraps(int count){
+
         Random rndm = new Random();
         for (int i = 0; i < count; i++) {
             rndm.nextInt(2);
