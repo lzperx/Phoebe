@@ -32,7 +32,7 @@ public class NewGame {
 
         this.dimension=dimension;
         addRandomTraps(50);
-        gameMap.addRobot(new Robot(new Point(dimension.width - 15, dimension.height - 15), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
+        gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(150, 150), 15, new KeyMap(10,10,10,10,10,10)));
         System.out.println(gameMap.getRobots().size()+ " robots created.");
     }

@@ -62,7 +62,6 @@ public class GameMapContainer {
                         occup = true;
                         throw new Exception("The field is full");
                     }
-
                 }
         if (!occup)
             traps.add(trap);

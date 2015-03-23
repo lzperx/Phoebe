@@ -22,7 +22,7 @@ public class Main {
         public static void main(String[] args) {
 
             while (true) {
-           NewGame game = new NewGame();
+            NewGame game = new NewGame();
             boolean valid = true;
             Robot actualRobot;
             int value;
@@ -172,7 +172,7 @@ public class Main {
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                             actualRobot.ammountofGlue--;
-                                            //sgame.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                            game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                             valid = true;
                                         }
 
@@ -185,8 +185,11 @@ public class Main {
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                             actualRobot.ammountofGlue--;
-                                            // game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
-                                            valid = true;
+                                            try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
+                                            valid = true;}
+                                            catch (Exception e){
+                                                System.out.println("Nem rakhatsz le ide olajat, mert már van valami ezen a mezőn");
+                                            }
                                         }
 
                                         break;
