@@ -43,9 +43,11 @@ public class Main {
                         }
                     }
                     game.initialize(new Dimension(500, 500));
-                    System.out.println("Game Started :)");
+                    System.out.println("*****************Game started!****************");
+
                     game.gameMap.getRobots().get(0).evaluate();
                     game.gameMap.getRobots().get(1).evaluate();
+
 
                     leesettarobot:
                     while (time >= 0) {
@@ -67,7 +69,6 @@ public class Main {
                         }
 
                         System.out.println("**********************************************");
-
 
                         System.out.println("Robot1: [x=" + game.gameMap.getRobots().get(0).getLocation().getX() +
                                 ", y=" + game.gameMap.getRobots().get(0).getLocation().getY() +
