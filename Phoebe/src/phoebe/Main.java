@@ -90,7 +90,10 @@ public class Main {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
                                         }
-                                        else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -103,7 +106,10 @@ public class Main {
                                         if (value > 0 && value <= 20) {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -116,7 +122,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setRightTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -130,7 +139,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setLeftTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                        }else {
+                                            System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
+                                            valid = false;
+                                        }
 
                                     } catch (Exception e) {
                                         System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
@@ -147,7 +159,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                        //sgame.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
@@ -161,7 +173,7 @@ public class Main {
                                     else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                         actualRobot.ammountofGlue--;
-                                        game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
+                                       // game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                         valid = true;
                                     }
 
