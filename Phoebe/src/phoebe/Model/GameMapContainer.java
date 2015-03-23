@@ -51,7 +51,7 @@ public class GameMapContainer {
 
     //trap hozzáadása
     public void addTrap(Trap trap) throws Exception {
-        System.out.println("\u001B[33m"+"    ->[GameMapContainer].addTrap(Trap)"+"\u001B[0m");
+        System.out.println("\u001B[33m"+"    ->[GameMapContainer].addTrap(Trap)"+"\u001B[0m" );
 
     boolean occup = false;
                 for (Trap t:traps){
