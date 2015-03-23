@@ -18,6 +18,7 @@ public class Oil extends Trap {
     public void accept(Robot R2D2) {
         System.out.println(""+"    ->[Oil].accept(Robot)"+"" );
         R2D2.visit(this);
+
     }
 
 }

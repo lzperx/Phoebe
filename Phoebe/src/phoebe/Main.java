@@ -38,7 +38,7 @@ public class Main {
                         startcommand = in.readLine();
                         if(startcommand.equals("exitgame")){
                             in.close();
-                            System.out.println("The system is Shutting Down please type Format C:");
+                            System.out.println("Game Over");
                             System.exit(0);
                         }
                     }
@@ -76,9 +76,9 @@ public class Main {
                                 ", y=" + game.gameMap.getRobots().get(1).getLocation().getY() +
                                 ", v=" + game.gameMap.getRobots().get(1).getSpeed() + "]");
 
-                        System.out.print("Robot1 events: ");
+                        System.out.print("Robot1 events: \n");
                         game.controller.collision(game.gameMap.getRobots().get(0));
-                        System.out.print("Robot2 events: ");
+                        System.out.print("Robot2 events: \n");
                         game.controller.collision(game.gameMap.getRobots().get(1));
 
                         System.out.println("[Time: " + time + " s remain]");

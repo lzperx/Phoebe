@@ -48,6 +48,7 @@ public class GameMapContainer {
     public void addRobot(Robot robot) {
         System.out.println(""+"    ->[GameMapContainer].addRobot(Robot)"+"" );
         robots.add(robot);
+        System.out.println(this.getRobots().size()+ ". robot created.");
     }
 
     //trap hozzáadása

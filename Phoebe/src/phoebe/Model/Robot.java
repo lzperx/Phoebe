@@ -160,12 +160,14 @@ public class Robot extends GameElements {
         System.out.println(""+"    ->[Robot].visit(Oil)"+"" );
         state = robotState.OILED;
         System.out.print("Run on OIL\n");
+
     }
 
     void visit(Glue glue){
         System.out.println(""+"    ->[Robot].visit(Glue)"+"" );
        speed /= 2;
         System.out.print("Run on GLUE\n");
+
     }
 
 }

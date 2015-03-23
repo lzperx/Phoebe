@@ -20,6 +20,7 @@ public class Glue extends Trap {
     public void accept(Robot R2D2) {
         System.out.println(""+"    ->[Glue].accept(Robot)"+"");
         R2D2.visit(this);
+
     }
 
 }

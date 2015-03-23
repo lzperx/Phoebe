@@ -34,7 +34,7 @@ public class NewGame {
         addRandomTraps(50);
         gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(150, 150), 15, new KeyMap(10,10,10,10,10,10)));
-        System.out.println(gameMap.getRobots().size()+ " robots created.");
+
     }
     /**
      * Adds random traps to a GameMapContainer
