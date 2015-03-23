@@ -42,8 +42,8 @@ public class Robot extends GameElements {
     //A robot ahova ugrani fog legközelebb
     private Point nextPosition;
 
-    // a robot sebessége
-    public int speed = 0;
+    // a robot kezdő sebessége
+    public int speed = 20;
 
     //szög
     private double angle = 0;

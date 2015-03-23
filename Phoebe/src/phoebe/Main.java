@@ -93,7 +93,9 @@ public class Main {
 
                         System.out.println(""+"    ->[GameControl].controlMinions()"+"");
                         for (int i = 0; i < 2; i++) {
+
                             actualRobot = game.gameMap.getRobots().get(i);
+
                             do {
                                 System.out.print("Robot" + (i + 1) + ":\\> ");
                                 String[] cmdLine = in.readLine().split(" ");
