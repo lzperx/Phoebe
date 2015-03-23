@@ -116,6 +116,7 @@ public class GameControl implements KeyListener {
      *   Polling módszerrel oldjuk meg.
      */
     private void pollKey(Robot R2D2){
+
         if(R2D2.keys.left) R2D2.turnLeft();
         if(R2D2.keys.up) R2D2.speedUp();
         if(R2D2.keys.right) R2D2.turnRight();
@@ -128,6 +129,7 @@ public class GameControl implements KeyListener {
                 }
                 else{
                     /* csökkentjük az oil készletet és létrehozunk a pályán egy új foltot*/
+                    System.out.println("\u001B[33m"+"    ->[GameControl].amountofOil--"+"\u001B[0m");
                     R2D2.ammountofOil--;
                     try {
                         gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
@@ -149,6 +151,7 @@ public class GameControl implements KeyListener {
                 }
                 else{
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
+                    System.out.println("\u001B[33m"+"    ->[GameControl].amountofGlue--"+"\u001B[0m");
                     R2D2.ammountofGlue--;
                     try {
                         gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));

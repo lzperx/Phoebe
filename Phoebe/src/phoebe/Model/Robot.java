@@ -83,6 +83,7 @@ public class Robot extends GameElements {
                 (int)(speed*Math.cos(angle))+(int)location.getX(),
                 (int)(speed*Math.sin(angle))+(int)location.getY()
         );
+        System.out.println("\u001B[33m"+"    <-[Robot].evaluate().return(nextPosition)"+"\u001B[0m");
         return nextPosition;
     }
 
@@ -103,6 +104,7 @@ public class Robot extends GameElements {
     }
 
     public void turnLeft(){
+        System.out.println("\u001B[33m"+"    ->[Robot].turnLeft()"+"\u001B[0m");
         if (state == robotState.NORMAL)
         {
           // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
@@ -111,6 +113,7 @@ public class Robot extends GameElements {
     }
 
     public void turnRight(){
+        System.out.println("\u001B[33m"+"    ->[Robot].turnRight()"+"\u001B[0m");
         if (state == robotState.NORMAL)
         {
             // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
@@ -119,11 +122,13 @@ public class Robot extends GameElements {
     }
 
     public void speedUp(){
+        System.out.println("\u001B[33m"+"    ->[Robot].speedUp()"+"\u001B[0m");
         if (state == robotState.NORMAL)
             speed += 15;
     }
 
     public void slowDown(){
+        System.out.println("\u001B[33m"+"    ->[Robot].slowDown()"+"\u001B[0m");
         if (state == robotState.NORMAL)
             speed += 15;
     }
