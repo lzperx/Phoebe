@@ -90,10 +90,10 @@ public class Main {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
                                         }
-                                        else System.out.println("Invalid Value!");
+                                        else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
 
                                     } catch (Exception e) {
-                                        System.out.println("Invalid Value!");
+                                        System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
                                         valid = false;
                                     }
                                     break;
@@ -103,10 +103,10 @@ public class Main {
                                         if (value > 0 && value <= 20) {
                                             actualRobot.setAcceleration(value);
                                             valid = true;
-                                        }else System.out.println("Invalid Value!");
+                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
 
                                     } catch (Exception e) {
-                                        System.out.println("Invalid Value!");
+                                        System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
                                         valid = false;
                                     }
                                     break;
@@ -116,10 +116,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setRightTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("Invalid Value!");
+                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
 
                                     } catch (Exception e) {
-                                        System.out.println("Invalid Value!");
+                                        System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
                                         valid = false;
                                     }
 
@@ -130,10 +130,10 @@ public class Main {
                                         if (value > 0 && value <= 90) {
                                             actualRobot.setLeftTurnDegree(value);
                                             valid = true;
-                                        }else System.out.println("Invalid Value!");
+                                        }else System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
 
                                     } catch (Exception e) {
-                                        System.out.println("Invalid Value!");
+                                        System.out.println("\u001B[31m "+ "Invalid Value!" + "\u001B[0m");
                                         valid = false;
                                     }
 
