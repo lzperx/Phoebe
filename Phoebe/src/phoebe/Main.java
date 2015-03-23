@@ -36,6 +36,11 @@ public class Main {
 
                     while (!startcommand.equals("startgame")) {
                         startcommand = in.readLine();
+                        if(startcommand.equals("exitgame")){
+                            in.close();
+                            System.out.println("The system is Shutting Down please type Format C:");
+                            System.exit(0);
+                        }
                     }
                     game.initialize(new Dimension(500, 500));
                     System.out.println("Game Started :)");

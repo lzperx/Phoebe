@@ -55,7 +55,9 @@ public class GameMapContainer {
 
     boolean occup = false;
                 for (Trap t:traps){
-                    if( trap.location.x == t.location.x && trap.location.y == t.location.y)
+                    //TODO: hitbox
+                    if(         trap.location.x < t.location.x+15 && trap.location.x > t.location.x-15
+                            &&  trap.location.y < t.location.y+15 && trap.location.y > t.location.y-15 )
                     {
                         occup = true;
                         throw new Exception("The field is full");
