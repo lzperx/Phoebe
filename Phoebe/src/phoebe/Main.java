@@ -165,7 +165,7 @@ public class Main {
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
-                                            System.out.println(""+"    ->[GameControl].amountofOil--"+"");
+                                            System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
                                             actualRobot.ammountofGlue--;
                                             game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                             valid = true;
@@ -179,7 +179,7 @@ public class Main {
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
-                                            System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
+                                            System.out.println(""+"    ->[GameControl].amountofOil--"+"");
                                             actualRobot.ammountofGlue--;
                                             try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                             valid = true;}
