@@ -180,11 +180,11 @@ public class Main {
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                             System.out.println(""+"    ->[GameControl].amountofOil--"+"");
-                                            actualRobot.ammountofGlue--;
+                                            actualRobot.ammountofOil--;
                                             try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                             valid = true;}
                                             catch (Exception e){
-                                                System.out.println("Can't put oil down here, there is something already in this area.");
+                                                System.out.println("The field is full");
                                             }
                                         }
 

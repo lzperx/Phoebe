@@ -62,7 +62,8 @@ public class GameMapContainer {
                             &&  trap.location.y < t.location.y+15 && trap.location.y > t.location.y-15 )
                     {
                         occup = true;
-                        throw new Exception("The field is full");
+                        //throw new Exception("The field is full"); Ez megállítja a játékot!! Nem ez kell nekünk
+                        System.out.println("The field is full");
                     }
                 }
         if (!occup)
