@@ -33,7 +33,7 @@ public class Main {
 
                     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
                     String startcommand = new String("dummy");
-                    System.out.println("A 'startgame'-mel kezdhetsz uj jatekot vagy az 'exitgame'-mel lephetsz ki");
+                    System.out.println("\nEnter the command (startgame | exitgame):");
                     while (!startcommand.equals("startgame")) {
                         startcommand = in.readLine();
                         if(startcommand.equals("exitgame")){
@@ -57,7 +57,7 @@ public class Main {
                                 game.gameMap.getRobots().get(0).getLocation().getY() <= 0 ||
                                 game.gameMap.getRobots().get(0).getLocation().getX() >= game.dimension.width ||
                                 game.gameMap.getRobots().get(0).getLocation().getX() <= 0) {
-                            System.out.println("Robot1 felt ");
+                            System.out.println("Robot1 fell off ");
                             System.out.println("Game Over");
                             System.out.println("Robot2 won!");
 
@@ -67,7 +67,7 @@ public class Main {
                                 game.gameMap.getRobots().get(1).getLocation().getY() <= 0 ||
                                 game.gameMap.getRobots().get(1).getLocation().getX() >= game.dimension.width ||
                                 game.gameMap.getRobots().get(1).getLocation().getX() <= 0) {
-                            System.out.println("Robot2 felt ");
+                            System.out.println("Robot2 fel off ");
                             System.out.println("Game Over");
                             System.out.println("Robot1 won!");
 
@@ -93,7 +93,9 @@ public class Main {
 
                         System.out.println(""+"    ->[GameControl].controlMinions()"+"");
                         for (int i = 0; i < 2; i++) {
+
                             actualRobot = game.gameMap.getRobots().get(i);
+
                             do {
                                 System.out.print("Robot" + (i + 1) + ":\\> ");
                                 String[] cmdLine = in.readLine().split(" ");
@@ -163,7 +165,7 @@ public class Main {
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
-                                            System.out.println(""+"    ->[GameControl].amountofOil--"+"");
+                                            System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
                                             actualRobot.ammountofGlue--;
                                             game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
                                             valid = true;
@@ -177,12 +179,12 @@ public class Main {
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
-                                            System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
-                                            actualRobot.ammountofGlue--;
+                                            System.out.println(""+"    ->[GameControl].amountofOil--"+"");
+                                            actualRobot.ammountofOil--;
                                             try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
                                             valid = true;}
                                             catch (Exception e){
-                                                System.out.println("Nem rakhatsz le ide olajat, mert mar van valami ezen a mezon");
+                                                System.out.println("The field is full");
                                             }
                                         }
 

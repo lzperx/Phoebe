@@ -106,10 +106,14 @@ public class GameControl implements KeyListener {
                     itsATrap.accept(C3PO);
                     event = true;
                 }
-            else
-                C3PO.state = Robot.robotState.NORMAL;
         }
-        if(!event) System.out.println("None");
+
+         if(!event){
+
+            C3PO.state = Robot.robotState.NORMAL;
+            System.out.println("None");
+        }
+
     }
 
     /*   az irányítás megoldása az aktuális gombváltozók értéke alapján.

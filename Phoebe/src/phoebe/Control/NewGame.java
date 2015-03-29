@@ -31,7 +31,7 @@ public class NewGame {
         System.out.println(""+"    ->[NewGame].initialize(Dimension)"+"");
         System.out.println(""+"    ->[NewGame].startGame()"+"");
         this.dimension=dimension;
-        addRandomTraps(20);
+        addRandomTraps(50);
         gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
         gameMap.addRobot(new Robot(new Point(150, 150), 15, new KeyMap(10,10,10,10,10,10)));
 
@@ -51,13 +51,13 @@ public class NewGame {
                 if (traptype == 0) {
                     gameMap.addTrap(new Oil(
                             loc,
-                            15) //hitbox
+                            10) //hitbox
                     );
                     System.out.println(i+1+": Random-generated oil @ " + loc.x + "x" + loc.y);
                 } else {
                     gameMap.addTrap(new Glue(
                             loc,
-                            15) //hitbox
+                            10) //hitbox
                     );
                     System.out.println(i+1+": Random-generated glue @ " + loc.x + "x" + loc.y);
 
