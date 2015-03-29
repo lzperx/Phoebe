@@ -2,6 +2,7 @@ package phoebe.Control;
 
 import phoebe.Model.*;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
@@ -100,6 +101,8 @@ public class GameControl implements KeyListener {
      */
     public void collision(PlayerRobot C3PO){//TODO majd a szkeleton után visszaállítani privátra !!!!
         boolean event = false;
+
+        //Csapdákkal való ütközés lekezelése
         for (Trap itsATrap: gameMapContainer.getTraps()){
 
             if (C3PO.getNextPosition().distance(itsATrap.getLocation()) < (C3PO.getHitbox() + itsATrap.getHitbox()))
@@ -109,10 +112,21 @@ public class GameControl implements KeyListener {
                 }
         }
 
+        //kisrobotokkal való ütközés lekezelése
         for (CleanerRobot kemenyenDolgozoKisRobot : gameMapContainer.getCleanerRobots()){
             if(C3PO.getNextPosition().distance(kemenyenDolgozoKisRobot.getLocation()) < (C3PO.getHitbox() + kemenyenDolgozoKisRobot.getHitbox())){
                 gameMapContainer.getTraps().add(new Oil(kemenyenDolgozoKisRobot.getLocation()));
                 gameMapContainer.getCleanerRobots().remove(kemenyenDolgozoKisRobot);
+            }
+        }
+
+        //Nagyrobotokkal való ütközés
+        for (PlayerRobot R2D2: gameMapContainer.getPlayerRobots()) {
+            if (C3PO != R2D2){
+                if (C3PO.getNextPosition().distance(R2D2.getLocation()) < (C3PO.getHitbox() + R2D2.getHitbox())) {
+                    if (C3PO.getSpeed() > R2D2.getSpeed()) gameMapContainer.getPlayerRobots().remove(R2D2);
+                        else gameMapContainer.getPlayerRobots().remove(C3PO);
+                }
             }
         }
 
