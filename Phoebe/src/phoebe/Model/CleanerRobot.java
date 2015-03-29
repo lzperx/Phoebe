@@ -14,6 +14,10 @@ public class CleanerRobot extends GameElements{
     public int speed = 20; //TODO értelmes érték beállítása
 
 
+    // mutatja, hogy van e épp ütközés másik robottal, ha igen, irányváltás
+    private boolean collision =false;
+
+
     //szög
     protected double angle = 0;
 
@@ -38,6 +42,10 @@ public class CleanerRobot extends GameElements{
 
     //getter fv-ek
 
+    public boolean isCollision() {
+        return collision;
+    }
+
     public int getTimeLeftToClean() {
         return timeLeftToClean;
     }
@@ -52,6 +60,11 @@ public class CleanerRobot extends GameElements{
 
 
     // setter fv - ek
+
+    public void setCollision(boolean collision) {
+        this.collision = collision;
+    }
+
     public void setAngle(double angle) {
         this.angle = angle;
     }

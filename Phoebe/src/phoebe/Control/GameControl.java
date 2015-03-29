@@ -109,6 +109,13 @@ public class GameControl implements KeyListener {
                 }
         }
 
+        for (CleanerRobot kemenyenDolgozoKisRobot : gameMapContainer.getCleanerRobots()){
+            if(C3PO.getNextPosition().distance(kemenyenDolgozoKisRobot.getLocation()) < (C3PO.getHitbox() + kemenyenDolgozoKisRobot.getHitbox())){
+                gameMapContainer.getTraps().add(new Oil(kemenyenDolgozoKisRobot.getLocation()));
+                gameMapContainer.getCleanerRobots().remove(kemenyenDolgozoKisRobot);
+            }
+        }
+
          if(!event){
 
             C3PO.state = PlayerRobot.robotState.NORMAL;
@@ -142,44 +149,50 @@ public class GameControl implements KeyListener {
      */
     private void directToNextTrap(CleanerRobot kemenyenDolgozoKisrobot){
         // csak akkor számolunk, ha épp nem takarít
-        if(kemenyenDolgozoKisrobot.getTimeLeftToClean()==0){
-            // ha van még csapda a pályán, akkor elindul arra, egyébként változatlan irányba ugrál tovább
-            if(!gameMapContainer.getTraps().isEmpty()){
-                // a robothoz legközelebbi csapda megkeresésére
-                Trap closestTrap = null;
+        if(kemenyenDolgozoKisrobot.getTimeLeftToClean()<=0){
+            // ha ütközés van, random szöget állítunk be az ugrásnak
+            if(kemenyenDolgozoKisrobot.isCollision()){
+                kemenyenDolgozoKisrobot.setAngle(Math.random()*2*Math.PI);
+                kemenyenDolgozoKisrobot.setCollision(false);
+            }else{
+                // ha van még csapda a pályán, akkor elindul arra, egyébként változatlan irányba ugrál tovább
+                if(!gameMapContainer.getTraps().isEmpty()){
+                    // a robothoz legközelebbi csapda megkeresésére
+                    Trap closestTrap = null;
 
-                //a robot és a hozzá legközelebbi csapda távolsága,
-                // kezdeti érték jó nagy , hogy biztosan találjon kisebbet
-                double distance = 1000000;
+                    //a robot és a hozzá legközelebbi csapda távolsága,
+                    // kezdeti érték jó nagy , hogy biztosan találjon kisebbet
+                    double distance = 1000000;
 
-                // a ciklusban aktuálisan vizsgált csapda és a robot távolsága
-                double currentDistance;
-                for(Trap itsATrap : gameMapContainer.getTraps()){
+                    // a ciklusban aktuálisan vizsgált csapda és a robot távolsága
+                    double currentDistance;
+                    for(Trap itsATrap : gameMapContainer.getTraps()){
 
-                    // pitagorasz a robot és a csapdák távolságának kiszámítására a koordinátákból
+                        // pitagorasz a robot és a csapdák távolságának kiszámítására a koordinátákból
                 /* currentDistance = Math.sqrt(Math.pow(Math.abs(itsATrap.getLocation().getX()-kemenyenDolgozoKisrobot.getLocation().getX()),2)+
                         Math.pow(Math.abs(itsATrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY()),2));*/
-                    currentDistance = kemenyenDolgozoKisrobot.getLocation().distance(itsATrap.getLocation());
+                        currentDistance = kemenyenDolgozoKisrobot.getLocation().distance(itsATrap.getLocation());
 
 
-                    if(currentDistance < distance){
-                        closestTrap = itsATrap;
-                        distance = currentDistance;
+                        if(currentDistance < distance){
+                            closestTrap = itsATrap;
+                            distance = currentDistance;
+                        }
                     }
+
+                    // a továbbhaladás szöge arkusztangenssel számolva (radiánban)
+                    double angle;
+
+                    if(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()>0){
+                        angle =  Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
+                                Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
+                    } else{     // a negatív tartományban hozzáadunk egy PI t , mivel az atan csak 0-180 fok között képez le, lásd komplex számok
+                        angle = Math.PI + Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
+                                Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
+                    }
+
+                    kemenyenDolgozoKisrobot.setAngle(angle);
                 }
-
-                // a továbbhaladás szöge arkusztangenssel számolva (radiánban)
-                double angle;
-
-                if(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()>0){
-                    angle =  Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
-                            Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
-                } else{     // a negatív tartományban hozzáadunk egy PI t , mivel az atan csak 0-180 fok között képez le, lásd komplex számok
-                    angle = Math.PI + Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
-                            Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
-                }
-
-                kemenyenDolgozoKisrobot.setAngle(angle);
             }
         }
     }
@@ -276,10 +289,19 @@ private void removeOldTraps (){
             kemenyenDolgozoKisrobot.setTimeLeftToClean(kemenyenDolgozoKisrobot.getTimeLeftToClean()-1);
             //vizsgáljuk hogy van e csapda a robot alatt, ha van, felszedjük
             CleanUp(kemenyenDolgozoKisrobot);
+            //vizsgáljuk, hogy két kisrobot ütközött-e
+            for(CleanerRobot masikRobot: gameMapContainer.getCleanerRobots()){
+                if(kemenyenDolgozoKisrobot!=masikRobot){
+                    if(masikRobot.getLocation()==kemenyenDolgozoKisrobot.getLocation()){
+                        kemenyenDolgozoKisrobot.setCollision(true);
+                    }
+                }
+            }
             //a következő csapda felé fordul majd elkezd ugrálni a cleanerRobot,
             // ha van következő csapda, és ha nincs épp elfoglalva a takarítással
            if(kemenyenDolgozoKisrobot.getTimeLeftToClean()<=0){
                directToNextTrap(kemenyenDolgozoKisrobot);
+               /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/
                kemenyenDolgozoKisrobot.evaluate();
                kemenyenDolgozoKisrobot.jump();
            }
