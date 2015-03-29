@@ -13,8 +13,8 @@ public class Glue extends Trap {
     // Miután 4 robot ráugrott, a ragacs eltűnik a pályáról.
     private int timeToLive = 4;
 
-    public Glue(Point location, int round) {
-        super(location, round);
+    public Glue(Point location) {
+        super(location);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Glue extends Trap {
 
     // visitor
     @Override
-    public void accept(Robot R2D2) {
+    public void accept(PlayerRobot R2D2) {
             System.out.println("" + "    ->[Glue].accept(Robot)" + "");
             R2D2.visit(this);
             timeToLive -= 1;        // csökkentjük a ragacs életét, mert ráugrott egy robot

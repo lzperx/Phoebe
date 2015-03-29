@@ -10,6 +10,6 @@ package phoebe.Model;
 
 public interface Visitor {
 
-    public void accept(Robot R2D2);
+    public void accept(PlayerRobot R2D2);
 
 }

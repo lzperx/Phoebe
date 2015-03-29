@@ -5,7 +5,7 @@ import java.awt.*;
 /*
  * Created by Muresan73 on 15. 02. 19..
  */
-public class Robot extends GameElements {
+public class PlayerRobot extends CleanerRobot {
 
 
     //=============================================================
@@ -39,20 +39,8 @@ public class Robot extends GameElements {
         NORMAL,OILED
     }
 
-    //A robot ahova ugrani fog legközelebb
-    private Point nextPosition;
-
-    // a robot kezdő sebessége
-    public int speed = 20;
-
-    //szög
-    private double angle = 0;
-
     //összesen megtett távolság
     private double distance = 0;
-
-    //Levegőben van
-    public boolean onGround = true;
 
     //Összes oil
     public int ammountofOil;
@@ -66,7 +54,7 @@ public class Robot extends GameElements {
     public robotState state = robotState.NORMAL;
 
     // konstruktor
-    public Robot(Point location,int hitbox, KeyMap keys) {
+    public PlayerRobot(Point location, int hitbox, KeyMap keys) {
         super(location,hitbox);
 
         ammountofGlue = 3;
@@ -101,6 +89,9 @@ public class Robot extends GameElements {
     }
 
     //sebességet és elhajlást módosító fv-ek  (setterek)
+
+    // a CleanerRobot jump fv ében nincs distance állítás
+    @Override
     public void jump(){
         System.out.println(""+"    ->[Robot].jump()"+"" );
         distance += nextPosition.distance(location);

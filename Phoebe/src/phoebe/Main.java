@@ -2,13 +2,12 @@ package phoebe;
 
 import phoebe.Control.NewGame;
 import phoebe.Model.*;
-import phoebe.Model.Robot;
+import phoebe.Model.PlayerRobot;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
 /* fő osztály, ez indítja magát a játékot,
     itt található a main metódus.
@@ -24,7 +23,7 @@ public class Main {
             while (true) {
             NewGame game = new NewGame();
             boolean valid = true;
-            Robot actualRobot;
+            PlayerRobot actualPlayerRobot;
             int value;
             int time=200;
 
@@ -45,28 +44,28 @@ public class Main {
                     game.initialize(new Dimension(500, 500));
                     System.out.println("*****************Game started!****************");
 
-                    game.gameMap.getRobots().get(0).evaluate();
-                    game.gameMap.getRobots().get(1).evaluate();
+                    game.gameMap.getPlayerRobots().get(0).evaluate();
+                    game.gameMap.getPlayerRobots().get(1).evaluate();
 
 
                     leesettarobot:
                     while (time >= 0) {
 
                         // ha kifut a robot a pályáról break
-                        if (game.gameMap.getRobots().get(0).getLocation().getY() >= game.dimension.height ||
-                                game.gameMap.getRobots().get(0).getLocation().getY() <= 0 ||
-                                game.gameMap.getRobots().get(0).getLocation().getX() >= game.dimension.width ||
-                                game.gameMap.getRobots().get(0).getLocation().getX() <= 0) {
+                        if (game.gameMap.getPlayerRobots().get(0).getLocation().getY() >= game.dimension.height ||
+                                game.gameMap.getPlayerRobots().get(0).getLocation().getY() <= 0 ||
+                                game.gameMap.getPlayerRobots().get(0).getLocation().getX() >= game.dimension.width ||
+                                game.gameMap.getPlayerRobots().get(0).getLocation().getX() <= 0) {
                             System.out.println("Robot1 fell off ");
                             System.out.println("Game Over");
                             System.out.println("Robot2 won!");
 
                             break;
                         }
-                        if (game.gameMap.getRobots().get(1).getLocation().getY() >= game.dimension.height ||
-                                game.gameMap.getRobots().get(1).getLocation().getY() <= 0 ||
-                                game.gameMap.getRobots().get(1).getLocation().getX() >= game.dimension.width ||
-                                game.gameMap.getRobots().get(1).getLocation().getX() <= 0) {
+                        if (game.gameMap.getPlayerRobots().get(1).getLocation().getY() >= game.dimension.height ||
+                                game.gameMap.getPlayerRobots().get(1).getLocation().getY() <= 0 ||
+                                game.gameMap.getPlayerRobots().get(1).getLocation().getX() >= game.dimension.width ||
+                                game.gameMap.getPlayerRobots().get(1).getLocation().getX() <= 0) {
                             System.out.println("Robot2 fel off ");
                             System.out.println("Game Over");
                             System.out.println("Robot1 won!");
@@ -76,17 +75,17 @@ public class Main {
 
                         System.out.println("**********************************************");
 
-                        System.out.println("Robot1: [x=" + game.gameMap.getRobots().get(0).getLocation().getX() +
-                                ", y=" + game.gameMap.getRobots().get(0).getLocation().getY() +
-                                ", v=" + game.gameMap.getRobots().get(0).getSpeed() + "]");
-                        System.out.println("Robot2: [x=" + game.gameMap.getRobots().get(1).getLocation().getX() +
-                                ", y=" + game.gameMap.getRobots().get(1).getLocation().getY() +
-                                ", v=" + game.gameMap.getRobots().get(1).getSpeed() + "]");
+                        System.out.println("Robot1: [x=" + game.gameMap.getPlayerRobots().get(0).getLocation().getX() +
+                                ", y=" + game.gameMap.getPlayerRobots().get(0).getLocation().getY() +
+                                ", v=" + game.gameMap.getPlayerRobots().get(0).getSpeed() + "]");
+                        System.out.println("Robot2: [x=" + game.gameMap.getPlayerRobots().get(1).getLocation().getX() +
+                                ", y=" + game.gameMap.getPlayerRobots().get(1).getLocation().getY() +
+                                ", v=" + game.gameMap.getPlayerRobots().get(1).getSpeed() + "]");
 
                         System.out.print("Robot1 events: \n");
-                        game.controller.collision(game.gameMap.getRobots().get(0));
+                        game.controller.collision(game.gameMap.getPlayerRobots().get(0));
                         System.out.print("Robot2 events: \n");
-                        game.controller.collision(game.gameMap.getRobots().get(1));
+                        game.controller.collision(game.gameMap.getPlayerRobots().get(1));
 
                         System.out.println("[Time: " + time + " s remain]");
                         System.out.println("=========================");
@@ -94,7 +93,7 @@ public class Main {
                         System.out.println(""+"    ->[GameControl].controlMinions()"+"");
                         for (int i = 0; i < 2; i++) {
 
-                            actualRobot = game.gameMap.getRobots().get(i);
+                            actualPlayerRobot = game.gameMap.getPlayerRobots().get(i);
 
                             do {
                                 System.out.print("Robot" + (i + 1) + ":\\> ");
@@ -111,7 +110,7 @@ public class Main {
                                         try {
                                             value = Integer.parseInt(cmdLine[1]);
                                             if (value >= -20 && value <= 20) {
-                                                actualRobot.setAcceleration(value);
+                                                actualPlayerRobot.setAcceleration(value);
                                                 valid = true;
                                             } else {
                                                 System.out.println(" " + "Invalid Value!" + "");
@@ -128,7 +127,7 @@ public class Main {
                                         try {
                                             value = Integer.parseInt(cmdLine[1]);
                                             if (value >= 0 && value <= 90) {
-                                                actualRobot.setRightTurnDegree(value);
+                                                actualPlayerRobot.setRightTurnDegree(value);
                                                 valid = true;
                                             } else {
                                                 System.out.println(" " + "Invalid Value!" + "");
@@ -145,7 +144,7 @@ public class Main {
                                         try {
                                             value = Integer.parseInt(cmdLine[1]);
                                             if (value >= 0 && value <= 90) {
-                                                actualRobot.setLeftTurnDegree(value);
+                                                actualPlayerRobot.setLeftTurnDegree(value);
                                                 valid = true;
                                             } else {
                                                 System.out.println(" " + "Invalid Value!" + "");
@@ -159,29 +158,29 @@ public class Main {
 
                                         break;
                                     case "putglue":
-                                        if (actualRobot.ammountofGlue <= 0) {
+                                        if (actualPlayerRobot.ammountofGlue <= 0) {
                     /* Ha nincs ragacs, nem rakunk le semmit */
                                             System.out.println("You are Out of Glue!");
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                             System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
-                                            actualRobot.ammountofGlue--;
-                                            game.gameMap.addTrap(new Glue(actualRobot.getLocation(), 10));
+                                            actualPlayerRobot.ammountofGlue--;
+                                            game.gameMap.addTrap(new Glue(actualPlayerRobot.getLocation()));
                                             valid = true;
                                         }
 
                                         break;
                                     case "putoil":
-                                        if (actualRobot.ammountofOil <= 0) {
+                                        if (actualPlayerRobot.ammountofOil <= 0) {
                     /* Ha nincs ragacs, nem rakunk le semmit */
                                             System.out.println("You are Out of Oil!");
                                             valid = false;
                                         } else {
                     /*csökkenti az oil készletet, majd létrehozunk a pályán egy új foltot*/
                                             System.out.println(""+"    ->[GameControl].amountofOil--"+"");
-                                            actualRobot.ammountofOil--;
-                                            try{game.gameMap.addTrap(new Oil(actualRobot.getLocation(), 10));
+                                            actualPlayerRobot.ammountofOil--;
+                                            try{game.gameMap.addTrap(new Oil(actualPlayerRobot.getLocation()));
                                             valid = true;}
                                             catch (Exception e){
                                                 System.out.println("The field is full");
@@ -197,11 +196,11 @@ public class Main {
                         }
 
 
-                        game.gameMap.getRobots().get(0).evaluate();
-                        game.gameMap.getRobots().get(1).evaluate();
+                        game.gameMap.getPlayerRobots().get(0).evaluate();
+                        game.gameMap.getPlayerRobots().get(1).evaluate();
 
-                        game.gameMap.getRobots().get(0).jump();
-                        game.gameMap.getRobots().get(1).jump();
+                        game.gameMap.getPlayerRobots().get(0).jump();
+                        game.gameMap.getPlayerRobots().get(1).jump();
                         time -= 5;
                         System.out.println("**********************************************");
                         System.out.println();
@@ -215,7 +214,7 @@ public class Main {
                 if (time <= 0) {
                     System.out.println("Game Over");
 
-                    if (game.gameMap.getRobots().get(0).getDistance() > game.gameMap.getRobots().get(1).getDistance())
+                    if (game.gameMap.getPlayerRobots().get(0).getDistance() > game.gameMap.getPlayerRobots().get(1).getDistance())
                         System.out.println("Robot1 won!");
                     else System.out.println("Robot2 won!");
                 }

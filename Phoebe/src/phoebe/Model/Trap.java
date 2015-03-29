@@ -7,8 +7,8 @@ import java.awt.*;
  */
 public abstract class Trap extends GameElements implements Visitor{
 
-    public Trap(Point location, int hitbox) {
-        super(location,hitbox);
+    public Trap(Point location) {
+        super(location, 10);
     }
 
 

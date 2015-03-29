@@ -12,8 +12,8 @@ public class Oil extends Trap {
     // az olaj 4 kör/ugrás után felszárad, ugrásonként csökkentjük.
     private int timeToLive = 4;
 
-    public Oil(Point location, int hitbox) {
-        super(location, hitbox);
+    public Oil(Point location) {
+        super(location);
     }
 
 
@@ -31,7 +31,7 @@ public class Oil extends Trap {
 
     // visitor
     @Override
-    public void accept(Robot R2D2) {
+    public void accept(PlayerRobot R2D2) {
         System.out.println(""+"    ->[Oil].accept(Robot)"+"" );
         R2D2.visit(this);
 

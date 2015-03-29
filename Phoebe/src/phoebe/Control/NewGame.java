@@ -1,9 +1,8 @@
 package phoebe.Control;
 
 import phoebe.Model.*;
-import phoebe.Model.Robot;
+import phoebe.Model.PlayerRobot;
 
-import javax.swing.text.Keymap;
 import java.awt.*;
 import java.util.Random;
 
@@ -32,8 +31,8 @@ public class NewGame {
         System.out.println(""+"    ->[NewGame].startGame()"+"");
         this.dimension=dimension;
         addRandomTraps(50);
-        gameMap.addRobot(new Robot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
-        gameMap.addRobot(new Robot(new Point(150, 150), 15, new KeyMap(10,10,10,10,10,10)));
+        gameMap.addRobot(new PlayerRobot(new Point(dimension.width - 150, dimension.height - 150), 15, new KeyMap(10, 10, 10, 10, 10, 10)));
+        gameMap.addRobot(new PlayerRobot(new Point(150, 150), 15, new KeyMap(10,10,10,10,10,10)));
 
     }
     /**
@@ -49,17 +48,11 @@ public class NewGame {
             Point loc = new Point(rndm.nextInt(dimension.width), rndm.nextInt(dimension.height));
             try {
                 if (traptype == 0) {
-                    gameMap.addTrap(new Oil(
-                            loc,
-                            10) //hitbox
-                    );
+                    gameMap.addTrap(new Oil(loc));  //hitbox
                     System.out.println(i+1+": Random-generated oil @ " + loc.x + "x" + loc.y);
                 } else {
-                    gameMap.addTrap(new Glue(
-                            loc,
-                            10) //hitbox
-                    );
-                    System.out.println(i+1+": Random-generated glue @ " + loc.x + "x" + loc.y);
+                    gameMap.addTrap(new Glue(loc) );    //hitbox
+                    System.out.println(i + 1 + ": Random-generated glue @ " + loc.x + "x" + loc.y);
 
                 }
             }

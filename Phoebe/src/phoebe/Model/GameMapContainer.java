@@ -19,7 +19,10 @@ public class GameMapContainer {
     // Pálya felbontása
     Dimension resolution;
 
-    private List<Robot> robots;
+
+
+    private List<CleanerRobot> cleanerRobots;
+    private List<PlayerRobot> playerRobots;
     private List<Trap> traps;
     private Map<String,BufferedImage> Images;
 
@@ -27,13 +30,17 @@ public class GameMapContainer {
     //Létrehozzuk a megfelelő tárolókat és játék elemeket
     public GameMapContainer(Dimension resolution) {
         this.resolution = resolution;
-        robots = new ArrayList<Robot>();
+        playerRobots = new ArrayList<PlayerRobot>();
         traps = new ArrayList<Trap>();
     }
 
     // getterek
-    public List<Robot> getRobots() {
-        return robots;
+    public List<PlayerRobot> getPlayerRobots() {
+        return playerRobots;
+    }
+
+    public List<CleanerRobot> getCleanerRobots() {
+        return cleanerRobots;
     }
 
     public List<Trap> getTraps() {
@@ -45,10 +52,10 @@ public class GameMapContainer {
     }
 
     //robot hozzáadása
-    public void addRobot(Robot robot) {
+    public void addRobot(PlayerRobot playerRobot) {
         System.out.println(""+"    ->[GameMapContainer].addRobot(Robot)"+"" );
-        robots.add(robot);
-        System.out.println(this.getRobots().size()+ ". robot created.");
+        playerRobots.add(playerRobot);
+        System.out.println(this.getPlayerRobots().size()+ ". robot created.");
     }
 
     //trap hozzáadása

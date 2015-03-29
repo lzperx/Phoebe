@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.lang.Math;
 
 /**
  * Created by Muresan73 on 15. 02. 20..
@@ -33,7 +34,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        for (Robot R2D2: gameMapContainer.getRobots()) {
+        for (PlayerRobot R2D2: gameMapContainer.getPlayerRobots()) {
 
             if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.keys.left=true;
@@ -57,7 +58,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-        for (Robot R2D2: gameMapContainer.getRobots()) {
+        for (PlayerRobot R2D2: gameMapContainer.getPlayerRobots()) {
 
             if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.keys.left=false;
@@ -77,7 +78,7 @@ public class GameControl implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
-        for (Robot R2D2: gameMapContainer.getRobots()) {
+        for (PlayerRobot R2D2: gameMapContainer.getPlayerRobots()) {
 
             if(e.getKeyCode()== R2D2.keys.getLeftKey())
                 R2D2.turnLeft();
@@ -97,7 +98,7 @@ public class GameControl implements KeyListener {
     /* A csapdára lépés megvalósításáért felelős függvény,
      * a controlMinions() metódus hívja meg.
      */
-    public void collision(Robot C3PO){//TODO majd a szkeleton után visszaállítani privátra !!!!
+    public void collision(PlayerRobot C3PO){//TODO majd a szkeleton után visszaállítani privátra !!!!
         boolean event = false;
         for (Trap itsATrap: gameMapContainer.getTraps()){
 
@@ -110,16 +111,84 @@ public class GameControl implements KeyListener {
 
          if(!event){
 
-            C3PO.state = Robot.robotState.NORMAL;
+            C3PO.state = PlayerRobot.robotState.NORMAL;
             System.out.println("None");
         }
 
     }
 
+
+
+    /* CleanUp metódus a CleanerRobot -ok csapdafelszedésére,
+        valamint az új irányuk megadására a következő csapda felé.
+     */
+    private void CleanUp(CleanerRobot kemenyenDolgozoKisrobot){
+
+            for (Trap itsATrap : gameMapContainer.getTraps()) {
+                // ha véletlenül 2 csapda lenne egymáson, csak az egyiket szedi fel egyszerre
+                if(kemenyenDolgozoKisrobot.getTimeLeftToClean()<=0) {
+                    if (kemenyenDolgozoKisrobot.getNextPosition().distance(itsATrap.getLocation()) < (kemenyenDolgozoKisrobot.getHitbox() + itsATrap.getHitbox())) {
+                        // felszedjük a csapdát
+                        gameMapContainer.getTraps().remove(itsATrap);
+                        //két körig várakozunk
+                        kemenyenDolgozoKisrobot.setTimeLeftToClean(2);
+                    }
+                }
+            }
+    }
+
+    /*directToNextTrap metódus a Cleanerrobotok irányba állítására
+    a legközelebbi csapda felé
+     */
+    private void directToNextTrap(CleanerRobot kemenyenDolgozoKisrobot){
+        // csak akkor számolunk, ha épp nem takarít
+        if(kemenyenDolgozoKisrobot.getTimeLeftToClean()==0){
+            // ha van még csapda a pályán, akkor elindul arra, egyébként változatlan irányba ugrál tovább
+            if(!gameMapContainer.getTraps().isEmpty()){
+                // a robothoz legközelebbi csapda megkeresésére
+                Trap closestTrap = null;
+
+                //a robot és a hozzá legközelebbi csapda távolsága,
+                // kezdeti érték jó nagy , hogy biztosan találjon kisebbet
+                double distance = 1000000;
+
+                // a ciklusban aktuálisan vizsgált csapda és a robot távolsága
+                double currentDistance;
+                for(Trap itsATrap : gameMapContainer.getTraps()){
+
+                    // pitagorasz a robot és a csapdák távolságának kiszámítására a koordinátákból
+                /* currentDistance = Math.sqrt(Math.pow(Math.abs(itsATrap.getLocation().getX()-kemenyenDolgozoKisrobot.getLocation().getX()),2)+
+                        Math.pow(Math.abs(itsATrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY()),2));*/
+                    currentDistance = kemenyenDolgozoKisrobot.getLocation().distance(itsATrap.getLocation());
+
+
+                    if(currentDistance < distance){
+                        closestTrap = itsATrap;
+                        distance = currentDistance;
+                    }
+                }
+
+                // a továbbhaladás szöge arkusztangenssel számolva (radiánban)
+                double angle;
+
+                if(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()>0){
+                    angle =  Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
+                            Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
+                } else{     // a negatív tartományban hozzáadunk egy PI t , mivel az atan csak 0-180 fok között képez le, lásd komplex számok
+                    angle = Math.PI + Math.atan(Math.abs(closestTrap.getLocation().getY()-kemenyenDolgozoKisrobot.getLocation().getY())/
+                            Math.abs(closestTrap.getLocation().getX() - kemenyenDolgozoKisrobot.getLocation().getX()));
+                }
+
+                kemenyenDolgozoKisrobot.setAngle(angle);
+            }
+        }
+    }
+
+
     /*   az irányítás megoldása az aktuális gombváltozók értéke alapján.
      *   Polling módszerrel oldjuk meg.
      */
-    private void pollKey(Robot R2D2){
+    private void pollKey(PlayerRobot R2D2){
 
         if(R2D2.keys.left) R2D2.turnLeft();
         if(R2D2.keys.up) R2D2.speedUp();
@@ -136,7 +205,7 @@ public class GameControl implements KeyListener {
                     System.out.println(""+"    ->[GameControl].amountofOil--"+"");
                     R2D2.ammountofOil--;
                     try {
-                        gameMapContainer.addTrap(new Oil(R2D2.getLocation(), 10));
+                        gameMapContainer.addTrap(new Oil(R2D2.getLocation()));
                     }
                     catch (Exception e)
                     {
@@ -158,7 +227,7 @@ public class GameControl implements KeyListener {
                     System.out.println(""+"    ->[GameControl].amountofGlue--"+"");
                     R2D2.ammountofGlue--;
                     try {
-                        gameMapContainer.addTrap(new Glue(R2D2.getLocation(), 10));
+                        gameMapContainer.addTrap(new Glue(R2D2.getLocation()));
                     }
                     catch (Exception e){
                         System.out.println(e.toString());
@@ -192,13 +261,33 @@ private void removeOldTraps (){
 
     private void controlMinions(){
         System.out.println(""+"    ->[GameControl].controlMinions()"+"");
-        for (Robot R2D2: gameMapContainer.getRobots()){
+        for (PlayerRobot R2D2: gameMapContainer.getPlayerRobots()){
             //fontos a sorrend
             pollKey(R2D2);
-            /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/ R2D2.evaluate();
+            /*TODO ide kell rajzolás ami fogad egy Pointert ami a következő pozíciója lesz a robotnak*/
+            R2D2.evaluate();
             R2D2.jump();
             collision(R2D2);
         }
+
+        // a CleanerRobotok felszedik a csapdákat, ha elég közel értek hozzájuk
+        for(CleanerRobot kemenyenDolgozoKisrobot : gameMapContainer.getCleanerRobots()){
+            //csökkentjük a hátralévő munkaidőt (lehet negatív is)
+            kemenyenDolgozoKisrobot.setTimeLeftToClean(kemenyenDolgozoKisrobot.getTimeLeftToClean()-1);
+            //vizsgáljuk hogy van e csapda a robot alatt, ha van, felszedjük
+            CleanUp(kemenyenDolgozoKisrobot);
+            //a következő csapda felé fordul majd elkezd ugrálni a cleanerRobot,
+            // ha van következő csapda, és ha nincs épp elfoglalva a takarítással
+           if(kemenyenDolgozoKisrobot.getTimeLeftToClean()<=0){
+               directToNextTrap(kemenyenDolgozoKisrobot);
+               kemenyenDolgozoKisrobot.evaluate();
+               kemenyenDolgozoKisrobot.jump();
+           }
+
+        }
+
+
+        //removeOldtraps a végére mindig, eltűntetjük a kiszáradt csapdákat
         removeOldTraps();
     }
 
