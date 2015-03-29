@@ -166,6 +166,22 @@ public class GameControl implements KeyListener {
         }
     }
 
+
+    /* kiszárítja a csapdákat, és törli a teljesen szárazakat.
+     a controllminions() legvégén kell meghívni.*/
+private void removeOldTraps (){
+    // végigmegyünk a csapdákon, és szárítunk az olajokon
+    for(Trap csapda: gameMapContainer.getTraps()){
+        csapda.dry();
+        if(csapda.getTimeToLive()<=0){
+            gameMapContainer.getTraps().remove(csapda);
+        }
+    }
+
+}
+
+
+
     /*   A robot irányításának "fő" metódusa, melyben sorra meghívjuk
      *   az irányításhoz szükséges korábban definiált metódusokat.
     */
@@ -179,6 +195,7 @@ public class GameControl implements KeyListener {
             R2D2.jump();
             collision(R2D2);
         }
+        removeOldTraps();
     }
 
     /* Egy timer, ami fél másodpercenként meghívja a controlMinions -t */

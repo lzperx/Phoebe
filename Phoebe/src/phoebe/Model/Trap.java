@@ -11,4 +11,9 @@ public abstract class Trap extends GameElements implements Visitor{
         super(location,hitbox);
     }
 
+
+    public abstract int getTimeToLive();
+
+    // dry függvény az olaj száradásához... ragacsnál nem csinál semmit
+    public abstract void dry ();
 }

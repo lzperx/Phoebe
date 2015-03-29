@@ -9,9 +9,25 @@ import java.awt.*;
 // Olaj csapda, melybe a robot ha belelép, nem tud irányt változtatni.
 public class Oil extends Trap {
 
+    // az olaj 4 kör/ugrás után felszárad, ugrásonként csökkentjük.
+    private int timeToLive = 4;
+
     public Oil(Point location, int hitbox) {
         super(location, hitbox);
     }
+
+
+
+    @Override
+    public int getTimeToLive() {
+        return timeToLive;
+    }
+
+    @Override
+    public void dry() {
+    timeToLive--;
+    }
+
 
     // visitor
     @Override

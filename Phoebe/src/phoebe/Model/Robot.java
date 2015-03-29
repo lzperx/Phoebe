@@ -109,20 +109,16 @@ public class Robot extends GameElements {
 
     public void turnLeft(){
         System.out.println(""+"    ->[Robot].turnLeft()"+"" );
-        if (state == robotState.NORMAL)
-        {
           // szögelfordulás balra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
             angle =- 0.1;//TODO normális érték
-        }
+
     }
 
     public void turnRight(){
         System.out.println(""+"    ->[Robot].turnRight()"+"" );
-        if (state == robotState.NORMAL)
-        {
             // szögelfordulás jobbra 10 fokkal (minden nextPosition beállításkor az angle=0 lesz)
             angle =+ 0.1;//TODO normális érték
-        }
+
     }
 
     public void speedUp(){
