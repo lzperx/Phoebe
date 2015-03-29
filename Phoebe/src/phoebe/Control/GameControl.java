@@ -130,6 +130,7 @@ public class GameControl implements KeyListener {
             }
         }
 
+
          if(!event){
 
             C3PO.state = PlayerRobot.robotState.NORMAL;
