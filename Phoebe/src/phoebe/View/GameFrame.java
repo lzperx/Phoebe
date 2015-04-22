@@ -1,4 +1,4 @@
-package phoebe.View;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -64,8 +64,10 @@ public class GameFrame extends JComponent {
 
     // a megfelelő irányba fordított robot kirajzolása
     public void paintComponent(Graphics g){
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.rotate(rotation,robot.getX() + (testRobot.getWidth()/  2), robot.getY() + (testRobot.getHeight() / 2));
-        g2d.drawImage(testRobot,(int)robot.getX(),(int)robot.getY(),null);
+        AffineTransform transform = new AffineTransform();
+        transform.rotate(rotation, testRobot.getWidth()/2, testRobot.getHeight()/2);
+        AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+        testRobot = op.filter(testRobot, null);
+        g.drawImage(testRobot,(int)robot.getX()/2,(int)robot.getY()/2,null);
     }
 }
